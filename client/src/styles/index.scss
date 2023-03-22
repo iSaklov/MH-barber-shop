@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "./variables.scss";
 
 /* make the customizations */
 // $theme-colors: (
@@ -24,12 +25,18 @@ code {
 }
 
 body {
-	background-color: dimgray;
+	background-color: $color-filter;
 	section {
 		height: 50vh;
 		border-bottom: 5px dashed white;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		h1 {
+			font-family: $font-playfair;
+			font-size: 36px;
+			color: $color-white;
+			text-shadow: 2px 2px 2px $color-black;
+		}
 	}
 }
