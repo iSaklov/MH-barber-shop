@@ -1,22 +1,15 @@
 import React from 'react'
-import { default as Navbar } from './components/Navbar'
-import Header from './components/Header'
-import PriceList from './components/PriceList'
-import Gallery from './components/Gallery'
-import About from './components/About'
-import Footer from './components/Footer'
-
+import { BrowserRouter } from 'react-router-dom'
+import useRoutes from './routes'
 
 function App() {
+  const isAdmin = false
+	const routes = useRoutes(isAdmin)
+
   return (
-    <>
-      <Navbar />
-      <Header />
-      <PriceList />
-      <Gallery />
-      <About />
-      <Footer />
-    </>
+    <BrowserRouter>
+      {routes}
+    </BrowserRouter>
   )
 }
 

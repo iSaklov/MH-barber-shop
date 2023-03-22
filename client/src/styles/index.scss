@@ -24,9 +24,12 @@ code {
 }
 
 body {
-	text-align: center;
 	background-color: dimgray;
 	section {
-		margin: 10vh auto;
+		height: 50vh;
+		border-bottom: 5px dashed white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
