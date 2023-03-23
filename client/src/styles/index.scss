@@ -1,5 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
-@import "./variables.scss";
+@import './custom.scss';
+@import '~bootstrap/scss/bootstrap';
+@import './variables.scss';
 
 /* make the customizations */
 // $theme-colors: (
@@ -24,19 +25,47 @@ code {
     monospace;
 }
 
+$bs-nav-link-hover-color: $color-primary;
+
+// MY STYLE
 body {
-	background-color: $color-filter;
-	section {
-		height: 50vh;
-		border-bottom: 5px dashed white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		h1 {
-			font-family: $font-playfair;
-			font-size: 36px;
-			color: $color-white;
-			text-shadow: 2px 2px 2px $color-black;
-		}
-	}
+  font-family: $font-playfair;
+  // font-size: 16px; // bootstrap default
+}
+
+// NAVBAR
+
+.offcanvas-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .nav-link {
+    text-transform: uppercase;
+    // font-weight: 700;
+    margin: 1rem;
+  }
+}
+
+@media (hover: hover) {
+  .nav-link:hover {
+    color: $color-primary;
+  }
+}
+
+// ONLY FOR TEST
+body {
+  background-color: $color-filter;
+  section {
+    height: 100vh;
+    border-bottom: 5px dashed white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-family: $font-playfair;
+      font-size: 36px;
+      color: $color-white;
+      text-shadow: 2px 2px 2px $color-black;
+    }
+  }
 }
