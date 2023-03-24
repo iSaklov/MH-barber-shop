@@ -2,6 +2,11 @@
 @import './custom.scss';
 @import '~bootstrap/scss/bootstrap';
 
+// VARIABLES
+/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
+$navbar-height: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
+  $logo-height;
+
 /* make the customizations */
 // $theme-colors: (
 //     "info": tomato,
@@ -29,9 +34,15 @@ code {
 body {
   font-family: $font-playfair;
   // font-size: 16px; // bootstrap default
+  color: $color-white;
 }
 
 // NAVBAR
+._logo {
+  width: $logo-width;
+  height: $logo-height;
+}
+
 .offcanvas-title ._logo {
   width: 75%;
 }
@@ -58,7 +69,41 @@ body {
   }
 }
 
-// ONLY FOR TEST
+// HEADER
+#header {
+  margin-top: -$navbar-height;
+  background-image: url('../assets/images/fond01.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  ._logo {
+    width: 20rem;
+    height: auto;
+  }
+  h3 {
+    font-family: $font-italiana;
+    font-size: 30px;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+  h4 {
+    font-size: 20px;
+    color: $color-primary;
+  }
+}
+
+#header .container {
+  margin-top: $navbar-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+// ONLY FOR DEVELOPMENT
 body {
   background-color: $color-filter;
   section {
