@@ -2,8 +2,8 @@ import React from 'react'
 
 const About = () => {
 	return (
-    <section>
-      <h1 id="about">ABOUT</h1>
+    <section id="about">
+      <h1>ABOUT</h1>
     </section>
   )
 }

@@ -2,8 +2,8 @@ import React from 'react'
 
 const PriceList = () => {
   return (
-    <section>
-      <h1 id='price-list'>PRICE LIST</h1>
+    <section id="price-list">
+      <h1>PRICE LIST</h1>
     </section>
   )
 }

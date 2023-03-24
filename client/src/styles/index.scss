@@ -1,6 +1,6 @@
+@import './variables.scss';
 @import './custom.scss';
 @import '~bootstrap/scss/bootstrap';
-@import './variables.scss';
 
 /* make the customizations */
 // $theme-colors: (
@@ -25,15 +25,16 @@ code {
     monospace;
 }
 
-$bs-nav-link-hover-color: $color-primary;
-
-// MY STYLE
+// MY STYLES
 body {
   font-family: $font-playfair;
   // font-size: 16px; // bootstrap default
 }
 
 // NAVBAR
+.offcanvas-title ._logo {
+  width: 75%;
+}
 
 .offcanvas-body {
   display: flex;
@@ -46,9 +47,14 @@ body {
   }
 }
 
-@media (hover: hover) {
-  .nav-link:hover {
-    color: $color-primary;
+@media (min-width: 768px) {
+  .scrolled-down {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+  }
+  .scrolled-up {
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -62,10 +68,9 @@ body {
     justify-content: center;
     align-items: center;
     h1 {
-      font-family: $font-playfair;
       font-size: 36px;
       color: $color-white;
-      text-shadow: 2px 2px 2px $color-black;
+      text-shadow: 2px 2px 10px $color-primary;
     }
   }
 }

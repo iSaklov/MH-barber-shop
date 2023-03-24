@@ -2,8 +2,8 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <section>
-      <h1 id="header">HEADER</h1>
+    <section id="header">
+      <h1>HEADER</h1>
     </section>
   )
 }
