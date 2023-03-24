@@ -3,8 +3,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 // VARIABLES
-/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
-$navbar-height: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
+// 0.125rem of 1px * 2 border
+// 1.875rem burger default height
+$navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
+  2 + 0.125rem + 1.875rem;
+	/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
+$navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
   $logo-height;
 
 /* make the customizations */
@@ -16,35 +20,23 @@ $navbar-height: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
 /* The following line can be included in a src/App.scss */
 // @import "custom";
 
+// GLOBAL
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-// MY STYLES
-body {
   font-family: $font-playfair;
-  // font-size: 16px; // bootstrap default
+  // font-size: 16px; //? default
   color: $color-white;
 }
 
-// NAVBAR
 ._logo {
   width: $logo-width;
   height: $logo-height;
 }
 
-.offcanvas-title ._logo {
-  width: 75%;
+// NAVBAR
+.offcanvas-header ._logo {
+  width: 100%;
 }
 
 .offcanvas-body {
@@ -52,13 +44,20 @@ body {
   align-items: center;
   justify-content: center;
   .nav-link {
+    color: $color-black;
     text-transform: uppercase;
     // font-weight: 700;
-    margin: 1rem;
+    margin: 1rem auto;
   }
 }
 
 @media (min-width: 768px) {
+	.offcanvas-body .nav-link {
+		color: $navbar-dark-color;
+		&:hover {
+			color: $navbar-dark-hover-color;
+		}
+	}
   .scrolled-down {
     transform: translateY(-100%);
     transition: all 0.3s ease-in-out;
@@ -71,43 +70,71 @@ body {
 
 // HEADER
 #header {
-  margin-top: -$navbar-height;
-  background-image: url('../assets/images/fond01.png');
+  margin-top: -$navbar-height-non-expanded;
+  background-image: linear-gradient($color-filter, #12121579),
+    url('../assets/images/fond01.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  ._logo {
-    width: 20rem;
-    height: auto;
+
+  .container {
+    margin-top: $navbar-height-non-expanded;
+    display: flex;
+    flex-direction: column;
   }
+
+  ._logo {
+    width: 100%;
+    height: auto;
+    padding: 0 $container-padding-x;
+  }
+
   h3 {
     font-family: $font-italiana;
-    font-size: 30px;
+    font-size: 1.875rem;
     letter-spacing: -0.05em;
     text-transform: uppercase;
   }
+
   h4 {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: $color-primary;
   }
 }
 
-#header .container {
-  margin-top: $navbar-height;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
+@media (min-width: 768px) {
+	#header {
+		margin-top: -$navbar-height-expanded;
+
+		.container {
+			margin-top: $navbar-height-expanded;
+			justify-content: space-between;
+			// align-items: center;
+			// height: 75vh;
+			// background-color: aquamarine;
+		}
+
+		._logo {
+			width: $logo-width * 1.5;
+			height: auto;
+			padding: 0;
+		}
+
+		._infos {
+			margin-top: 17.5rem;
+			& p {
+				font-size: 1.125rem;
+			}
+		}
+	}
 }
 
 // ONLY FOR DEVELOPMENT
 body {
   background-color: $color-filter;
   section {
-    height: 100vh;
+    // height: 100vh;
+    min-height: 100vh;
     border-bottom: 5px dashed white;
     display: flex;
     justify-content: center;
