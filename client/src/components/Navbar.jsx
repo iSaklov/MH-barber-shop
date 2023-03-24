@@ -7,7 +7,7 @@ const NavBar = () => {
   const [navbarHidden, setNavbarHidden] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
 
-  const [sections, setSections] = useState()
+  const [sections, setSections] = useState([])
 
   const controlNavbar = useCallback(() => {
     if (typeof window !== 'undefined') {
@@ -27,7 +27,7 @@ const NavBar = () => {
     // Get current scroll position
     let scrollY = window.pageYOffset
 
-    if (sections) {
+    if (sections.length) {
       // Now we loop through sections to get height, top and ID values for each
       sections.forEach((current) => {
         // console.log('current', current)
@@ -87,15 +87,13 @@ const NavBar = () => {
     <Navbar
       expand="md"
       variant="dark"
-      fixed="top"
-      className={`${!navbarHidden ? 'scrolled-up' : 'scrolled-down'}`}
+      sticky="top"
+      className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
     >
       <Container>
         <Navbar.Brand href="#header">
           <img
             src={Logo}
-            // width="200" //TODO move to Style
-            height="88.5"
             className="_logo align-top d-none d-md-inline-block"
             alt="H.M. - barber shop logo"
           />
