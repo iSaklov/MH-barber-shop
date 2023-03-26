@@ -1,15 +1,15 @@
-@import './variables.scss';
-@import './custom.scss';
+@import 'variables.scss';
+@import 'custom.scss';
 @import '~bootstrap/scss/bootstrap';
 
 // VARIABLES
 // 0.125rem of 1px * 2 border
 // 1.875rem burger default height
-$navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
-  2 + 0.125rem + 1.875rem;
-	/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
-$navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
-  $logo-height;
+//$navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
+//  2 + 0.125rem + 1.875rem;
+//	/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
+//$navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
+//  $logo-height;
 
 /* make the customizations */
 // $theme-colors: (
@@ -27,22 +27,43 @@ body {
   font-family: $font-playfair;
   // font-size: 16px; //? default
   color: $color-white;
+  background-color: $color-filter;
+
+  h1 {
+    font-size: 36px;
+    color: $color-white;
+    text-shadow: 2px 2px 10px $color-primary;
+  }
 }
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header, main, footer {
+  width: 100%;
+}
+
 
 ._logo {
   width: $logo-width;
   height: $logo-height;
 }
 
-// NAVBAR
-.offcanvas-header ._logo {
-  width: 100%;
-}
+// HEADER NAVBAR
 
 .offcanvas-body {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .nav-link {
     color: $color-black;
     text-transform: uppercase;
@@ -52,12 +73,19 @@ body {
 }
 
 @media (min-width: 768px) {
-	.offcanvas-body .nav-link {
-		color: $navbar-dark-color;
-		&:hover {
-			color: $navbar-dark-hover-color;
-		}
-	}
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .offcanvas-body .nav-link {
+    color: $navbar-dark-color;
+
+    &:hover {
+      color: $navbar-dark-hover-color;
+    }
+  }
   .scrolled-down {
     transform: translateY(-100%);
     transition: all 0.3s ease-in-out;
@@ -66,21 +94,52 @@ body {
     transform: translateY(0);
     transition: all 0.3s ease-in-out;
   }
+
+  .navbar {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 4px;
+      background: $color-primary;
+
+    }
+  }
 }
 
-// HEADER
-#header {
-  margin-top: -$navbar-height-non-expanded;
+//GENERAL SECTION
+#general {
+  height: 100vh;
   background-image: linear-gradient($color-filter, #12121579),
-    url('../assets/images/fond01.png');
+  url('../assets/images/fond01.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
+
   .container {
-    margin-top: $navbar-height-non-expanded;
+    height: 100%;
+    padding: 9.75rem 0 4rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    .container-item {
+      display: flex;
+      flex-direction: column;
+      row-gap: 6.75rem;
+    }
+  }
+
+  .ellipse:after {
+    content: url('../assets/ellipse.svg');
+    display: block;
+    margin-top: 0.5rem;
   }
 
   ._logo {
@@ -103,46 +162,21 @@ body {
 }
 
 @media (min-width: 768px) {
-	#header {
-		margin-top: -$navbar-height-expanded;
 
-		.container {
-			margin-top: $navbar-height-expanded;
-			justify-content: space-between;
-			// align-items: center;
-			// height: 75vh;
-			// background-color: aquamarine;
-		}
+  #general {
+    ._logo {
+      width: $logo-width * 1.5;
+      height: auto;
+      padding: 0;
+    }
 
-		._logo {
-			width: $logo-width * 1.5;
-			height: auto;
-			padding: 0;
-		}
+    ._infos {
+      margin-top: 17.5rem;
 
-		._infos {
-			margin-top: 17.5rem;
-			& p {
-				font-size: 1.125rem;
-			}
-		}
-	}
-}
-
-// ONLY FOR DEVELOPMENT
-body {
-  background-color: $color-filter;
-  section {
-    // height: 100vh;
-    min-height: 100vh;
-    border-bottom: 5px dashed white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h1 {
-      font-size: 36px;
-      color: $color-white;
-      text-shadow: 2px 2px 10px $color-primary;
+      & p {
+        font-size: 1.125rem;
+      }
     }
   }
 }
+
