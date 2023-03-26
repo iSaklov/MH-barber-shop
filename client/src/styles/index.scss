@@ -121,6 +121,11 @@ header, main, footer {
   background-position: 55% 55%;
   background-repeat: no-repeat;
 
+  & a {
+    text-decoration: none;
+    color: $color-white;
+  }
+
 
   .container {
     height: 100%;
@@ -171,7 +176,6 @@ header, main, footer {
     }
 
     ._infos {
-      margin-top: 17.5rem;
 
       & p {
         font-size: 1.125rem;

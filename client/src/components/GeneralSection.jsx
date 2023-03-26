@@ -12,7 +12,7 @@ const GeneralSection = () => {
                             <img src={Logo} className="_logo" alt="H.M. - barber shop logo"/>
                         </Col>
                     </Row>
-                    <Row className="mt">
+                    <Row className="mt _infos">
                         <Col md={4} className="mt-5 my-md-0">
                             <h3 className='ellipse'>Rapide</h3>
                             <p>
@@ -39,11 +39,11 @@ const GeneralSection = () => {
                 <Row className="d-none d-md-flex">
                     <Col>
                         <h4>Adresse</h4>
-                        <p>3 rue du grand pont</p>
+                        <a href='/'>3 rue du grand pont</a>
                     </Col>
                     <Col>
                         <h4>Téléphone</h4>
-                        <p>06.24.01.56.91</p>
+                        <a href='/'>06.24.01.56.91</a>
                     </Col>
                     <Col>
                         <h4>Horaires</h4>
