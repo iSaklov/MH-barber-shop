@@ -43,6 +43,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
 header, main, footer {
@@ -199,6 +200,7 @@ header, main, footer {
     @extend %flex-column-between;
     align-items: center;
     background-color: $color-filter;
+
 
     h2{
       color: $color-primary;
