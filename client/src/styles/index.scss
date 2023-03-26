@@ -39,9 +39,7 @@ body {
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @extend %flex-column-between;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -60,9 +58,7 @@ header, main, footer {
 // HEADER NAVBAR
 
 .offcanvas-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center;
 
   .nav-link {
     color: $color-black;
@@ -115,19 +111,13 @@ header, main, footer {
 //GENERAL SECTION
 #general {
   height: 100vh;
-  background-image: linear-gradient($color-filter, #12121579),
-  url('../assets/images/fond01.png');
-  background-size: cover;
-  background-position: 55% 55%;
-  background-repeat: no-repeat;
+  @include bg-section('../assets/images/fond01.png');
 
 
   .container {
     height: 100%;
     padding: 9.75rem 0 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @extend %flex-column-between;
 
     .container-item {
       display: flex;
@@ -178,5 +168,63 @@ header, main, footer {
       }
     }
   }
+}
+
+
+#price-list{
+  padding: 100px 0;
+  @include bg-section('../assets/images/fond02.png');
+
+  .price-container{
+   @extend %flex-center;
+  }
+
+  .price-card{
+    width: 35rem;
+    height: 42.25rem;
+    background: repeating-linear-gradient(
+                    -45deg,
+                    rgba(223, 174, 95, 0.2) 8px 10px,
+                    $color-filter 4px 20px
+    );
+    padding: 40px;
+    @extend %flex-center;
+  }
+
+  .inner-card{
+    width: 100%;
+    height: 100%;
+    padding: 30px 20px;
+    border: 4px solid $color-primary;
+    @extend %flex-column-between;
+    align-items: center;
+    background-color: $color-filter;
+
+    h2{
+      color: $color-primary;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 48px;
+    }
+
+    .service{
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: justify;
+      text-align-last: justify;
+
+      .note{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 6px;
+      }
+    }
+  }
+
+
 }
 
