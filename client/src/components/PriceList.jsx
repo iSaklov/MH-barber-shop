@@ -29,10 +29,8 @@ const PriceList = () => {
                         {prices.map(price =>
                             <Container key={price.id} className="mb">
                                 <Row className='service'>
-                                    <Col md={10}>
-                                        <p className='service_name'>{price.name} .........</p>
-                                    </Col>
-                                    <Col md={2}>{price.cost}€</Col>
+                                    <Col className='service_name'>{price.name}</Col>
+                                    <Col>{price.cost}€</Col>
                                 </Row>
                                 {price.note && <Row> <p className='note'>{`(${price.note})`}</p></Row>}
                             </Container>
