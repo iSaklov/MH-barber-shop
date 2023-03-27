@@ -27,7 +27,7 @@ const GeneralSection = () => {
                                 pour créer une coupe qui vous convient parfaitement
                             </p>
                         </Col>
-                        <Col md={4} className="my-5 my-md-0">
+                        <Col md={4} className="mt-5 my-md-0">
                             <h3 className='ellipse'>Impeccable</h3>
                             <p>
                                 Nous mettons en œuvre notre savoir-faire et notre expérience pour
