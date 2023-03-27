@@ -16,7 +16,7 @@ const HomePage = () => {
                 <PriceList/>
                 <ContainerSection>
                     <Gallery/>
-                    {/*<About/>*/}
+                    <About/>
                 </ContainerSection>
 
             </main>
