@@ -223,12 +223,30 @@ header, main, footer {
       font-size: 16px;
       line-height: 21px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap:.35rem;
 
-      .service_name{
-        flex-basis: 70%;
+
+
+      .service_dotes {
+        flex-basis: 10%;
+        flex-grow: 1;
+        position: relative;
+        display: block;
+        overflow: hidden;
       }
+      .service_dotes:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: .35em;
+        width: 100%;
+        border-bottom: .1em dotted $color-primary;
+      }
+
+      .service_price{
+        padding-left: .2em;
+      }
+
 
       .note{
         font-weight: 600;
