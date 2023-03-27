@@ -18,3 +18,25 @@ $color-filter: #121212;
 // SIZES
 $logo-width: 12.5rem;
 $logo-height: 5.625rem;
+
+
+%flex-center {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%flex-column-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+
+@mixin bg-section($url){
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url($url);
+  background-size: cover;
+  background-position: 55% 55%;
+  background-repeat: no-repeat;
+}

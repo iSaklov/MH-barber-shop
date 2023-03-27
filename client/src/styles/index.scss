@@ -39,12 +39,11 @@ body {
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @extend %flex-column-between;
   align-items: center;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
 header, main, footer {
@@ -60,9 +59,7 @@ header, main, footer {
 // HEADER NAVBAR
 
 .offcanvas-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center;
 
   .nav-link {
     color: $color-black;
@@ -115,31 +112,21 @@ header, main, footer {
 //GENERAL SECTION
 #general {
   height: 100vh;
-  background-image: linear-gradient($color-filter, #12121579),
-  url('../assets/images/fond01.png');
-  background-size: cover;
-  background-position: 55% 55%;
-  background-repeat: no-repeat;
-
+  @include bg-section('../assets/images/fond01.png');
   & a {
     text-decoration: none;
     color: $color-white;
   }
-
-
   .container {
     height: 100%;
-    padding: 9.75rem 0 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 4rem 0 1rem;
 
     .container-item {
       display: flex;
       flex-direction: column;
-      row-gap: 6.75rem;
     }
   }
+
 
   .ellipse:after {
     content: url('../assets/ellipse.svg');
@@ -147,11 +134,6 @@ header, main, footer {
     margin-top: 0.5rem;
   }
 
-  ._logo {
-    width: 100%;
-    height: auto;
-    padding: 0 $container-padding-x;
-  }
 
   h3 {
     font-family: $font-italiana;
@@ -166,9 +148,23 @@ header, main, footer {
   }
 }
 
-@media (min-width: 768px) {
 
+
+
+@media (min-width: 768px) {
   #general {
+    .container {
+      height: 100%;
+      padding: 9.75rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .container-item {
+        row-gap: 6.75rem;
+      }
+    }
+
     ._logo {
       width: $logo-width * 1.5;
       height: auto;
@@ -182,5 +178,100 @@ header, main, footer {
       }
     }
   }
+
+
 }
+
+#price-list{
+  padding: 100px 0;
+  @include bg-section('../assets/images/fond02.png');
+  .price-container{
+    @extend %flex-center;
+  }
+
+  .price-card{
+    width: 317px;
+    height: 420px;
+    background: repeating-linear-gradient(
+                    -45deg,
+                    rgba(223, 174, 95, 0.2) 8px 10px,
+                    $color-filter 4px 20px
+    );
+    padding: 20px;
+    @extend %flex-center;
+  }
+
+  .inner-card{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 4px solid $color-primary;
+    @extend %flex-column-between;
+    align-items: center;
+    background-color: $color-filter;
+
+
+    h2{
+      color: $color-primary;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .service{
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 21px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .service_name{
+        flex-basis: 70%;
+      }
+
+      .note{
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 6px;
+      }
+    }
+  }
+
+
+}
+
+@media (min-width: 768px) {
+  #price-list{
+    .price-card{
+      width: 35rem;
+      height: 42.25rem;
+      padding: 40px;
+
+      .inner-card{
+        padding: 30px 20px;
+
+        h2{
+          font-size: 36px;
+          line-height: 48px;
+        }
+
+        .service{
+          font-size: 30px;
+          line-height: 40px;
+
+          .note{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
 
