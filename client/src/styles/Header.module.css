@@ -1,5 +1,0 @@
-.ellipse::after {
-  content: url('../assets/ellipse.svg');
-  display: block;
-	margin-top: 0.5rem;
-}
