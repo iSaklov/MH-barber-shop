@@ -23,10 +23,10 @@ const Footer = () => {
                             <img className='icon' src={Phone} alt="phone"/>
                             <div>06.24.01.56.91</div>
                         </a>
-                        <a href='/' className='contact_item'>
+                        <div className='contact_item'>
                             <img className='icon' src={Time} alt="time"/>
                             <div>mar-dim : 9h-19h</div>
-                        </a>
+                        </div>
 
                     </Col>
                 </Row>
@@ -44,7 +44,7 @@ const Footer = () => {
                         <img src={Map} alt="" style={{width: '100%'}}/>
                 </Row>
                 <div id='development'>
-                    <div>design & développement : iSaklov</div>
+                    <div>design & développement : <span>iSaklov</span></div>
                     <ul className='footer_nav'>
                         <li><a href=""><img className='icon' src={Mail} alt="mail"/></a></li>
                         <li><a href=""><img className='icon' src={Telegram} alt="telegram"/></a></li>

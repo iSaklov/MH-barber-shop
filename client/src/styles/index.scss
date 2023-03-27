@@ -448,6 +448,11 @@ header, main, footer {
     @extend %flex-column;
     align-items: center;
     row-gap: 20px;
+
+   span {
+      color: $color-primary;
+     font-weight: bold;
+    }
   }
 
   #services{
