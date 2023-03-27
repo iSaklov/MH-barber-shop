@@ -5,6 +5,7 @@ import Gallery from '../components/Gallery'
 import About from '../components/About'
 import Footer from '../components/Footer'
 import GeneralSection from "../components/GeneralSection";
+import ContainerSection from "../components/ContainerSection";
 
 const HomePage = () => {
     return (
@@ -13,10 +14,13 @@ const HomePage = () => {
             <main className='main'>
                 <GeneralSection/>
                 <PriceList/>
-                <Gallery/>
-                <About/>
+                <ContainerSection>
+                    <Gallery/>
+                    {/*<About/>*/}
+                </ContainerSection>
+
             </main>
-            <Footer/>
+            {/*<Footer/>*/}
         </div>
     )
 }

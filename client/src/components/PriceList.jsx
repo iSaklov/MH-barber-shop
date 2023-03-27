@@ -23,7 +23,7 @@ const PriceList = () => {
                         </Row>
                         <Row>
                             <Col>
-                                <h2>NOS TARIFS</h2>
+                                <h2 className='title'>NOS TARIFS</h2>
                             </Col>
                         </Row>
                         {prices.map(price =>

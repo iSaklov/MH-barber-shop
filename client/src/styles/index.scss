@@ -50,6 +50,9 @@ header, main, footer {
   width: 100%;
 }
 
+.title{
+  @extend %title_section;
+}
 
 ._logo {
   width: $logo-width;
@@ -122,8 +125,7 @@ header, main, footer {
     padding: 4rem 0 1rem;
 
     .container-item {
-      display: flex;
-      flex-direction: column;
+      @extend %flex-column;
     }
   }
 
@@ -210,22 +212,12 @@ header, main, footer {
     align-items: center;
     background-color: $color-filter;
 
-
-    h2{
-      color: $color-primary;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 32px;
-    }
-
     .service{
       font-weight: 600;
       font-size: 16px;
       line-height: 21px;
       display: flex;
       gap:.35rem;
-
-
 
       .service_dotes {
         flex-basis: 10%;
@@ -269,7 +261,7 @@ header, main, footer {
       .inner-card{
         padding: 30px 20px;
 
-        h2{
+        .title{
           font-size: 36px;
           line-height: 48px;
         }
@@ -284,6 +276,46 @@ header, main, footer {
         }
       }
     }
+  }
+}
+
+
+#container_section{
+  @include bg-section('../assets/images/fond03.png');
+}
+
+#gallery{
+  padding: 100px 0;
+  .gallery_container{
+    @extend %flex-column;
+    text-align: center;
+    width: 100%;
+
+    .carousel_item{
+      height: 300px;
+    }
+
+    ._gallery_img{
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #gallery{
+    .title{
+      font-size: 36px;
+      line-height: 48px;
+    }
+
+    .gallery_container{
+      .carousel_item{
+        height: 500px;
+      }
+    }
+
+
   }
 }
 
