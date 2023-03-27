@@ -36,9 +36,17 @@ body {
   }
 }
 
-p, ul, li, h1, h2, h3, h4, h5, h6{
+p, ul, li, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
 }
 
 .wrapper {
@@ -55,13 +63,17 @@ header, main, footer {
   width: 100%;
 }
 
-.title{
+.title {
   @extend %title_section;
 }
 
 ._logo {
   width: $logo-width;
   height: $logo-height;
+}
+
+.icon {
+  @include icon
 }
 
 // HEADER NAVBAR
@@ -120,11 +132,12 @@ header, main, footer {
 //GENERAL SECTION
 #general {
   height: 100vh;
-  @include bg-section('../assets/images/fond01.png');
+  @include bg-section('../assets/images/fond01.png', 55% 55%, (0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)));
+
   & a {
-    text-decoration: none;
     color: $color-white;
   }
+
   .container {
     height: 100%;
     padding: 4rem 0 1rem;
@@ -154,8 +167,6 @@ header, main, footer {
     color: $color-primary;
   }
 }
-
-
 
 
 @media (min-width: 769px) {
@@ -189,14 +200,15 @@ header, main, footer {
 
 }
 
-#price-list{
+#price-list {
   padding: 100px 0;
-  @include bg-section('../assets/images/fond02.png');
-  .price-container{
+  @include bg-section('../assets/images/fond02.png', 50% 50%, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
+
+  .price-container {
     @extend %flex-center;
   }
 
-  .price-card{
+  .price-card {
     width: 317px;
     height: 420px;
     background: repeating-linear-gradient(
@@ -208,7 +220,7 @@ header, main, footer {
     @extend %flex-center;
   }
 
-  .inner-card{
+  .inner-card {
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -217,12 +229,12 @@ header, main, footer {
     align-items: center;
     background-color: $color-filter;
 
-    .service{
+    .service {
       font-weight: 600;
       font-size: 16px;
       line-height: 21px;
       display: flex;
-      gap:.35rem;
+      gap: .35rem;
 
       .service_dotes {
         flex-basis: 10%;
@@ -231,6 +243,7 @@ header, main, footer {
         display: block;
         overflow: hidden;
       }
+
       .service_dotes:before {
         content: '';
         position: absolute;
@@ -240,12 +253,12 @@ header, main, footer {
         border-bottom: .1em dotted $color-primary;
       }
 
-      .service_price{
+      .service_price {
         padding-left: .2em;
       }
 
 
-      .note{
+      .note {
         font-weight: 600;
         font-size: 10px;
         line-height: 6px;
@@ -257,25 +270,25 @@ header, main, footer {
 }
 
 @media (min-width: 769px) {
-  #price-list{
-    .price-card{
+  #price-list {
+    .price-card {
       width: 35rem;
       height: 42.25rem;
       padding: 40px;
 
-      .inner-card{
+      .inner-card {
         padding: 30px 20px;
 
-        .title{
+        .title {
           font-size: 36px;
           line-height: 48px;
         }
 
-        .service{
+        .service {
           font-size: 30px;
           line-height: 40px;
 
-          .note{
+          .note {
             font-size: 16px;
           }
         }
@@ -285,22 +298,24 @@ header, main, footer {
 }
 
 
-#container_section{
-  @include bg-section('../assets/images/fond03.png');
+#container_section {
+  @include bg-section('../assets/images/fond03.png', 25% 95%, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
 }
 
-#gallery{
+#gallery {
   padding: 100px 0;
-  .gallery_container{
+
+  .gallery_container {
     @extend %flex-column;
     text-align: center;
     width: 100%;
 
-    .carousel_item{
+
+    .carousel_item {
       height: 300px;
     }
 
-    ._gallery_img{
+    ._gallery_img {
       height: 100%;
       object-fit: contain;
     }
@@ -308,14 +323,19 @@ header, main, footer {
 }
 
 @media (min-width: 769px) {
-  #gallery{
-    .title{
+  #gallery {
+    .title {
       font-size: 36px;
       line-height: 48px;
     }
 
-    .gallery_container{
-      .carousel_item{
+    .carousel-control-next-icon, .carousel-control-prev-icon {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .gallery_container {
+      .carousel_item {
         height: 500px;
       }
     }
@@ -325,50 +345,54 @@ header, main, footer {
 }
 
 
-#about{
+#about {
   padding: 40px 0 100px;
-    .about_container{
-      display: flex;
-      justify-content: space-between;
-      text-align: center;
-      background: rgba(26, 26, 26, 0.8);
-      img{
-        display: none;
+
+  .about_container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background: rgba(26, 26, 26, 0.8);
+
+    img {
+      display: none;
+    }
+
+    .about_inner {
+      flex-basis: 100%;
+      @extend %flex-column;
+      padding: 30px;
+
+      .about_text {
+        flex-grow: 1;
+        margin-top: 1rem;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 21px;
+        @extend %flex-column-between;
+        //row-gap: 20px;
       }
 
-      .about_inner{
-        flex-basis: 100%;
-        @extend %flex-column;
-        padding: 30px;
-
-        .about_text{
-          flex-grow: 1;
-          margin-top: 1rem;
-          text-align: justify;
-          font-size: 16px;
-          line-height: 21px;
-          @extend %flex-column-between;
-          //row-gap: 20px;
-        }
-
-      }
+    }
 
   }
 }
 
 
 @media (min-width: 769px) {
-  #about{
-    .about_container{
+  #about {
+    .about_container {
       padding: 0;
       max-height: 300px;
+
       img {
         display: block;
         flex-basis: 50%;
         max-width: 50%;
         object-fit: cover;
       }
-      .about_inner{
+
+      .about_inner {
         flex-basis: 50%;
 
       }
@@ -378,6 +402,102 @@ header, main, footer {
 
 }
 
+
+
+#footer {
+  @include bg-section('../assets/images/fond04.png', center, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
+  padding: 80px 0 40px;
+
+  .footer_container {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas: "contact" "map" "services" "development";
+    gap: 10px;
+  }
+
+  .contact_container{
+    @extend %flex-column;
+    align-items: center;
+  }
+
+  .footer_nav{
+    display: flex;
+    column-gap: 20px;
+  }
+
+  #contact{
+    grid-area: contact;
+    @extend %flex-column;
+    align-items: center;
+
+  }
+
+  #map{
+    grid-area: map;
+    @extend %flex-center;
+    & > img{
+      height: 80%;
+      object-fit: cover;
+      border-radius: 5%;
+    }
+  }
+
+  #development{
+    grid-area: development;
+    @extend %flex-column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  #services{
+    grid-area: services;
+    .services_container{
+      @extend %flex-column;
+      align-items: center;
+      row-gap: 10px;
+    }
+
+  }
+
+  .contact_item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    margin-top: 20px;
+    column-gap: 10px;
+  }
+
+}
+
+
+@media (min-width: 769px) {
+  #footer{
+    .footer_container {
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: 1fr 3fr;
+      grid-template-areas: "contact map" "services map" "development development";
+      gap: 40px;
+    }
+
+    .contact_container{
+      align-items: flex-start;
+    }
+
+    .contact_item{
+      justify-content: flex-start;
+    }
+
+    #services{
+      .services_container{
+        align-items: flex-start;
+      }
+
+    }
+  }
+}
 
 
 

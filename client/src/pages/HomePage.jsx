@@ -18,9 +18,8 @@ const HomePage = () => {
                     <Gallery/>
                     <About/>
                 </ContainerSection>
-
             </main>
-            {/*<Footer/>*/}
+            <Footer/>
         </div>
     )
 }
