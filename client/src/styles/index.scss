@@ -1,5 +1,17 @@
-@import 'variables.scss';
-@import 'custom.scss';
+// BASE
+@import './base/variables';
+@import './base/global';
+@import './base/typography';
+@import './base/placeholders';
+@import './base/mixins';
+// LAYOUTS
+@import './layout/general.scss';
+@import './layout/price.scss';
+@import './layout/gallery.scss';
+@import './layout/about.scss';
+@import './layout/footer.scss';
+// VENDORS
+@import './base/custom';
 @import '~bootstrap/scss/bootstrap';
 
 // VARIABLES
@@ -21,34 +33,6 @@
 // @import "custom";
 
 // GLOBAL
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: $font-playfair;
-  // font-size: 16px; //? default
-  color: $color-white;
-  background-color: $color-filter;
-
-  h1 {
-    font-size: 36px;
-    color: $color-white;
-    text-shadow: 2px 2px 10px $color-primary;
-  }
-}
-
-p, ul, li, h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-}
-
-ul > li {
-  list-style-type: none;
-}
-
-a{
-  text-decoration: none;
-}
-
 .wrapper {
   width: 100%;
   min-height: 100vh;
@@ -57,10 +41,6 @@ a{
   position: relative;
   overflow: hidden;
   user-select: none;
-}
-
-header, main, footer {
-  width: 100%;
 }
 
 .title {
@@ -73,7 +53,7 @@ header, main, footer {
 }
 
 .icon {
-  @include icon
+  @include icon;
 }
 
 // HEADER NAVBAR
@@ -82,7 +62,7 @@ header, main, footer {
   @extend %flex-center;
 
   .nav-link {
-    color: $color-black;
+    // color: $color-black;
     text-transform: uppercase;
     // font-weight: 700;
     margin: 1rem auto;
@@ -90,7 +70,6 @@ header, main, footer {
 }
 
 @media (min-width: 769px) {
-
   .header {
     position: absolute;
     top: 0;
@@ -124,387 +103,14 @@ header, main, footer {
       width: 100%;
       height: 4px;
       background: $color-primary;
-
     }
   }
 }
-
-//GENERAL SECTION
-#general {
-  height: 100vh;
-  @include bg-section('../assets/images/fond01.png', 55% 55%, (0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)));
-
-  & a {
-    color: $color-white;
-  }
-
-  .container {
-    height: 100%;
-    padding: 4rem 0 1rem;
-
-    .container-item {
-      @extend %flex-column;
-    }
-  }
-
-
-  .ellipse:after {
-    content: url('../assets/ellipse.svg');
-    display: block;
-    margin-top: 0.5rem;
-  }
-
-
-  h3 {
-    font-family: $font-italiana;
-    font-size: 1.875rem;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
-  }
-
-  h4 {
-    font-size: 1.25rem;
-    color: $color-primary;
-  }
-}
-
-
-@media (min-width: 769px) {
-  #general {
-    .container {
-      height: 100%;
-      padding: 9.75rem 0 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .container-item {
-        row-gap: 6.75rem;
-      }
-    }
-
-    ._logo {
-      width: $logo-width * 1.5;
-      height: auto;
-      padding: 0;
-    }
-
-    ._infos {
-
-      & p {
-        font-size: 1.125rem;
-      }
-    }
-  }
-
-
-}
-
-#price-list {
-  padding: 100px 0;
-  @include bg-section('../assets/images/fond02.png', 50% 50%, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
-
-  .price-container {
-    @extend %flex-center;
-  }
-
-  .price-card {
-    width: 317px;
-    height: 420px;
-    background: repeating-linear-gradient(
-                    -45deg,
-                    rgba(223, 174, 95, 0.5) 8px 10px,
-                    $color-filter 4px 20px
-    );
-    padding: 20px;
-    @extend %flex-center;
-  }
-
-  .inner-card {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    border: 4px solid $color-primary;
-    @extend %flex-column-between;
-    align-items: center;
-    background-color: $color-filter;
-
-    .service {
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 21px;
-      display: flex;
-      gap: .35rem;
-
-      .service_dotes {
-        flex-basis: 10%;
-        flex-grow: 1;
-        position: relative;
-        display: block;
-        overflow: hidden;
-      }
-
-      .service_dotes:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: .35em;
-        width: 100%;
-        border-bottom: .1em dotted $color-primary;
-      }
-
-      .service_price {
-        padding-left: .2em;
-      }
-
-
-      .note {
-        font-weight: 600;
-        font-size: 10px;
-        line-height: 6px;
-      }
-    }
-  }
-
-
-}
-
-@media (min-width: 769px) {
-  #price-list {
-    .price-card {
-      width: 35rem;
-      height: 42.25rem;
-      padding: 40px;
-
-      .inner-card {
-        padding: 30px 20px;
-
-        .title {
-          font-size: 36px;
-          line-height: 48px;
-        }
-
-        .service {
-          font-size: 30px;
-          line-height: 40px;
-
-          .note {
-            font-size: 16px;
-          }
-        }
-      }
-    }
-  }
-}
-
 
 #container_section {
-  @include bg-section('../assets/images/fond03.png', 25% 95%, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
+  @include bg-section(
+    '../assets/images/fond03.png',
+    25% 95%,
+    (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))
+  );
 }
-
-#gallery {
-  padding: 100px 0;
-
-  .gallery_container {
-    @extend %flex-column;
-    text-align: center;
-    width: 100%;
-
-
-    .carousel_item {
-      height: 300px;
-    }
-
-    ._gallery_img {
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-}
-
-@media (min-width: 769px) {
-  #gallery {
-    .title {
-      font-size: 36px;
-      line-height: 48px;
-    }
-
-    .carousel-control-next-icon, .carousel-control-prev-icon {
-      width: 4rem;
-      height: 4rem;
-    }
-
-    .gallery_container {
-      .carousel_item {
-        height: 500px;
-      }
-    }
-
-
-  }
-}
-
-
-#about {
-  padding: 40px 0 100px;
-
-  .about_container {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    background: rgba(26, 26, 26, 0.8);
-
-    img {
-      display: none;
-    }
-
-    .about_inner {
-      flex-basis: 100%;
-      @extend %flex-column;
-      padding: 30px;
-
-      .about_text {
-        flex-grow: 1;
-        margin-top: 1rem;
-        text-align: justify;
-        font-size: 16px;
-        line-height: 21px;
-        @extend %flex-column-between;
-        //row-gap: 20px;
-      }
-
-    }
-
-  }
-}
-
-
-@media (min-width: 769px) {
-  #about {
-    .about_container {
-      padding: 0;
-      max-height: 300px;
-
-      img {
-        display: block;
-        flex-basis: 50%;
-        max-width: 50%;
-        object-fit: cover;
-      }
-
-      .about_inner {
-        flex-basis: 50%;
-
-      }
-    }
-
-  }
-
-}
-
-
-
-#footer {
-  @include bg-section('../assets/images/fond04.png', center, (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)));
-  padding: 80px 0 40px;
-
-  .footer_container {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: 1fr;
-    grid-template-areas: "contact" "map" "services" "development";
-    gap: 10px;
-  }
-
-  .contact_container{
-    @extend %flex-column;
-    align-items: center;
-  }
-
-  .footer_nav{
-    display: flex;
-    column-gap: 20px;
-  }
-
-  #contact{
-    grid-area: contact;
-    @extend %flex-column;
-    align-items: center;
-
-  }
-
-  #map{
-    grid-area: map;
-    @extend %flex-center;
-    & > img{
-      height: 80%;
-      object-fit: cover;
-      border-radius: 5%;
-    }
-  }
-
-  #development{
-    grid-area: development;
-    @extend %flex-column;
-    align-items: center;
-    row-gap: 20px;
-
-   span {
-      color: $color-primary;
-     font-weight: bold;
-    }
-  }
-
-  #services{
-    grid-area: services;
-    .services_container{
-      @extend %flex-column;
-      align-items: center;
-      row-gap: 10px;
-    }
-
-  }
-
-  .contact_item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-white;
-    margin-top: 20px;
-    column-gap: 10px;
-  }
-
-}
-
-
-@media (min-width: 769px) {
-  #footer{
-    .footer_container {
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-columns: 1fr 3fr;
-      grid-template-areas: "contact map" "services map" "development development";
-      gap: 40px;
-    }
-
-    .contact_container{
-      align-items: flex-start;
-    }
-
-    .contact_item{
-      justify-content: flex-start;
-    }
-
-    #services{
-      .services_container{
-        align-items: flex-start;
-      }
-
-    }
-  }
-}
-
-
-
-
-
