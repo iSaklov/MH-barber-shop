@@ -23,16 +23,17 @@ const PriceList = () => {
                         </Row>
                         <Row>
                             <Col>
-                                <h2>NOS TARIFS</h2>
+                                <h2 className='title'>NOS TARIFS</h2>
                             </Col>
                         </Row>
                         {prices.map(price =>
                             <Container key={price.id} className="mb">
-                                <Row className='service'>
-                                    <Col className='service_name'>{price.name}</Col>
-                                    <Col>{price.cost}€</Col>
-                                </Row>
-                                {price.note && <Row> <p className='note'>{`(${price.note})`}</p></Row>}
+                                <div className='service'>
+                                    <span className='service_name'>{price.name}</span>
+                                    <span className='service_dotes'></span>
+                                    <span className='service_price'>{price.cost}€</span>
+                                </div>
+                                {price.note && <div  className='note'><span>{`(${price.note})`}</span></div>}
                             </Container>
                         )}
                     </div>

@@ -36,6 +36,11 @@ body {
   }
 }
 
+p, ul, li, h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  padding: 0;
+}
+
 .wrapper {
   width: 100%;
   min-height: 100vh;
@@ -50,6 +55,9 @@ header, main, footer {
   width: 100%;
 }
 
+.title{
+  @extend %title_section;
+}
 
 ._logo {
   width: $logo-width;
@@ -69,7 +77,7 @@ header, main, footer {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
   .header {
     position: absolute;
@@ -122,8 +130,7 @@ header, main, footer {
     padding: 4rem 0 1rem;
 
     .container-item {
-      display: flex;
-      flex-direction: column;
+      @extend %flex-column;
     }
   }
 
@@ -151,7 +158,7 @@ header, main, footer {
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #general {
     .container {
       height: 100%;
@@ -194,7 +201,7 @@ header, main, footer {
     height: 420px;
     background: repeating-linear-gradient(
                     -45deg,
-                    rgba(223, 174, 95, 0.2) 8px 10px,
+                    rgba(223, 174, 95, 0.5) 8px 10px,
                     $color-filter 4px 20px
     );
     padding: 20px;
@@ -210,25 +217,33 @@ header, main, footer {
     align-items: center;
     background-color: $color-filter;
 
-
-    h2{
-      color: $color-primary;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 32px;
-    }
-
     .service{
       font-weight: 600;
       font-size: 16px;
       line-height: 21px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap:.35rem;
 
-      .service_name{
-        flex-basis: 70%;
+      .service_dotes {
+        flex-basis: 10%;
+        flex-grow: 1;
+        position: relative;
+        display: block;
+        overflow: hidden;
       }
+      .service_dotes:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: .35em;
+        width: 100%;
+        border-bottom: .1em dotted $color-primary;
+      }
+
+      .service_price{
+        padding-left: .2em;
+      }
+
 
       .note{
         font-weight: 600;
@@ -241,7 +256,7 @@ header, main, footer {
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #price-list{
     .price-card{
       width: 35rem;
@@ -251,7 +266,7 @@ header, main, footer {
       .inner-card{
         padding: 30px 20px;
 
-        h2{
+        .title{
           font-size: 36px;
           line-height: 48px;
         }
@@ -269,6 +284,99 @@ header, main, footer {
   }
 }
 
+
+#container_section{
+  @include bg-section('../assets/images/fond03.png');
+}
+
+#gallery{
+  padding: 100px 0;
+  .gallery_container{
+    @extend %flex-column;
+    text-align: center;
+    width: 100%;
+
+    .carousel_item{
+      height: 300px;
+    }
+
+    ._gallery_img{
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  #gallery{
+    .title{
+      font-size: 36px;
+      line-height: 48px;
+    }
+
+    .gallery_container{
+      .carousel_item{
+        height: 500px;
+      }
+    }
+
+
+  }
+}
+
+
+#about{
+  padding: 40px 0 100px;
+    .about_container{
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      background: rgba(26, 26, 26, 0.8);
+      img{
+        display: none;
+      }
+
+      .about_inner{
+        flex-basis: 100%;
+        @extend %flex-column;
+        padding: 30px;
+
+        .about_text{
+          flex-grow: 1;
+          margin-top: 1rem;
+          text-align: justify;
+          font-size: 16px;
+          line-height: 21px;
+          @extend %flex-column-between;
+          //row-gap: 20px;
+        }
+
+      }
+
+  }
+}
+
+
+@media (min-width: 769px) {
+  #about{
+    .about_container{
+      padding: 0;
+      max-height: 300px;
+      img {
+        display: block;
+        flex-basis: 50%;
+        max-width: 50%;
+        object-fit: cover;
+      }
+      .about_inner{
+        flex-basis: 50%;
+
+      }
+    }
+
+  }
+
+}
 
 
 
