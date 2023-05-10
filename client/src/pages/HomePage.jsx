@@ -3,7 +3,7 @@ import PriceList from '../components/PriceList'
 import Gallery from '../components/Gallery'
 import About from '../components/About'
 import Footer from '../components/Footer'
-import GeneralSection from '../components/GeneralSection'
+import HeroSection from '../components/HeroSection'
 import ContainerSection from '../components/ContainerSection'
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
     <div className="wrapper">
       <header className="header">
         <Navbar />
-        <GeneralSection />
+        <HeroSection />
       </header>
       <main className="main">
         <PriceList />
