@@ -1,0 +1,39 @@
+#gallery {
+  padding: 100px 0;
+
+  .gallery_container {
+    @extend %flex-column;
+    text-align: center;
+    width: 100%;
+
+    .carousel_item {
+      height: 300px;
+    }
+
+    ._gallery_img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  #gallery {
+    .title {
+      font-size: 36px;
+      line-height: 48px;
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .gallery_container {
+      .carousel_item {
+        height: 500px;
+      }
+    }
+  }
+}

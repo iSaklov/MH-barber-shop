@@ -1,0 +1,97 @@
+#price-list {
+  padding: 100px 0;
+  @include bg-section(
+    '../../assets/images/fond02.png',
+    50% 50%,
+    (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))
+  );
+
+  .price-container {
+    @extend %flex-center;
+  }
+
+  .price-card {
+    width: 317px;
+    height: 420px;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(223, 174, 95, 0.5) 8px 10px,
+      $color-dark 4px 20px
+    );
+    padding: 20px;
+    @extend %flex-center;
+  }
+
+  .inner-card {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 4px solid $color-primary;
+    @extend %flex-column-between;
+    align-items: center;
+    background-color: $color-dark;
+
+    .service {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 21px;
+      display: flex;
+      gap: 0.35rem;
+
+      .service_dotes {
+        flex-basis: 10%;
+        flex-grow: 1;
+        position: relative;
+        display: block;
+        overflow: hidden;
+      }
+
+      .service_dotes:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0.35em;
+        width: 100%;
+        border-bottom: 0.1em dotted $color-primary;
+      }
+
+      .service_price {
+        padding-left: 0.2em;
+      }
+
+      .note {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 6px;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  #price-list {
+    .price-card {
+      width: 35rem;
+      height: 42.25rem;
+      padding: 40px;
+
+      .inner-card {
+        padding: 30px 20px;
+
+        .title {
+          font-size: 36px;
+          line-height: 48px;
+        }
+
+        .service {
+          font-size: 30px;
+          line-height: 40px;
+
+          .note {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

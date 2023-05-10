@@ -1,0 +1,34 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-playfair;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: $color-light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// a {
+//   text-decoration: none;
+//   transition: color 0.2s ease-in-out;
+
+//   &:hover {
+//     color: $color-primary;
+//   }
+// }
+
+section {
+  min-height: 100vh;
+}

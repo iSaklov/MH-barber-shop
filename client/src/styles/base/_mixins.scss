@@ -1,0 +1,19 @@
+@mixin icon {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+@mixin bg-section($url, $position, $gradient) {
+  background-image: linear-gradient($gradient), url($url);
+  background-size: cover;
+  background-position: $position;
+  background-repeat: no-repeat;
+}

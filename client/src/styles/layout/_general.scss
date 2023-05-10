@@ -1,0 +1,67 @@
+#general {
+  height: 100vh;
+  @include bg-section(
+    '../../assets/images/fond01.png',
+    55% 55%,
+    (0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))
+  );
+
+  & a {
+    color: $color-white;
+  }
+
+  .container {
+    height: 100%;
+    padding: 4rem 0 1rem;
+
+    .container-item {
+      @extend %flex-column;
+    }
+  }
+
+  .ellipse:after {
+    content: url('../../assets/ellipse.svg');
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  h3 {
+    font-family: $font-italiana;
+    font-size: 1.875rem;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    color: $color-primary;
+  }
+}
+
+@media (min-width: 769px) {
+  #general {
+    .container {
+      height: 100%;
+      padding: 9.75rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .container-item {
+        row-gap: 6.75rem;
+      }
+    }
+
+    ._logo {
+      width: $logo-width * 1.5;
+      height: auto;
+      padding: 0;
+    }
+
+    ._infos {
+      & p {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}

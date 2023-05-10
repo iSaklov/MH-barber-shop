@@ -1,0 +1,66 @@
+.heading-2 {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $color-primary;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 3.2rem;
+    line-height: 4.3rem;
+  }
+}
+
+.heading-3__header-title {
+  font-family: $font-italiana;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 4.5rem;
+  letter-spacing: -0.1em;
+}
+
+.heading-4__price-list-item {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 1.7rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+}
+
+.heading-5 {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  letter-spacing: 0.02em;
+}
+
+.price-list__sub-item {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 0.6rem;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 1.6rem;
+    line-height: 0.6rem;
+  }
+}
