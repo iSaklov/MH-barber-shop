@@ -4,24 +4,26 @@
 @import './base/typography';
 @import './base/placeholders';
 @import './base/mixins';
-// LAYOUTS
-@import './layout/general.scss';
-@import './layout/price.scss';
-@import './layout/gallery.scss';
-@import './layout/about.scss';
-@import './layout/footer.scss';
 // VENDORS
 @import './base/custom';
 @import '~bootstrap/scss/bootstrap';
+// LAYOUTS
+@import './layout/header';
+@import './layout/navbar';
+@import './layout/general';
+@import './layout/price';
+@import './layout/gallery';
+@import './layout/about';
+@import './layout/footer';
 
 // VARIABLES
 // 0.125rem of 1px * 2 border
 // 1.875rem burger default height
-//$navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
-//  2 + 0.125rem + 1.875rem;
-//	/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
-//$navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
-//  $logo-height;
+// $navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
+//   2 + 0.125rem + 1.875rem;
+/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
+// $navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
+//   $logo-height;
 
 /* make the customizations */
 // $theme-colors: (
@@ -30,82 +32,28 @@
 // );
 
 /* The following line can be included in a src/App.scss */
-// @import "custom";
+// @import "./base/custom";
 
 // GLOBAL
-.wrapper {
-  width: 100%;
-  min-height: 100vh;
-  @extend %flex-column-between;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  user-select: none;
-}
+// .wrapper {
+//   width: 100%;
+//   min-height: 100vh;
+//   @extend %flex-column-between;
+//   align-items: center;
+//   position: relative;
+//   overflow: hidden;
+//   user-select: none;
+// }
 
-.title {
-  @extend %title_section;
-}
-
-._logo {
-  width: $logo-width;
-  height: $logo-height;
-}
+// .title {
+//   @extend %title_section;
+// }
 
 .icon {
   @include icon;
 }
 
-// HEADER NAVBAR
 
-.offcanvas-body {
-  @extend %flex-center;
-
-  .nav-link {
-    // color: $color-black;
-    text-transform: uppercase;
-    // font-weight: 700;
-    margin: 1rem auto;
-  }
-}
-
-@media (min-width: 769px) {
-  .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .offcanvas-body .nav-link {
-    color: $navbar-dark-color;
-
-    &:hover {
-      color: $navbar-dark-hover-color;
-    }
-  }
-  .scrolled-down {
-    transform: translateY(-100%);
-    transition: all 0.3s ease-in-out;
-  }
-  .scrolled-up {
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .navbar {
-    position: relative;
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 4px;
-      background: $color-primary;
-    }
-  }
-}
 
 #container_section {
   @include bg-section(

@@ -9,9 +9,11 @@ import ContainerSection from '../components/ContainerSection'
 const HomePage = () => {
   return (
     <div className="wrapper">
-      <Navbar />
-      <main className="main">
+      <header className="header">
+        <Navbar />
         <GeneralSection />
+      </header>
+      <main className="main">
         <PriceList />
         <ContainerSection>
           <Gallery />
