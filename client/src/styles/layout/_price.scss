@@ -2,8 +2,7 @@
   padding: 100px 0;
   @include bg-section(
     '../../assets/images/fond02.png',
-    50% 50%,
-    (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))
+    50% 50%
   );
 
   .price-container {

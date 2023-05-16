@@ -10,9 +10,9 @@
 // LAYOUTS
 @import './layout/header';
 @import './layout/navbar';
-@import './layout/general';
-@import './layout/price';
-@import './layout/gallery';
+@import './layout/hero-section';
+// @import './layout/price';
+// @import './layout/gallery';
 @import './layout/about';
 @import './layout/footer';
 
@@ -34,31 +34,10 @@
 /* The following line can be included in a src/App.scss */
 // @import "./base/custom";
 
-// GLOBAL
-// .wrapper {
-//   width: 100%;
-//   min-height: 100vh;
-//   @extend %flex-column-between;
-//   align-items: center;
-//   position: relative;
-//   overflow: hidden;
-//   user-select: none;
-// }
-
-// .title {
-//   @extend %title_section;
-// }
-
 .icon {
   @include icon;
 }
 
-
-
 #container_section {
-  @include bg-section(
-    '../assets/images/fond03.png',
-    25% 95%,
-    (0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))
-  );
+  @include bg-section('../assets/images/fond03.png', 25% 95%);
 }

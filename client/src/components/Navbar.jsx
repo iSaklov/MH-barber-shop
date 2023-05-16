@@ -59,80 +59,78 @@ const NavBar = () => {
   }, [navHighlighter])
 
   return (
-    <header id="header" className="header">
-      <Navbar
-        expand="md"
-        variant="dark"
-        fixed="top"
-        className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
-      >
-        <Container>
-          <Navbar.Brand href="#header">
-            <img
-              src={Logo}
-              className="d-none d-md-inline-block"
-              alt="H.M. - barber shop logo"
-            />
-          </Navbar.Brand>
-
-          <Navbar.Toggle
-            aria-controls="offcanvasNavbar-expand"
-            onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+    <Navbar
+      expand="md"
+      variant="dark"
+      fixed="top"
+      className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
+    >
+      <Container>
+        <Navbar.Brand href="#header">
+          <img
+            src={Logo}
+            className="d-none d-md-inline-block"
+            alt="H.M. - barber shop logo"
           />
+        </Navbar.Brand>
 
-          <Navbar.Offcanvas
-            id="offcanvasNavbar-expand"
-            aria-labelledby="offcanvasNavbarLabel-expand"
-            placement="end" // rigth
-            show={showOffcanvas}
-            onHide={() => {
-              setShowOffcanvas(!showOffcanvas)
-            }}
-            responsive="md"
-          >
-            <Offcanvas.Header closeButton closeVariant="white">
-              <Offcanvas.Title id="offcanvasNavbarLabel-expand">
-                <Nav.Link
-                  href="#header"
-                  onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                >
-                  <img src={Logo} alt="H.M. - barber shop logo" />
-                </Nav.Link>
-              </Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav>
-                <Nav.Link
-                  href="#price-list"
-                  onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                  className="my-nav-link"
-                >
-                  Nos tarifs
-                </Nav.Link>
-                <Nav.Link
-                  href="#gallery"
-                  onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                >
-                  Gallérie
-                </Nav.Link>
-                <Nav.Link
-                  href="#about-us"
-                  onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                >
-                  À propos
-                </Nav.Link>
-                <Nav.Link
-                  href="#footer"
-                  onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                >
-                  Contacts
-                </Nav.Link>
-              </Nav>
-            </Offcanvas.Body>
-          </Navbar.Offcanvas>
-        </Container>
-      </Navbar>
-    </header>
+        <Navbar.Toggle
+          aria-controls="offcanvasNavbar-expand"
+          onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+        />
+
+        <Navbar.Offcanvas
+          id="offcanvasNavbar-expand"
+          aria-labelledby="offcanvasNavbarLabel-expand"
+          placement="end" // rigth
+          show={showOffcanvas}
+          onHide={() => {
+            setShowOffcanvas(!showOffcanvas)
+          }}
+          responsive="md"
+        >
+          <Offcanvas.Header closeButton closeVariant="white">
+            <Offcanvas.Title id="offcanvasNavbarLabel-expand">
+              <Nav.Link
+                href="#header"
+                onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+              >
+                <img src={Logo} alt="H.M. - barber shop logo" />
+              </Nav.Link>
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav>
+              <Nav.Link
+                href="#price-list"
+                onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+                className="my-nav-link"
+              >
+                Nos tarifs
+              </Nav.Link>
+              <Nav.Link
+                href="#gallery"
+                onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+              >
+                Gallérie
+              </Nav.Link>
+              <Nav.Link
+                href="#about-us"
+                onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+              >
+                À propos
+              </Nav.Link>
+              <Nav.Link
+                href="#footer"
+                onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
+              >
+                Contacts
+              </Nav.Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
   )
 }
 
