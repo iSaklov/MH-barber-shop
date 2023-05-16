@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section id="hero-section" className="hero-section text-center">
       <Container>
-        <Row className="mt-md-auto">
+        <Row className="mt-5 mt-md-auto">
           <Col>
             <img
               src={Logo}
@@ -14,47 +14,48 @@ const HeroSection = () => {
             />
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <h3 className="heading-3_header">Rapide</h3>
-            <p className="paragraph__hero-section">
+        <Row className="my-5 flex-column flex-md-row hero-section__middle-row">
+          <Col className="my-3">
+            <h3 className="hero-section__heading-3">Rapide</h3>
+            <p className="hero-section__paragraph">
               Nous faisons notre travail rapidement sans compromettre la
               qualité, tout en respectant votre temps
             </p>
           </Col>
-          <Col>
-            <h3 className="heading-3_header">Élégant</h3>
-            <p className="paragraph__hero-section">
+          <Col className="my-3">
+            <h3 className="hero-section__heading-3">Élégant</h3>
+            <p className="hero-section__paragraph">
               Nous prenons le temps de comprendre vos préférences et vos besoins
               pour créer une coupe qui vous convient parfaitement
             </p>
           </Col>
-          <Col>
-            <h3 className="heading-3_header">Impeccable</h3>
-            <p className="paragraph__hero-section">
+          <Col md={12} lg={4} className="my-3">
+            <h3 className="hero-section__heading-3">Impeccable</h3>
+            <p className="hero-section__paragraph">
               Nous mettons en œuvre notre savoir-faire et notre expérience pour
               offrir une coupe de qualité supérieure
             </p>
           </Col>
         </Row>
-        <Row className="d-none d-md-flex justify-content-md-center mt-md-auto">
-          <Col lg={2}>
+        <Row className="d-none d-md-flex justify-content-md-center mb-md-3 mt-md-auto">
+          <Col md={3}>
             <h5 className="heading-5">Adresse</h5>
-            <p className="paragraph__hero-section">
-              <a href="https://www.google.com/maps?q=###">
-                3 rue du grand pont
-              </a>
-            </p>
+            <a
+              href="https://www.google.com/maps?q=###"
+              className="hero-section__paragraph"
+            >
+              3 rue du grand pont
+            </a>
           </Col>
-          <Col lg={4}>
+          <Col md={4}>
             <h5 className="heading-5">Téléphone</h5>
-            <p className="paragraph__hero-section">
-              <a href="tel:0624015691">06.24.01.56.91</a>
-            </p>
+            <a href="tel:0624015691" className="hero-section__paragraph">
+              06.24.01.56.91
+            </a>
           </Col>
-          <Col lg={2}>
+          <Col md={3}>
             <h5 className="heading-5">Horaires</h5>
-            <p className="paragraph__hero-section">Mar-dim : 9h-19h</p>
+            <p className="hero-section__paragraph">Mar-dim : 9h-19h</p>
           </Col>
         </Row>
       </Container>

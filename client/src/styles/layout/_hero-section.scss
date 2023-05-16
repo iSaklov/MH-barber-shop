@@ -1,0 +1,69 @@
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logo {
+    width: $logo-width * 1.5;
+    height: $logo-height * 1.5;
+  }
+
+  @media (min-width: $breakpoint-md) and (max-width: 991.98px) {
+    &__middle-row {
+      .col {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+      > div:first-of-type,
+      > div:last-of-type {
+        position: relative;
+        &::after {
+          position: absolute;
+          content: '';
+          width: 2rem;
+          height: 2rem;
+          background-image: url('../../assets/ellipse.svg');
+        }
+      }
+      > div:first-of-type {
+        &::after {
+          top: 50%;
+          left: calc(100% - 1rem);
+        }
+      }
+      > div:last-of-type {
+        padding-left: 30%;
+        padding-right: 30%;
+        &::after {
+          margin-top: 3rem;
+          left: calc(50% - 1rem);
+        }
+      }
+    }
+  }
+}
+
+.hero-section__heading-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &::after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background-image: url('../../assets/ellipse.svg');
+  }
+
+  @media (min-width: $breakpoint-md) and (max-width: 991.98px) {
+    &::after {
+      display: none;
+    }
+  }
+}
