@@ -109,7 +109,7 @@ const NavBar = () => {
                 Nos tarifs
               </Nav.Link>
               <Nav.Link
-                href="#gallery"
+                href="#GallerySection"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
               >
                 Gallérie
