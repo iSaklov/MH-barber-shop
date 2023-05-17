@@ -1,0 +1,73 @@
+.price-list-section {
+  @include bg-section('../../assets/images/price-list.webp', 50% 50%);
+
+  &__list-wrapper {
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(223, 174, 95, 0.5) 8px 10px,
+      $color-dark 4px 20px
+    );
+    padding: 2rem;
+    z-index: 5;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 4rem;
+    }
+  }
+
+  &__list-inner {
+    width: 30rem;
+    padding: 2rem;
+    border: 0.4rem solid $color-primary;
+    background-color: $color-dark;
+
+    @media (min-width: $breakpoint-md) {
+      width: 45rem;
+      padding: 3rem 2rem;
+    }
+  }
+
+  &__logo {
+    width: $logo-width * 1.1;
+    height: $logo-height * 1.1;
+
+    @media (min-width: $breakpoint-md) {
+      width: $logo-width * 1.3;
+      height: $logo-height * 1.3;
+    }
+  }
+
+  &__item-title {
+    // flex-grow: 0.85;
+    flex-grow: 3;
+    @media (min-width: $breakpoint-md) {
+      flex-grow: 2;
+    }
+  }
+
+  &__separator {
+    margin-bottom: 0.5rem;
+    border-bottom: dotted 0.2rem $color-primary;
+  }
+
+  &__item-price {
+    flex-grow: 0;
+  }
+
+  &__item-price-subtitle {
+    font-family: $font-playfair;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 0.6rem;
+    letter-spacing: 0.02em;
+    color: $color-white;
+    margin-left: 3rem;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.6rem;
+      line-height: 0.6rem;
+    }
+  }
+}
