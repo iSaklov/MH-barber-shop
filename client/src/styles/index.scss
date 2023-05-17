@@ -16,15 +16,6 @@
 @import './layout/about-us-section';
 @import './layout/footer';
 
-/* make the customizations */
-// $theme-colors: (
-//     "info": tomato,
-//     "danger": teal
-// );
-
-/* The following line can be included in a src/App.scss */
-// @import "./base/custom";
-
 .icon {
   @include icon;
 }

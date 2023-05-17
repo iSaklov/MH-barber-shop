@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -12,16 +13,20 @@ html {
 }
 
 body {
-  font-family: $font-playfair;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  color: $color-light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  // overrides the default Bootstrap styles
+  // overrides default Bootstrap styles
   color: $color-light !important;
   text-decoration: none !important;
+}
+
+ul,
+ol {
+  // overrides default Bootstrap styles
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
 }

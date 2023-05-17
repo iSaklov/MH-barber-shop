@@ -1,3 +1,14 @@
+.heading-1 {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
 .heading-2 {
   font-family: $font-playfair;
   font-style: normal;
@@ -53,6 +64,16 @@
   line-height: 2.7rem;
   letter-spacing: 0.02em;
   color: $color-primary;
+}
+
+.heading-6 {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  letter-spacing: 0.02em;
 }
 
 .hero-section__paragraph {
