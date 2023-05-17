@@ -1,8 +1,5 @@
 #footer {
-  @include bg-section(
-    '../../assets/images/fond04.png',
-    center,
-  );
+  @include bg-section('../../assets/images/footer.webp', center);
   padding: 80px 0 40px;
 
   .footer_container {

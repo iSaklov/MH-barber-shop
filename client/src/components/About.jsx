@@ -1,12 +1,12 @@
 import { Container } from 'react-bootstrap'
-import Barber from '../assets/images/master.png'
+// import Barber from '../assets/images/master.png'
 
 const About = () => {
   return (
     <section id="about-us">
       <Container>
         <div className="about_container">
-          <img src={Barber} alt="master" />
+          {/* <img src={Barber} alt="master" /> */}
           <div className="about_inner">
             <h2 className="title">À propos</h2>
             <div className="about_text">

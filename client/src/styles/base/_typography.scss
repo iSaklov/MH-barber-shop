@@ -27,7 +27,7 @@
   color: $color-white;
 }
 
-.heading-4__price-list-item {
+.heading-4 {
   font-family: $font-playfair;
   font-style: normal;
   font-variant: small-caps;
@@ -35,6 +35,7 @@
   font-size: 1.7rem;
   line-height: 2.3rem;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: $color-light;
 
   @media (min-width: $breakpoint-md) {
@@ -52,21 +53,6 @@
   line-height: 2.7rem;
   letter-spacing: 0.02em;
   color: $color-primary;
-}
-
-.price-list__sub-item {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 0.6rem;
-  letter-spacing: 0.02em;
-
-  @media (min-width: $breakpoint-md) {
-    font-size: 1.6rem;
-    line-height: 0.6rem;
-  }
 }
 
 .hero-section__paragraph {

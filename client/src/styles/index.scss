@@ -11,19 +11,10 @@
 @import './layout/header';
 @import './layout/navbar';
 @import './layout/hero-section';
-// @import './layout/price';
+@import './layout/price-list-section';
 // @import './layout/gallery';
 @import './layout/about';
 @import './layout/footer';
-
-// VARIABLES
-// 0.125rem of 1px * 2 border
-// 1.875rem burger default height
-// $navbar-height-non-expanded: $navbar-padding-y * 2 + $navbar-toggler-padding-y *
-//   2 + 0.125rem + 1.875rem;
-/* declaration and calc() $navbar-height outside of _variables.scss is needed due to the call to '~bootstrap/scss', while leaving the possibility of overwriting default variables in _custom.scss */
-// $navbar-height-expanded: $navbar-padding-y * 2 + $navbar-brand-padding-y * 2 +
-//   $logo-height;
 
 /* make the customizations */
 // $theme-colors: (
@@ -36,8 +27,4 @@
 
 .icon {
   @include icon;
-}
-
-#container_section {
-  @include bg-section('../assets/images/fond03.png', 25% 95%);
 }
