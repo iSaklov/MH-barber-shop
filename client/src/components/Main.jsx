@@ -1,12 +1,13 @@
 import PriceListSection from '../components/PriceListSection'
 import GallerySection from './GallerySection'
-import About from '../components/About'
+import AboutUsSection from './AboutUsSection'
 
 const Main = () => {
   return (
     <main className="main">
-			<PriceListSection />
-			<GallerySection />
+      <PriceListSection />
+      <GallerySection />
+      <AboutUsSection />
     </main>
   )
 }

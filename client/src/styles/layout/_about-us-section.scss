@@ -1,0 +1,64 @@
+.about-us-section {
+  @include bg-section('../../assets/images/about-us.webp', 50% 50%);
+
+  .row {
+    z-index: 5;
+    > * {
+      // default bootstrap overload
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__article {
+    background-color: rgba($color-dark, 0.5);
+  }
+
+  @media (min-width: $breakpoint-md) {
+    &__article-wrapper {
+      position: relative;
+    }
+
+    &__article {
+      &::before {
+        content: '';
+        position: absolute;
+        height: 50%;
+        width: 100%;
+        bottom: -50%;
+        // left: -100%;
+        background-image: url('../../assets/images/master.webp');
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    &__article {
+      &::before {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: -100%;
+      }
+    }
+  }
+
+  &__img {
+    width: 22rem;
+    height: 30rem;
+    object-fit: cover;
+    border-radius: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      width: 25rem;
+      height: 33rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      width: 27rem;
+      height: 35rem;
+    }
+  }
+}
