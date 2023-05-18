@@ -11,9 +11,9 @@ const GallerySection = () => {
   }
 
   let groupSize
-  if (window.matchMedia('(max-width: 767px)').matches) {
+  if (window.matchMedia('(max-width: 767.98px)').matches) {
     groupSize = 1
-  } else if (window.matchMedia('(max-width: 991px)').matches) {
+  } else if (window.matchMedia('(max-width: 991.98px)').matches) {
     groupSize = 2
   } else {
     groupSize = 3

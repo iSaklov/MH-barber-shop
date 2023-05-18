@@ -121,9 +121,9 @@ const Footer = () => {
                 >
                   <img
                     src={Mail}
-                    alt="adresse mail du développeur du site"
+                    alt="Adresse mail du développeur du site"
                     className="icon"
-                    aria-label="adresse mail du développeur du site"
+                    aria-label="Adresse mail du développeur du site"
                   />
                 </a>
               </li>
@@ -135,9 +135,9 @@ const Footer = () => {
                 >
                   <img
                     src={Telegram}
-                    alt="profil Telegram du développeur du site"
+                    alt="Profil Telegram du développeur du site"
                     className="icon"
-                    aria-label="profil Telegram du développeur du site"
+                    aria-label="Profil Telegram du développeur du site"
                   />
                 </a>
               </li>
@@ -149,9 +149,9 @@ const Footer = () => {
                 >
                   <img
                     src={Linkedin}
-                    alt="profil Linkedin du développeur du site"
+                    alt="Profil Linkedin du développeur du site"
                     className="icon"
-                    aria-label="profil Linkedin du développeur du site"
+                    aria-label="Profil Linkedin du développeur du site"
                   />
                 </a>
               </li>

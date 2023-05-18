@@ -23,6 +23,15 @@
     .icon {
       margin-right: 1rem;
     }
+
+    @media (hover: hover) {
+      &:hover {
+        .icon {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+    }
   }
 
   &__map-wrapper {

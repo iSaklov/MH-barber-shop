@@ -66,7 +66,7 @@ const NavBar = () => {
       className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
     >
       <Container>
-        <Navbar.Brand href="#header">
+        <Navbar.Brand href="#hero-section">
           <img
             src={Logo}
             className="d-none d-md-inline-block"
@@ -92,7 +92,7 @@ const NavBar = () => {
           <Offcanvas.Header closeButton closeVariant="white">
             <Offcanvas.Title id="offcanvasNavbarLabel-expand">
               <Nav.Link
-                href="#header"
+                href="#hero-section"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
               >
                 <img src={Logo} alt="H.M. - barber shop logo" />
@@ -102,20 +102,20 @@ const NavBar = () => {
           <Offcanvas.Body>
             <Nav>
               <Nav.Link
-                href="#price-list"
+                href="#price-list-section"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
                 className="my-nav-link"
               >
                 Nos tarifs
               </Nav.Link>
               <Nav.Link
-                href="#GallerySection"
+                href="#gallery-section"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
               >
                 Gallérie
               </Nav.Link>
               <Nav.Link
-                href="#about-us"
+                href="#about-us-section"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
               >
                 À propos
