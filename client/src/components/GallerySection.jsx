@@ -42,6 +42,7 @@ const GallerySection = () => {
                 <div className="d-flex justify-content-between">
                   {group.map((item, itemIndex) => (
                     <img
+                      key={`${index}-${itemIndex}`}
                       className="d-block mx-5 gallery-section__img"
                       src={item.src}
                       alt={`slide-${index}-${itemIndex}`}

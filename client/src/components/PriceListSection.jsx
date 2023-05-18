@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
 import services from '../data/services'
@@ -23,8 +24,8 @@ const PriceListSection = () => {
               </Col>
             </Row>
             {services.map((item, index) => (
-              <>
-                <Row key={index} className="align-items-end mt-3">
+              <React.Fragment key={index}>
+                <Row className="align-items-end mt-3">
                   <Col className="price-list-section__item-title">
                     <h4 className="heading-4 mb-0">{item.title}</h4>
                   </Col>
@@ -44,7 +45,7 @@ const PriceListSection = () => {
                     </Col>
                   </Row>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>
