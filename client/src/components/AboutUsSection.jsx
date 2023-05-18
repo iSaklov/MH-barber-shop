@@ -8,7 +8,6 @@ const AboutUsSection = () => {
         <Row className='py-5'>
           <Col
             xs={{ span: 10, offset: 1 }}
-            sm={{ span: 10, offset: 1 }}
             md={{ span: 8, offset: 2 }}
             lg={{ span: 6, offset: 6 }}
             className="about-us-section__article-wrapper"
