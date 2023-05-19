@@ -26,33 +26,35 @@ const GallerySection = () => {
 
   return (
     <section id="gallery-section" className="gallery-section">
-      <Container className="d-flex flex-column align-items-center my-5">
-        <h2 className="heading-2">Gallérie</h2>
-        <div className="gallery-section__carousel-wrapper">
-          <Carousel
-            activeIndex={index}
-            onSelect={handleSelect}
-            // indicators={false}
-            defaultActiveIndex={0}
-            interval={null}
-            className="gallery-section__carousel"
-          >
-            {groupedModels.map((group, index) => (
-              <Carousel.Item key={index}>
-                <div className="d-flex justify-content-between">
-                  {group.map((item, itemIndex) => (
-                    <img
-                      key={`${index}-${itemIndex}`}
-                      className="d-block mx-5 gallery-section__img"
-                      src={item.src}
-                      alt={`slide-${index}-${itemIndex}`}
-                    />
-                  ))}
-                </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </div>
+      <Container className=" my-5">
+        {/* <div className="gallery-section__content-wrapper"> */}
+          <h2 className="heading-2">Gallérie</h2>
+          <div className="gallery-section__carousel-wrapper">
+            <Carousel
+              activeIndex={index}
+              onSelect={handleSelect}
+              // indicators={false}
+              defaultActiveIndex={0}
+              interval={null}
+              className="gallery-section__carousel"
+            >
+              {groupedModels.map((group, index) => (
+                <Carousel.Item key={index}>
+                  <div className="d-flex justify-content-between gallery-section__slide-wrapper">
+                    {group.map((item, itemIndex) => (
+                      <img
+                        key={`${index}-${itemIndex}`}
+                        className="d-block mx-sm-auto mx-md-0 gallery-section__img"
+                        src={item.src}
+                        alt={`slide-${index}-${itemIndex}`}
+                      />
+                    ))}
+                  </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </div>
+        {/* </div> */}
       </Container>
     </section>
   )

@@ -1,37 +1,74 @@
 .gallery-section {
   @include bg-section('../../assets/images/1-slide.jpeg', 50% 50%);
 
-  &__carousel-wrapper {
+  .container {
+    z-index: 5;
+  }
 
+  &__carousel-wrapper {
+    position: relative;
+    height: 80vh;
+    // background-color: rgba(aqua, 0.5);
   }
 
   &__carousel {
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // background-color: rgba(aqua, 0.5);
   }
 
   .carousel-item {
-    height: fit-content;
     width: 100%;
+    height: 100%;
+  }
 
-    &.active {
+  @media (min-width: $breakpoint-md) {
+    &__slide-wrapper {
+      // width: $img-md-width * 2 + 10rem;
+      column-gap: $slide-column-gap;
+    }
+  }
 
+  @media (min-width: $breakpoint-lg) {
+    &__slide-wrapper {
+      // width: $img-lg-width * 3 + 10rem;
     }
   }
 
   &__img {
-    width: 22rem;
-    height: 30rem;
+    width: $img-sm-width;
+    height: $img-sm-height;
     object-fit: cover;
-    border-radius: 2rem;
+    border-radius: $border-radius;
 
     @media (min-width: $breakpoint-md) {
-      width: 25rem;
-      height: 33rem;
+      width: $img-md-width;
+      height: $img-md-height;
     }
 
     @media (min-width: $breakpoint-lg) {
-      width: 27rem;
-      height: 35rem;
+      width: $img-lg-width;
+      height: $img-lg-height;
     }
+  }
+
+  .carousel-control-next {
+    right: -7.5rem;
+  }
+
+  .carousel-control-prev {
+    left: -7.5rem;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  .carousel-indicators {
+    bottom: -5rem;
   }
 }
