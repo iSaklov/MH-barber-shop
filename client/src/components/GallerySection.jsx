@@ -2,12 +2,37 @@ import { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import models from '../data/models'
+import backgroundImages from '../data/gallery-background-images'
 
 const GallerySection = () => {
   const [index, setIndex] = useState(0)
+  const [indexBackground, setIndexBackground] = useState(
+    // sets the center slide as active background images
+    Math.ceil((backgroundImages.length - 1) / 2)
+  )
+
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
+  }
+
+  const handlePrevBackground = () => {
+    if (indexBackground > 0 && !isAnimating) {
+      setIsAnimating(true)
+      setIndexBackground(indexBackground - 1)
+    }
+  }
+
+  const handleNextBackground = () => {
+    if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
+      setIsAnimating(true)
+      setIndexBackground(indexBackground + 1)
+    }
+  }
+
+  const handleTransitionEnd = () => {
+    setIsAnimating(false)
   }
 
   let groupSize
@@ -25,36 +50,69 @@ const GallerySection = () => {
   }
 
   return (
-    <section id="gallery-section" className="gallery-section">
-      <Container className=" my-5">
-        {/* <div className="gallery-section__content-wrapper"> */}
-          <h2 className="heading-2">Gallérie</h2>
-          <div className="gallery-section__carousel-wrapper">
-            <Carousel
-              activeIndex={index}
-              onSelect={handleSelect}
-              // indicators={false}
-              defaultActiveIndex={0}
-              interval={null}
-              className="gallery-section__carousel"
-            >
-              {groupedModels.map((group, index) => (
-                <Carousel.Item key={index}>
-                  <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                    {group.map((item, itemIndex) => (
-                      <img
-                        key={`${index}-${itemIndex}`}
-                        className="d-block mx-sm-auto mx-md-0 gallery-section__img"
-                        src={item.src}
-                        alt={`slide-${index}-${itemIndex}`}
-                      />
-                    ))}
-                  </div>
-                </Carousel.Item>
-              ))}
-            </Carousel>
+    <section
+      id="gallery-section"
+      // className="gallery-section"
+      className={`gallery-section ${isAnimating ? 'animating' : ''}`}
+      onTransitionEnd={handleTransitionEnd}
+      style={{
+        backgroundImage: `url(${backgroundImages[indexBackground].src})`
+      }}
+    >
+      <Container className="my-5">
+        <h2 className="heading-2">Gallérie</h2>
+        <div className="gallery-section__carousel-wrapper">
+          <Carousel
+            activeIndex={index}
+            onSelect={handleSelect}
+            // indicators={false}
+            defaultActiveIndex={0}
+            interval={null}
+            className="gallery-section__carousel"
+          >
+            {groupedModels.map((group, index) => (
+              <Carousel.Item key={index}>
+                <div className="d-flex justify-content-between gallery-section__slide-wrapper">
+                  {group.map((item, itemIndex) => (
+                    <img
+                      key={`${index}-${itemIndex}`}
+                      className="d-block mx-sm-auto mx-md-0 gallery-section__img"
+                      src={item.src}
+                      alt={`slide-${index}-${itemIndex}`}
+                    />
+                  ))}
+                </div>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
+        <div className="gallery-section__background-navigation">
+          <button
+            className={`gallery-section__background-prev-button ${
+              indexBackground !== 0 ? '' : 'disabled'
+            }`}
+            onClick={handlePrevBackground}
+          ></button>
+          <div className="gallery-section__carousel-background-indicators">
+            {backgroundImages.map((item, index) => (
+              <button
+                key={index}
+                aria-label={item.src}
+                aria-current={indexBackground !== index ? 'false' : 'true'}
+                className={`button mx-2 ${
+                  indexBackground !== index ? '' : 'active'
+                }`}
+                onClick={setIndexBackground.bind(null, index)}
+              ></button>
+            ))}
           </div>
-        {/* </div> */}
+          <button
+            className={`gallery-section__background-next-button ${
+              indexBackground !== backgroundImages.length - 1 ? '' : 'disabled'
+            }`}
+            onClick={handleNextBackground}
+          ></button>
+        </div>
       </Container>
     </section>
   )
