@@ -1,69 +1,5 @@
 .gallery-section {
-  @include bg-section(
-    '../../assets/images/gallery-background/1-slide.jpeg',
-    center
-  );
-
-  // DEV
-  transition: background-image 0.5s ease;
-  opacity: 1;
-
-  .animating {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  &__background-navigation {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  &__background-prev-button,
-  &__background-next-button {
-    // background-color: #ffffff;
-    background-color: transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border: none;
-    width: 4rem;
-    height: 4rem;
-    padding: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &.disabled {
-      opacity: 0.5;
-      cursor: default;
-    }
-  }
-
-  &__background-prev-button {
-    background-image: url('../../assets/icons/prev.svg');
-  }
-
-  &__background-next-button {
-    background-image: url('../../assets/icons/next.svg');
-  }
-
-  &__carousel-background-indicators {
-    .button {
-      background-image: url('../../assets/icons/ellipse-white.svg');
-      background-color: transparent;
-      background-size: contain;
-      background-repeat: no-repeat;
-      border: none;
-      width: 1rem;
-      height: 1rem;
-      padding: 0.5rem;
-
-      &.active {
-        background-image: url('../../assets/icons/ellipse-active.svg');
-        transform: scale(1.2);
-        cursor: default;
-      }
-    }
-  }
-  // DEV
+  @include bg-section;
 
   .container {
     z-index: 5;
@@ -112,12 +48,28 @@
   }
 
   // BOOTSTRAP
-  .carousel-control-next {
-    right: -7.5rem;
+  .carousel-control-prev {
+    left: $slide-column-gap * -1;
+
+    @media (min-width: $breakpoint-md) {
+      left: $slide-column-gap * -2;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      left: $slide-column-gap * -2.5;
+    }
   }
 
-  .carousel-control-prev {
-    left: -7.5rem;
+  .carousel-control-next {
+    right: $slide-column-gap * -1;
+
+    @media (min-width: $breakpoint-md) {
+      right: $slide-column-gap * -2;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      right: $slide-column-gap * -2.5;
+    }
   }
 
   .carousel-control-prev-icon,
@@ -128,5 +80,71 @@
 
   .carousel-indicators {
     bottom: -5rem;
+  }
+
+  // CUSTUM BACKGROUND CAROUSEL
+  &.animating {
+    transition: background-image 0.5s ease;
+    animation: fade-in 0.5s ease-in-out;
+
+    @keyframes fade-in {
+      from {
+        filter: brightness(0.5);
+      }
+      to {
+        filter: brightness(1);
+      }
+    }
+  }
+
+  &__background-navigation {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__background-prev-button,
+  &__background-next-button {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  &__background-prev-button {
+    background-image: url('../../assets/icons/prev.svg');
+  }
+
+  &__background-next-button {
+    background-image: url('../../assets/icons/next.svg');
+  }
+
+  &__carousel-background-indicators {
+    .button {
+      background-image: url('../../assets/icons/ellipse-white.svg');
+      background-color: transparent;
+      background-size: contain;
+      background-repeat: no-repeat;
+      border: none;
+      width: 1rem;
+      height: 1rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+
+      &.active {
+        background-image: url('../../assets/icons/ellipse-active.svg');
+        transform: scale(1.2);
+        cursor: default;
+      }
+    }
   }
 }

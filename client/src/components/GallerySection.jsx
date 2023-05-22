@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import models from '../data/models'
@@ -12,6 +12,19 @@ const GallerySection = () => {
   )
 
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+
+  useEffect(() => {
+    const backgroundImage = new Image()
+    backgroundImage.onload = () => {
+			setIsLoading(false)
+			setIsAnimating(true)
+      setBackgroundImageUrl(backgroundImages[indexBackground].src)
+    }
+
+    backgroundImage.src = backgroundImages[indexBackground].src
+  }, [indexBackground])
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
@@ -32,6 +45,7 @@ const GallerySection = () => {
   }
 
   const handleTransitionEnd = () => {
+    console.log('transition end')
     setIsAnimating(false)
   }
 
@@ -56,7 +70,8 @@ const GallerySection = () => {
       className={`gallery-section ${isAnimating ? 'animating' : ''}`}
       onTransitionEnd={handleTransitionEnd}
       style={{
-        backgroundImage: `url(${backgroundImages[indexBackground].src})`
+        // backgroundImage: `url(${backgroundImages[indexBackground].src})`
+        backgroundImage: `url(${backgroundImageUrl})`
       }}
     >
       <Container className="my-5">
