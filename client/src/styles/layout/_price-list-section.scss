@@ -16,14 +16,14 @@
   }
 
   &__list-inner {
-    width: 30rem;
-    padding: 2rem;
+    width: 24rem;
+    padding: 1rem;
     border: 0.4rem solid $color-primary;
     background-color: $color-dark;
 
-    @media (max-width: 320px) {
-      width: 25rem;
-      padding: 1rem;
+    @media (min-width: 375px) {
+      width: 30rem;
+      padding: 2rem;
     }
 
     @media (min-width: $breakpoint-md) {
@@ -33,8 +33,10 @@
   }
 
   &__logo {
-    width: $logo-width * 1.1;
-    height: $logo-height * 1.1;
+    @media (min-width: 375px) {
+      width: $logo-width * 1.1;
+      height: $logo-height * 1.1;
+    }
 
     @media (min-width: $breakpoint-md) {
       width: $logo-width * 1.3;

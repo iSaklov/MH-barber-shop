@@ -30,11 +30,28 @@
     }
   }
 
+  @media (min-width: $breakpoint-lg) {
+    &__slide-wrapper {
+      column-gap: $slide-column-gap * 0.5;
+    }
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    &__slide-wrapper {
+      column-gap: $slide-column-gap;
+    }
+  }
+
   &__img {
     width: $img-sm-width;
     height: $img-sm-height;
     object-fit: cover;
     border-radius: $border-radius;
+
+    @media (min-width: $breakpoint-sm) {
+      width: $img-sm-width * 1.5;
+      height: $img-sm-height * 1.5;
+    }
 
     @media (min-width: $breakpoint-md) {
       width: $img-md-width;
@@ -48,27 +65,52 @@
   }
 
   // BOOTSTRAP
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: auto;
+  }
+
   .carousel-control-prev {
-    left: $slide-column-gap * -1;
+    @media (min-width: 320) {
+      left: $slide-column-gap * -1;
+    }
+
+    @media (min-width: 375px) {
+      left: $slide-column-gap * -1.5;
+    }
 
     @media (min-width: $breakpoint-md) {
-      left: $slide-column-gap * -2;
+      left: $slide-column-gap * -1.75;
     }
 
     @media (min-width: $breakpoint-lg) {
-      left: $slide-column-gap * -2.5;
+      left: $slide-column-gap * -1.25;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      left: $slide-column-gap * -2;
     }
   }
 
   .carousel-control-next {
-    right: $slide-column-gap * -1;
+    @media (min-width: 320) {
+      right: $slide-column-gap * -1;
+    }
+
+    @media (min-width: 375px) {
+      right: $slide-column-gap * -1.5;
+    }
 
     @media (min-width: $breakpoint-md) {
-      right: $slide-column-gap * -2;
+      right: $slide-column-gap * -1.75;
     }
 
     @media (min-width: $breakpoint-lg) {
-      right: $slide-column-gap * -2.5;
+      right: $slide-column-gap * -1.25;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      right: $slide-column-gap * -2;
     }
   }
 
@@ -79,7 +121,7 @@
   }
 
   .carousel-indicators {
-    bottom: -5rem;
+    bottom: $slide-column-gap * -1;
   }
 
   // CUSTUM BACKGROUND CAROUSEL
@@ -99,7 +141,7 @@
 
   &__background-navigation {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   &__background-prev-button,
@@ -108,8 +150,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     padding: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;

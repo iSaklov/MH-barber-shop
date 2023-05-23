@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import models from '../data/models'
@@ -11,20 +11,45 @@ const GallerySection = () => {
     Math.ceil((backgroundImages.length - 1) / 2)
   )
 
+  const getGroupSize = useCallback(() => {
+    if (window.matchMedia('(max-width: 767.98px)').matches) {
+      return 1
+    } else if (window.matchMedia('(max-width: 991.98px)').matches) {
+      return 2
+    } else {
+      return 3
+    }
+  }, [])
+
   const [isAnimating, setIsAnimating] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+  const [groupSize, setGroupSize] = useState(getGroupSize())
 
   useEffect(() => {
     const backgroundImage = new Image()
     backgroundImage.onload = () => {
-			setIsLoading(false)
-			setIsAnimating(true)
+      setIsAnimating(true)
       setBackgroundImageUrl(backgroundImages[indexBackground].src)
     }
 
     backgroundImage.src = backgroundImages[indexBackground].src
   }, [indexBackground])
+
+  useEffect(() => {
+    setBackgroundImageUrl(backgroundImages[indexBackground].src)
+  }, [indexBackground])
+
+  useEffect(() => {
+    function handleResize() {
+      setGroupSize(getGroupSize())
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [getGroupSize])
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
@@ -49,28 +74,21 @@ const GallerySection = () => {
     setIsAnimating(false)
   }
 
-  let groupSize
-  if (window.matchMedia('(max-width: 767.98px)').matches) {
-    groupSize = 1
-  } else if (window.matchMedia('(max-width: 991.98px)').matches) {
-    groupSize = 2
-  } else {
-    groupSize = 3
-  }
-
-  const groupedModels = []
-  for (let i = 0; i < models.length; i += groupSize) {
-    groupedModels.push(models.slice(i, i + groupSize))
-  }
+  const groupedModels = models.reduce((acc, curr, index) => {
+    const groupIndex = Math.floor(index / groupSize)
+    if (!acc[groupIndex]) {
+      acc[groupIndex] = []
+    }
+    acc[groupIndex].push(curr)
+    return acc
+  }, [])
 
   return (
     <section
       id="gallery-section"
-      // className="gallery-section"
       className={`gallery-section ${isAnimating ? 'animating' : ''}`}
       onTransitionEnd={handleTransitionEnd}
       style={{
-        // backgroundImage: `url(${backgroundImages[indexBackground].src})`
         backgroundImage: `url(${backgroundImageUrl})`
       }}
     >
@@ -85,15 +103,15 @@ const GallerySection = () => {
             interval={null}
             className="gallery-section__carousel"
           >
-            {groupedModels.map((group, index) => (
-              <Carousel.Item key={index}>
+            {groupedModels.map((group, groupIndex) => (
+              <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
                   {group.map((item, itemIndex) => (
                     <img
-                      key={`${index}-${itemIndex}`}
+                      key={`${groupIndex}-${itemIndex}`}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
                       src={item.src}
-                      alt={`slide-${index}-${itemIndex}`}
+                      alt={`slide-${groupIndex}-${itemIndex}`}
                     />
                   ))}
                 </div>
