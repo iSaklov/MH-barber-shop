@@ -8,8 +8,25 @@ const GallerySection = () => {
   const [index, setIndex] = useState(0)
   const [indexBackground, setIndexBackground] = useState(0)
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+  const [backgroundImageLoading, setBackgroundImageLoading] = useState(true)
   const [groupSize, setGroupSize] = useState(1)
   const [isAnimating, setIsAnimating] = useState(false)
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex)
+  }
+
+  const handlePrevBackground = useCallback(() => {
+    if (indexBackground > 0 && !isAnimating) {
+      setIndexBackground(indexBackground - 1)
+    }
+  }, [indexBackground, isAnimating])
+
+  const handleNextBackground = useCallback(() => {
+    if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
+      setIndexBackground(indexBackground + 1)
+    }
+  }, [indexBackground, isAnimating])
 
   const getGroupSize = useCallback(() => {
     if (window.matchMedia('(max-width: 767.98px)').matches) {
@@ -21,17 +38,34 @@ const GallerySection = () => {
     }
   }, [])
 
+  const groupedModels = models.reduce((acc, curr, index) => {
+    const groupIndex = Math.floor(index / groupSize)
+    if (!acc[groupIndex]) {
+      acc[groupIndex] = []
+    }
+    acc[groupIndex].push(curr)
+    return acc
+  }, [])
+
+  const handleTransitionEnd = () => {
+    setIsAnimating(false)
+  }
+
   useEffect(() => {
-    // sets the center slide of the array as the active slide
     setIndexBackground(Math.ceil((backgroundImages.length - 1) / 2))
   }, [])
 
-	useEffect(() => {
-		setIsAnimating(true)
-    setBackgroundImageUrl(backgroundImages[indexBackground].src)
+  useEffect(() => {
+    const image = new Image()
+    image.src = backgroundImages[indexBackground].src
+    image.onload = () => {
+      setBackgroundImageUrl(image.src)
+      setIsAnimating(true)
+      setBackgroundImageLoading(false)
+    }
   }, [indexBackground])
 
-  useCallback(() => {
+  useEffect(() => {
     setGroupSize(getGroupSize())
   }, [getGroupSize])
 
@@ -47,44 +81,16 @@ const GallerySection = () => {
     }
   }, [getGroupSize])
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex)
-  }
-
-  const handlePrevBackground = () => {
-    if (indexBackground > 0 && !isAnimating) {
-      setIndexBackground(indexBackground - 1)
-    }
-  }
-
-  const handleNextBackground = () => {
-    if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
-      setIndexBackground(indexBackground + 1)
-    }
-  }
-
-  const handleTransitionEnd = () => {
-    console.log('transition end')
-    setIsAnimating(false)
-  }
-
-  const groupedModels = models.reduce((acc, curr, index) => {
-    const groupIndex = Math.floor(index / groupSize)
-    if (!acc[groupIndex]) {
-      acc[groupIndex] = []
-    }
-    acc[groupIndex].push(curr)
-    return acc
-  }, [])
-
   return (
     <section
       id="gallery-section"
       className={`gallery-section ${isAnimating ? 'animating' : ''}`}
       onTransitionEnd={handleTransitionEnd}
-      style={{
-        backgroundImage: `url(${backgroundImageUrl})`
-      }}
+      style={
+        !backgroundImageLoading
+          ? { backgroundImage: `url(${backgroundImageUrl})` }
+          : null
+      }
     >
       <Container className="my-5">
         <h2 className="heading-2">Gallérie</h2>
@@ -100,11 +106,11 @@ const GallerySection = () => {
             {groupedModels.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map((item, itemIndex) => (
+                  {group.map(({ src }, itemIndex) => (
                     <img
                       key={`${groupIndex}-${itemIndex}`}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
-                      src={item.src}
+                      src={src}
                       alt={`slide-${groupIndex}-${itemIndex}`}
                     />
                   ))}
@@ -121,15 +127,15 @@ const GallerySection = () => {
             onClick={handlePrevBackground}
           ></button>
           <div className="gallery-section__carousel-background-indicators">
-            {backgroundImages.map((item, index) => (
+            {backgroundImages.map(({ src }, bgIndex) => (
               <button
-                key={index}
-                aria-label={item.src}
-                aria-current={indexBackground !== index ? 'false' : 'true'}
+                key={bgIndex}
+                aria-label={src}
+                aria-current={indexBackground !== bgIndex ? 'false' : 'true'}
                 className={`button mx-2 ${
-                  indexBackground !== index ? '' : 'active'
+                  indexBackground !== bgIndex ? '' : 'active'
                 }`}
-                onClick={setIndexBackground.bind(null, index)}
+                onClick={() => setIndexBackground(bgIndex)}
               ></button>
             ))}
           </div>

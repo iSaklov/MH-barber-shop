@@ -1,6 +1,5 @@
-@mixin bg-section($bg-url: '', $bg-position: center) {
+@mixin bg-section($bg-url, $bg-position: center) {
   background-image: url($bg-url);
-	background-color: red; // testing
   background-position: $bg-position;
   background-size: cover;
   background-repeat: no-repeat;

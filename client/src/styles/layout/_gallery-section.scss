@@ -1,5 +1,5 @@
 .gallery-section {
-  @include bg-section;
+  @include bg-section('../../assets/images/placeholder.jpg');
 
   .container {
     z-index: 5;
@@ -127,7 +127,7 @@
   // CUSTUM BACKGROUND CAROUSEL
   &.animating {
     transition: background-image 0.5s ease;
-    animation: fade-in 0.5s ease-in-out;
+    // animation: fade-in 0.5s ease-in-out;
 
     @keyframes fade-in {
       from {
