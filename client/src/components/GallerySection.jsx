@@ -6,10 +6,10 @@ import backgroundImages from '../data/gallery-background-images'
 
 const GallerySection = () => {
   const [index, setIndex] = useState(0)
-  const [indexBackground, setIndexBackground] = useState(
-    // sets the center slide as active background images
-    Math.ceil((backgroundImages.length - 1) / 2)
-  )
+  const [indexBackground, setIndexBackground] = useState(0)
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+  const [groupSize, setGroupSize] = useState(1)
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const getGroupSize = useCallback(() => {
     if (window.matchMedia('(max-width: 767.98px)').matches) {
@@ -21,23 +21,19 @@ const GallerySection = () => {
     }
   }, [])
 
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
-  const [groupSize, setGroupSize] = useState(getGroupSize())
-
   useEffect(() => {
-    const backgroundImage = new Image()
-    backgroundImage.onload = () => {
-      setIsAnimating(true)
-      setBackgroundImageUrl(backgroundImages[indexBackground].src)
-    }
+    // sets the center slide of the array as the active slide
+    setIndexBackground(Math.ceil((backgroundImages.length - 1) / 2))
+  }, [])
 
-    backgroundImage.src = backgroundImages[indexBackground].src
-  }, [indexBackground])
-
-  useEffect(() => {
+	useEffect(() => {
+		setIsAnimating(true)
     setBackgroundImageUrl(backgroundImages[indexBackground].src)
   }, [indexBackground])
+
+  useCallback(() => {
+    setGroupSize(getGroupSize())
+  }, [getGroupSize])
 
   useEffect(() => {
     function handleResize() {
@@ -57,14 +53,12 @@ const GallerySection = () => {
 
   const handlePrevBackground = () => {
     if (indexBackground > 0 && !isAnimating) {
-      setIsAnimating(true)
       setIndexBackground(indexBackground - 1)
     }
   }
 
   const handleNextBackground = () => {
     if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
-      setIsAnimating(true)
       setIndexBackground(indexBackground + 1)
     }
   }

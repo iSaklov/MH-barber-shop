@@ -1,5 +1,4 @@
 import { Container, Row, Col } from 'react-bootstrap'
-// import Master from '../assets/images/master.webp'
 
 const AboutUsSection = () => {
   return (
