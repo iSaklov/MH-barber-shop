@@ -4,7 +4,7 @@ const AboutUsSection = () => {
   return (
     <section id="about-us-section" className="about-us-section">
       <Container className="d-flex my-auto justify-content-center">
-        <Row className='py-5'>
+        <Row className="py-5">
           <Col
             xs={{ span: 10, offset: 1 }}
             md={{ span: 8, offset: 2 }}

@@ -1,6 +1,6 @@
 @media (min-width: $breakpoint-md) {
   .navbar {
-    background-color: rgba($color-dark, 0.8);
+    background-color: rgba($color-dark, 0.85);
     &:after {
       // vertical line
       content: '';
@@ -16,9 +16,11 @@
     column-gap: 4rem;
   }
 
-  .navbar-brand img {
-    width: $logo-width;
-    height: $logo-height;
+  .navbar-brand {
+    &__logo {
+      width: $logo-width;
+      height: $logo-height;
+    }
   }
 
   .scrolled-down {
@@ -36,27 +38,31 @@
   font-style: normal;
   font-weight: 500;
   font-size: 2rem;
+  font-variant: small-caps;
   line-height: 3.5rem;
   text-align: center;
   letter-spacing: 0.02em;
   text-transform: lowercase;
-  color: $color-light;
 
   @media (min-width: $breakpoint-md) {
-    font-variant: small-caps;
     line-height: 2.7rem;
-    color: $color-white;
-    &:hover {
-      color: $color-primary;
+    transition: all 0.3s ease;
+
+    &.active {
+      border-bottom: 0.1rem solid $color-primary;
     }
   }
 }
 
 @media (max-width: 767.98px) {
   .offcanvas-md {
-    max-width: 32rem;
+    width: 100%;
     align-items: center;
     background-color: $color-dark;
+
+    @media (min-width: 375px) {
+      max-width: 32rem;
+    }
   }
 
   .offcanvas-header {
@@ -75,7 +81,7 @@
   }
 
   .navbar-nav {
-    row-gap: 3.5rem;
+    row-gap: 2rem;
     justify-content: center;
     &::before,
     &::after {
@@ -84,6 +90,22 @@
       width: 2rem;
       height: 2rem;
       background-image: url('../../assets/ellipse.svg');
+    }
+
+    @media (min-width: 320px) {
+      row-gap: 2.5rem;
+    }
+
+    @media (min-width: 375px) {
+      row-gap: 3rem;
+    }
+  }
+
+  .nav-link {
+    font-size: 2.5rem;
+
+    @media (min-width: 375px) {
+      font-size: 3rem;
     }
   }
 }

@@ -21,7 +21,7 @@ const NavBar = () => {
     const scrollY = window.pageYOffset
     sectionsRef.current.forEach((section) => {
       const sectionHeight = section.offsetHeight
-      const sectionTop = section.offsetTop - 50
+      const sectionTop = section.offsetTop - window.innerHeight * 0.75;
       const sectionId = section.getAttribute('id')
       const link = document.querySelector(`.navbar-nav a[href*="${sectionId}"]`)
       if (link) {
@@ -35,7 +35,7 @@ const NavBar = () => {
   }, [])
 
   useEffect(() => {
-    sectionsRef.current = document.querySelectorAll('section[id]')
+    sectionsRef.current = document.querySelectorAll('section[id], footer[id]')
   }, [])
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const NavBar = () => {
         <Navbar.Brand href="#hero-section">
           <img
             src={Logo}
-            className="d-none d-md-inline-block"
+            className="d-none d-md-inline-block navbar-brand__logo"
             alt="H.M. - barber shop logo"
           />
         </Navbar.Brand>
@@ -104,7 +104,6 @@ const NavBar = () => {
               <Nav.Link
                 href="#price-list-section"
                 onClick={setShowOffcanvas.bind(null, !showOffcanvas)}
-                className="my-nav-link"
               >
                 Nos tarifs
               </Nav.Link>
