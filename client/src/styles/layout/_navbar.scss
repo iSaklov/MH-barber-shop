@@ -66,6 +66,10 @@
   }
 
   .offcanvas-header {
+    .offcanvas-title {
+      z-index: 10;
+    }
+
     .btn-close {
       position: absolute;
       top: 1rem;
