@@ -20,31 +20,32 @@ const PriceListSection = () => {
             </Row>
             <Row className="mt-5 mb-2">
               <Col>
-                <h2 className="heading-2">Nos tarifs</h2>
+                <h2 className="heading-2 text-center">Nos tarifs</h2>
               </Col>
             </Row>
             {services.map((item, index) => (
               <React.Fragment key={index}>
-                <Row className="align-items-end mt-3">
-                  <Col className="price-list-section__item-title">
+                <Row className="align-items-end my-4 price-list-section__service-item-wrapper">
+                  <Col className="price-list-section__item-title col-auto">
                     <h4 className="heading-4 mb-0">{item.title}</h4>
                   </Col>
                   <Col className="px-0">
                     <div className="price-list-section__separator"></div>
                   </Col>
-                  <Col className="price-list-section__item-price">
-                    <h4 className="heading-4">{item.price}€</h4>
+                  <Col className="price-list-section__item-price col-auto">
+                    <h4 className="heading-4 mb-0">{item.price}€</h4>
                   </Col>
-                </Row>
-                {item.subtitle && (
-                  <Row>
-                    <Col>
+                  {item.subtitle && (
+                    <Col
+                      xs={12}
+                      className="price-list-section__item-price-subtitle-wrapper"
+                    >
                       <span className="price-list-section__item-price-subtitle">
                         {item.subtitle}
                       </span>
                     </Col>
-                  </Row>
-                )}
+                  )}
+                </Row>
               </React.Fragment>
             ))}
           </div>

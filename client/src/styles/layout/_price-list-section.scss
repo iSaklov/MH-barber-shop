@@ -1,34 +1,32 @@
 .price-list-section {
-  @include bg-section('../../assets/images/price-list.webp', 50% 50%);
+  @include bg-section('../../assets/images/price-list.webp');
 
   &__list-wrapper {
+    z-index: 5;
     background: repeating-linear-gradient(
       -45deg,
-      rgba(223, 174, 95, 0.5) 8px 10px,
-      $color-dark 4px 20px
+      $color-primary 0.8rem 1rem,
+      $color-dark 0.4rem 2rem
     );
     padding: 2rem;
-    z-index: 5;
 
     @media (min-width: $breakpoint-md) {
-      padding: 4rem;
+      padding: 3rem;
     }
   }
 
   &__list-inner {
-    width: 24rem;
-    padding: 1rem;
-    border: 0.4rem solid $color-primary;
+    padding: 2rem 1rem;
+    border: 0.2rem solid $color-primary;
     background-color: $color-dark;
 
-    @media (min-width: 375px) {
-      width: 30rem;
-      padding: 2rem;
+    @media (min-width: 320px) {
+      padding: 3rem 1.5rem;
     }
 
     @media (min-width: $breakpoint-md) {
-      width: 45rem;
-      padding: 3rem 2rem;
+      min-width: 35rem;
+      padding: 4rem 2rem;
     }
   }
 
@@ -44,16 +42,8 @@
     }
   }
 
-  &__item-title {
-    flex-grow: 3;
-
-    @media (max-width: 320px) {
-      flex-grow: 6;
-    }
-
-    @media (min-width: $breakpoint-md) {
-      flex-grow: 2;
-    }
+  &__service-item-wrapper {
+    position: relative;
   }
 
   &__separator {
@@ -61,26 +51,23 @@
     border-bottom: dotted 0.2rem $color-primary;
   }
 
-  &__item-price {
-    flex-grow: 0;
+  &__item-price-subtitle-wrapper {
+    position: absolute;
+    top: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      top: 1.8rem;
+    }
   }
 
   &__item-price-subtitle {
-    font-family: $font-playfair;
-    font-style: normal;
-    font-variant: small-caps;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 0.6rem;
-    letter-spacing: 0.02em;
-    color: $color-white;
+    @include heading;
+    font-weight: 400;
+    text-transform: lowercase;
     margin-left: 3rem;
-    text-transform: uppercase;
-    margin-top: -2rem;
 
     @media (min-width: $breakpoint-md) {
-      font-size: 1.8rem;
-      line-height: 0.6rem;
+      font-size: 2.2rem;
     }
   }
 }

@@ -26,6 +26,10 @@
 
     @media (hover: hover) {
       &:hover {
+        .heading-6 {
+          font-weight: 700;
+        }
+
         .icon {
           opacity: 1;
           transform: scale(1.1);
@@ -52,7 +56,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 2rem;
+    border-radius: $border-radius;
   }
 
   &__map-overlay {
@@ -61,14 +65,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 2rem;
+    border-radius: $border-radius;
     background-color: rgba($color-dark, 0.5);
     pointer-events: none; /* Allows the iframe to be clicked */
   }
 
   &__services-list-wrapper {
     .heading-6 {
-      text-align: center;
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    &__contact-list,
+    &__services-list {
+      padding-left: 0;
     }
   }
 }

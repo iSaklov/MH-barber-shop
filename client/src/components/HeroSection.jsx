@@ -40,22 +40,27 @@ const HeroSection = () => {
         <Row className="d-none d-md-flex justify-content-md-center mb-md-3 mt-md-auto">
           <Col md={3}>
             <h5 className="heading-5">Adresse</h5>
-            <a
-              href="https://www.google.com/maps?q=###"
-              className="hero-section__paragraph"
-            >
-              3 rue du grand pont
-            </a>
+            <h6 className="heading-6">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=3+rue+du+grand+pont"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                3 rue du grand pont
+              </a>
+            </h6>
           </Col>
           <Col md={4}>
             <h5 className="heading-5">Téléphone</h5>
-            <a href="tel:0624015691" className="hero-section__paragraph">
-              06.24.01.56.91
-            </a>
+            <h6 className="heading-6">
+              <a href="tel:0624015691" rel="noopener noreferrer nofollow">
+                06.24.01.56.91
+              </a>
+            </h6>
           </Col>
           <Col md={3}>
             <h5 className="heading-5">Horaires</h5>
-            <p className="hero-section__paragraph">Mar-dim : 9h-19h</p>
+            <h6 className="heading-6">Mar-dim : 9h-19h</h6>
           </Col>
         </Row>
       </Container>

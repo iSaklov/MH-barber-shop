@@ -93,7 +93,7 @@ const GallerySection = () => {
       }
     >
       <Container className="my-5">
-        <h2 className="heading-2">Gallérie</h2>
+        <h2 className="heading-2 text-center">Gallérie</h2>
         <div className="gallery-section__carousel-wrapper">
           <Carousel
             activeIndex={index}

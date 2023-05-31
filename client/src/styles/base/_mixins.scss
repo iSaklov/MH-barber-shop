@@ -31,3 +31,12 @@
     }
   }
 }
+
+@mixin heading {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+	font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}

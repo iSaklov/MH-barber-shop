@@ -19,6 +19,11 @@ const services = [
     title: 'Coupe couleur',
     subtitle: 'à partir de',
     price: 45
+  },
+  {
+    title: 'Coupe couleur',
+    subtitle: 'à partir de',
+    price: 45
   }
 ]
 

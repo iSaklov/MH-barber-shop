@@ -1,53 +1,20 @@
 .heading-1 {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
-  font-weight: 600;
+  @include heading;
   font-size: 1.9rem;
   line-height: 2.7rem;
-  letter-spacing: 0.02em;
-	text-transform: uppercase;
 }
 
 .heading-2 {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-  text-align: center;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: $color-primary;
-
-  @media (min-width: $breakpoint-md) {
-    font-size: 3.2rem;
-    line-height: 4.3rem;
-  }
-}
-
-.hero-section__heading-3 {
-  font-family: $font-italiana;
-  font-style: normal;
-  font-variant: small-caps;
+  @include heading;
   font-weight: 400;
-  font-size: 3rem;
-  line-height: 4.5rem;
-  letter-spacing: -0.1em;
-  text-transform: uppercase;
-  color: $color-white;
+  color: $color-primary;
 }
 
 .heading-4 {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
-  font-weight: 600;
+  @include heading;
+  font-weight: 400;
   font-size: 1.7rem;
   line-height: 2.3rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: $color-light;
 
   @media (min-width: $breakpoint-md) {
     font-size: 2.4rem;
@@ -56,38 +23,20 @@
 }
 
 .heading-5 {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
+  @include heading;
   font-weight: 400;
   font-size: 2.2rem;
-  line-height: 2.7rem;
-  letter-spacing: 0.02em;
+  text-transform: none;
   color: $color-primary;
 }
 
 .heading-6 {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 2.7rem;
-  letter-spacing: 0.02em;
-}
-
-.hero-section__paragraph {
-  font-family: $font-playfair;
-  font-style: normal;
-  font-variant: small-caps;
+  @include heading;
   font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  text-align: center;
-  color: $color-white;
+  font-size: 1.9rem;
+  text-transform: lowercase;
 
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-lg) {
     font-size: 2rem;
-    line-height: 3rem;
   }
 }

@@ -75,7 +75,7 @@ const Footer = () => {
             </Col>
             <Col className="my-3">
               <div className="footer__services-list-wrapper">
-                <h6 className="heading-6 mb-3">Services</h6>
+                <h6 className="heading-6 mb-3 text-center">Services</h6>
                 <ul className="footer__services-list">
                   <li className="my-1">Coupe de cheveux homme</li>
                   <li className="my-1">Barbe et rasage</li>

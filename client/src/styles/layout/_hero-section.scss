@@ -57,6 +57,31 @@
       }
     }
   }
+
+  &__heading-3 {
+    font-family: $font-italiana;
+    font-variant: small-caps;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    letter-spacing: -0.1em;
+    text-transform: uppercase;
+  }
+
+  &__paragraph {
+    line-height: 2.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      line-height: 3rem;
+    }
+  }
+
+  @media (hover: hover) {
+    .heading-6 a {
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 .hero-section__heading-3 {

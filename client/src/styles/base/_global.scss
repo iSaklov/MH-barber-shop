@@ -17,16 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  // overrides default Bootstrap styles
-  // color: $color-light !important;
-  // text-decoration: none !important;
-}
-
 ul,
 ol {
-  // overrides default Bootstrap styles
-  margin: 0 !important;
-  padding: 0 !important;
   list-style: none;
 }

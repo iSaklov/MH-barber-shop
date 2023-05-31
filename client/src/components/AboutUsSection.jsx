@@ -12,7 +12,7 @@ const AboutUsSection = () => {
             className="about-us-section__article-wrapper"
           >
             <article className="about-us-section__article">
-              <h2 className="heading-2 py-5">À propos</h2>
+              <h2 className="heading-2 py-5 text-center">À propos</h2>
               <div className="px-5 pb-5">
                 <p className="my-3">
                   Notre barber shop est l'un des plus prestigieux de la ville
