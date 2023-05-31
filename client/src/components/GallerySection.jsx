@@ -8,25 +8,29 @@ const GallerySection = () => {
   const [index, setIndex] = useState(0)
   const [indexBackground, setIndexBackground] = useState(0)
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
-  const [backgroundImageLoading, setBackgroundImageLoading] = useState(true)
-  const [groupSize, setGroupSize] = useState(1)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [groupSize, setGroupSize] = useState(1)
+  const [groupedModels, setGroupedModels] = useState([])
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
   }
 
-  const handlePrevBackground = useCallback(() => {
+  const handlePrevBackground = () => {
     if (indexBackground > 0 && !isAnimating) {
       setIndexBackground(indexBackground - 1)
     }
-  }, [indexBackground, isAnimating])
+  }
 
-  const handleNextBackground = useCallback(() => {
+  const handleNextBackground = () => {
     if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
       setIndexBackground(indexBackground + 1)
     }
-  }, [indexBackground, isAnimating])
+  }
+
+  const handleTransitionEnd = () => {
+    setIsAnimating(false)
+  }
 
   const getGroupSize = useCallback(() => {
     if (window.matchMedia('(max-width: 767.98px)').matches) {
@@ -38,19 +42,6 @@ const GallerySection = () => {
     }
   }, [])
 
-  const groupedModels = models.reduce((acc, curr, index) => {
-    const groupIndex = Math.floor(index / groupSize)
-    if (!acc[groupIndex]) {
-      acc[groupIndex] = []
-    }
-    acc[groupIndex].push(curr)
-    return acc
-  }, [])
-
-  const handleTransitionEnd = () => {
-    setIsAnimating(false)
-  }
-
   useEffect(() => {
     setIndexBackground(Math.ceil((backgroundImages.length - 1) / 2))
   }, [])
@@ -58,10 +49,14 @@ const GallerySection = () => {
   useEffect(() => {
     const image = new Image()
     image.src = backgroundImages[indexBackground].src
+
     image.onload = () => {
       setBackgroundImageUrl(image.src)
       setIsAnimating(true)
-      setBackgroundImageLoading(false)
+    }
+
+    return () => {
+      image.onload = null
     }
   }, [indexBackground])
 
@@ -79,18 +74,30 @@ const GallerySection = () => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [getGroupSize])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const updatedGroupedModels = models.reduce((acc, curr, index) => {
+      const groupIndex = Math.floor(index / groupSize)
+      if (!acc[groupIndex]) {
+        acc[groupIndex] = []
+      }
+      acc[groupIndex].push(curr)
+      return acc
+    }, [])
+
+    setGroupedModels(updatedGroupedModels)
+  }, [groupSize])
 
   return (
     <section
       id="gallery-section"
       className={`gallery-section ${isAnimating ? 'animating' : ''}`}
       onTransitionEnd={handleTransitionEnd}
-      style={
-        !backgroundImageLoading
-          ? { backgroundImage: `url(${backgroundImageUrl})` }
-          : null
-      }
+      style={{
+        backgroundImage: `url(${backgroundImageUrl})`
+      }}
     >
       <Container className="my-5">
         <h2 className="heading-2 text-center">Gallérie</h2>
