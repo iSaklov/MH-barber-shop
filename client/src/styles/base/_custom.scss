@@ -1,13 +1,12 @@
 // scss-docs-start font-variables
 $font-family-base: $font-playfair;
-// $body-color: $color-light;
 $body-color: $color-white;
 $font-size-base: 1.6rem;
 
 // links
-$link-color: $color-white;
+$link-color: $color-light;
 $link-decoration: none;
-$link-hover-color: $link-color !default;
+$link-hover-color: $color-white;
 
 // scss-docs-start navbar-dark-variables
 $navbar-dark-color: rgba($color-white, 0.75) !default;
