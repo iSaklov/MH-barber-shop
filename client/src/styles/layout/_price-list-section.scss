@@ -6,7 +6,7 @@
     background: repeating-linear-gradient(
       -45deg,
       $color-primary 0.8rem 1rem,
-      $color-dark 0.4rem 2rem
+      $color-dark 0.8rem 2rem
     );
     padding: 2rem;
 
@@ -53,21 +53,22 @@
 
   &__item-price-subtitle-wrapper {
     position: absolute;
-    top: 1.5rem;
+    top: 1.6rem;
 
     @media (min-width: $breakpoint-md) {
-      top: 1.8rem;
+      top: 2.6rem;
     }
   }
 
   &__item-price-subtitle {
     @include heading;
     font-weight: 400;
-    text-transform: lowercase;
+		font-size: 1.2rem;
+    // text-transform: lowercase;
     margin-left: 3rem;
 
     @media (min-width: $breakpoint-md) {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
     }
   }
 }

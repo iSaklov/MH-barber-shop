@@ -1,27 +1,32 @@
 const services = [
   {
-    title: 'Taillage barbe',
-    price: 5
+    title: 'Coupe homme',
+    price: 10
   },
   {
     title: 'Coupe enfant',
-    price: 9
+    subtitle: "jusqu'à 8 ans",
+    price: 8
   },
   {
-    title: 'Coupe adulte',
-    price: 10
+    title: 'Barbe courte',
+    price: 5
+  },
+  {
+    title: 'Barbe longue',
+    price: 8
   },
   {
     title: 'Coupe + Barbe',
     price: 14
   },
   {
-    title: 'Coupe couleur',
-    subtitle: 'à partir de',
-    price: 45
+    title: 'Dessins cheveux',
+    subtitle: 'estimé au préalable',
+    price: 5
   },
   {
-    title: 'Coupe couleur',
+    title: 'Coloration',
     subtitle: 'à partir de',
     price: 45
   }

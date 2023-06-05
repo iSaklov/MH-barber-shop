@@ -7,6 +7,7 @@ const NavBar = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)
   const [navbarHidden, setNavbarHidden] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [activeLink, setActiveLink] = useState(null)
   const sectionsRef = useRef([])
   const navigate = useNavigate()
 
@@ -16,24 +17,23 @@ const NavBar = () => {
     } else {
       setNavbarHidden(false)
     }
-    setLastScrollY(window.scrollY)
+    setLastScrollY(Math.abs(window.scrollY))
   }, [lastScrollY])
 
   const navHighlighter = useCallback(() => {
     const scrollY = window.pageYOffset
-    sectionsRef.current.forEach((section) => {
+    // It returns the first section that satisfies the condition using the find() method in combination with reverse() to start the search from the end of the list of sections. This ensures that the topmost (closest to the top of the page) section that is visible on the screen will be found
+    const activeSection = [...sectionsRef.current].reverse().find((section) => {
       const sectionHeight = section.offsetHeight
       const sectionTop = section.offsetTop - window.innerHeight * 0.75
-      const sectionId = section.getAttribute('id')
-      const link = document.querySelector(`.navbar-nav a[href*="${sectionId}"]`)
-      if (link) {
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          link.classList.add('active')
-        } else {
-          link.classList.remove('active')
-        }
-      }
+      return scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
     })
+
+    if (activeSection) {
+      setActiveLink(activeSection.getAttribute('id'))
+    } else {
+      setActiveLink(null)
+    }
   }, [])
 
   const handleScroll = useCallback(() => {
@@ -126,24 +126,28 @@ const NavBar = () => {
                 onClick={(event) =>
                   handleLinkClick(event, 'price-list-section')
                 }
+                className={activeLink === 'price-list-section' ? 'active' : ''}
               >
                 Nos tarifs
               </Nav.Link>
               <Nav.Link
                 href="#gallery-section"
                 onClick={(event) => handleLinkClick(event, 'gallery-section')}
+                className={activeLink === 'gallery-section' ? 'active' : ''}
               >
                 Gallérie
               </Nav.Link>
               <Nav.Link
                 href="#about-us-section"
                 onClick={(event) => handleLinkClick(event, 'about-us-section')}
+                className={activeLink === 'about-us-section' ? 'active' : ''}
               >
                 À propos
               </Nav.Link>
               <Nav.Link
                 href="#footer"
                 onClick={(event) => handleLinkClick(event, 'footer')}
+                className={activeLink === 'footer' ? 'active' : ''}
               >
                 Contacts
               </Nav.Link>
