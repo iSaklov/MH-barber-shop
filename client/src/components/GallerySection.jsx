@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-import models from '../data/models'
+import galleryImages from '../data/gallery-image'
 import backgroundImages from '../data/gallery-background-images'
 
 const GallerySection = () => {
@@ -10,7 +10,7 @@ const GallerySection = () => {
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
   const [isAnimating, setIsAnimating] = useState(false)
   const [groupSize, setGroupSize] = useState(1)
-  const [groupedModels, setGroupedModels] = useState([])
+  const [groupedImages, setGroupedImages] = useState([])
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
@@ -78,7 +78,7 @@ const GallerySection = () => {
   }, [])
 
   useEffect(() => {
-    const updatedGroupedModels = models.reduce((acc, curr, index) => {
+    const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
       const groupIndex = Math.floor(index / groupSize)
       if (!acc[groupIndex]) {
         acc[groupIndex] = []
@@ -87,7 +87,7 @@ const GallerySection = () => {
       return acc
     }, [])
 
-    setGroupedModels(updatedGroupedModels)
+    setGroupedImages(updatedGroupedImages)
   }, [groupSize])
 
   return (
@@ -105,20 +105,19 @@ const GallerySection = () => {
           <Carousel
             activeIndex={index}
             onSelect={handleSelect}
-            // indicators={false}
             defaultActiveIndex={0}
             interval={null}
             className="gallery-section__carousel"
           >
-            {groupedModels.map((group, groupIndex) => (
+            {groupedImages.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map(({ src }, itemIndex) => (
+                  {group.map(({ id, src, name }) => (
                     <img
-                      key={`${groupIndex}-${itemIndex}`}
+                      key={id}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
                       src={src}
-                      alt={`slide-${groupIndex}-${itemIndex}`}
+                      alt={name}
                     />
                   ))}
                 </div>
@@ -134,9 +133,9 @@ const GallerySection = () => {
             onClick={handlePrevBackground}
           ></button>
           <div className="gallery-section__carousel-background-indicators">
-            {backgroundImages.map(({ src }, bgIndex) => (
+            {backgroundImages.map(({ id, src }, bgIndex) => (
               <button
-                key={bgIndex}
+                key={id}
                 aria-label={src}
                 aria-current={indexBackground !== bgIndex ? 'false' : 'true'}
                 className={`button mx-2 ${

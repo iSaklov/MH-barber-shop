@@ -36,7 +36,11 @@
   font-family: $font-playfair;
   font-style: normal;
   font-variant: small-caps;
-	font-weight: 700;
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+%box-shadow {
+  box-shadow: rgba($color-dark, 0.75) 0 0.5rem 1.5rem 0;
 }

@@ -62,10 +62,6 @@ const NavBar = () => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log('showOffcanvas', showOffcanvas)
-  // }, [showOffcanvas])
-
   useEffect(() => {
     sectionsRef.current = document.querySelectorAll('section[id], footer[id]')
   }, [])

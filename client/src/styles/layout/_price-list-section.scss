@@ -13,6 +13,8 @@
     @media (min-width: $breakpoint-md) {
       padding: 3rem;
     }
+
+    @extend %box-shadow;
   }
 
   &__list-inner {
@@ -63,8 +65,7 @@
   &__item-price-subtitle {
     @include heading;
     font-weight: 400;
-		font-size: 1.2rem;
-    // text-transform: lowercase;
+    font-size: 1.2rem;
     margin-left: 3rem;
 
     @media (min-width: $breakpoint-md) {

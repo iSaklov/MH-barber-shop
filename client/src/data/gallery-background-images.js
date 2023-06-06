@@ -1,8 +1,12 @@
-import item1 from '../assets/images/gallery-background/1-slide.jpeg'
-import item2 from '../assets/images/gallery-background/2-slide.jpeg'
-import item3 from '../assets/images/gallery-background/3-slide.jpeg'
+import { v4 as uuidv4 } from 'uuid'
+import item1 from '../assets/images/gallery-background/img-01.webp'
+import item2 from '../assets/images/gallery-background/img-02.webp'
+import item3 from '../assets/images/gallery-background/img-03.webp'
 
-
-const backgroundImages = [{ src: item1 }, { src: item2 }, { src: item3 }]
+const backgroundImages = [
+  { id: uuidv4(), src: item1 },
+  { id: uuidv4(), src: item2 },
+  { id: uuidv4(), src: item3 }
+]
 
 export default backgroundImages
