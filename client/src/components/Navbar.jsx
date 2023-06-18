@@ -41,19 +41,32 @@ const NavBar = () => {
     navHighlighter()
   }, [controlNavbar, navHighlighter])
 
-  const handleLinkClick = (event, sectionId = null) => {
-    if (event) {
-      // without canceling the standard behavior, navigation to the desired section from Offcanvas did not occur
-      event.preventDefault()
-    }
-
-    if (sectionId) {
+  const handleLinkClick = (event) => {
+    function scrollToTop(sectionId) {
       const section = document.getElementById(sectionId)
+
       window.scrollTo({
         top: section.offsetTop,
         behavior: 'smooth'
       })
       navigate(`#${sectionId}`)
+      // window.location.hash = sectionId
+    }
+
+    if (event) {
+      event.preventDefault()
+
+      const currentElement = event.target
+      const parentElement = currentElement.parentElement
+
+      if (currentElement.hasAttribute('href')) {
+        const sectionId = currentElement.hash.substring(1)
+        scrollToTop(sectionId)
+      } else if (parentElement && parentElement.hasAttribute('href')) {
+        // referring to the parent element allows navigation when clicking on the logo in the mobile menu
+        const sectionId = parentElement.hash.substring(1)
+        scrollToTop(sectionId)
+      }
     }
 
     if (window.matchMedia('(max-width: 767.98px)').matches) {
@@ -84,16 +97,16 @@ const NavBar = () => {
       className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
     >
       <Container>
-        <Navbar.Brand href="#hero-section">
+        <Navbar.Brand href="#hero-section" aria-label="Accueil">
           <img
             src={Logo}
-            className="d-none d-md-inline-block navbar-brand__logo"
             alt="H.M. - barber shop logo"
+            className="d-none d-md-inline-block navbar-brand__logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="offcanvasNavbar-expand"
-          onClick={(event) => handleLinkClick(event, null)}
+          onClick={handleLinkClick}
         />
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand"
@@ -109,9 +122,14 @@ const NavBar = () => {
             <Offcanvas.Title id="offcanvasNavbarLabel-expand">
               <Nav.Link
                 href="#hero-section"
-                onClick={(event) => handleLinkClick(event, 'hero-section')}
+                onClick={handleLinkClick}
+                aria-label="Accueil"
               >
-                <img src={Logo} alt="H.M. - barber shop logo" />
+                <img
+                  src={Logo}
+                  alt="H.M. - barber shop logo"
+                  className="offcanvas-header__logo"
+                />
               </Nav.Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
@@ -119,31 +137,33 @@ const NavBar = () => {
             <Nav activeKey={null}>
               <Nav.Link
                 href="#price-list-section"
-                onClick={(event) =>
-                  handleLinkClick(event, 'price-list-section')
-                }
+                onClick={handleLinkClick}
                 className={activeLink === 'price-list-section' ? 'active' : ''}
+                aria-label="Nos tarifs"
               >
                 Nos tarifs
               </Nav.Link>
               <Nav.Link
                 href="#gallery-section"
-                onClick={(event) => handleLinkClick(event, 'gallery-section')}
+                onClick={handleLinkClick}
                 className={activeLink === 'gallery-section' ? 'active' : ''}
+                aria-label="Galerie"
               >
                 Gallérie
               </Nav.Link>
               <Nav.Link
                 href="#about-us-section"
-                onClick={(event) => handleLinkClick(event, 'about-us-section')}
+                onClick={handleLinkClick}
                 className={activeLink === 'about-us-section' ? 'active' : ''}
+                aria-label="À propos de nous"
               >
                 À propos
               </Nav.Link>
               <Nav.Link
                 href="#footer"
-                onClick={(event) => handleLinkClick(event, 'footer')}
+                onClick={handleLinkClick}
                 className={activeLink === 'footer' ? 'active' : ''}
+                aria-label="Contacts"
               >
                 Contacts
               </Nav.Link>

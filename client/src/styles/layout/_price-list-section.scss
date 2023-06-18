@@ -33,6 +33,9 @@
   }
 
   &__logo {
+    width: $logo-width;
+    height: $logo-height;
+
     @media (min-width: 375px) {
       width: $logo-width * 1.1;
       height: $logo-height * 1.1;

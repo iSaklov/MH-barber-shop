@@ -4,7 +4,7 @@ import Logo from '../assets/logo.svg'
 const HeroSection = () => {
   return (
     <section id="hero-section" className="hero-section text-center">
-      <Container>
+      <Container className='my-5'>
         <Row className="mt-5 mt-md-auto">
           <Col>
             <img

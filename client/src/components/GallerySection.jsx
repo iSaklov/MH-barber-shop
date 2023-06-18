@@ -131,6 +131,7 @@ const GallerySection = () => {
               indexBackground !== 0 ? '' : 'disabled'
             }`}
             onClick={handlePrevBackground}
+            aria-label="Fond précédent"
           ></button>
           <div className="gallery-section__carousel-background-indicators">
             {backgroundImages.map(({ id, src }, bgIndex) => (
@@ -150,6 +151,7 @@ const GallerySection = () => {
               indexBackground !== backgroundImages.length - 1 ? '' : 'disabled'
             }`}
             onClick={handleNextBackground}
+            aria-label="Fond suivant"
           ></button>
         </div>
       </Container>

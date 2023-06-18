@@ -6,7 +6,7 @@ import services from '../data/services'
 const PriceListSection = () => {
   return (
     <section id="price-list-section" className="price-list-section">
-      <Container className="d-flex my-auto justify-content-center">
+      <Container className="d-flex my-auto justify-content-center py-5">
         <div className="price-list-section__list-wrapper">
           <div className="price-list-section__list-inner">
             <Row className="text-center my-3">
@@ -27,13 +27,13 @@ const PriceListSection = () => {
               <React.Fragment key={index}>
                 <Row className="align-items-end my-4 price-list-section__service-item-wrapper">
                   <Col className="price-list-section__item-title col-auto">
-                    <h4 className="heading-4 mb-0">{item.title}</h4>
+                    <h3 className="heading-4 mb-0">{item.title}</h3>
                   </Col>
                   <Col className="px-0">
                     <div className="price-list-section__separator"></div>
                   </Col>
                   <Col className="price-list-section__item-price col-auto">
-                    <h4 className="heading-4 mb-0">{item.price}€</h4>
+                    <h3 className="heading-4 mb-0">{item.price}€</h3>
                   </Col>
                   {item.subtitle && (
                     <Col

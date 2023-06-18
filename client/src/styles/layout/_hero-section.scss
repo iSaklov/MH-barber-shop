@@ -10,15 +10,16 @@
     flex-direction: column;
   }
 
-  @media (min-width: 375px) {
-    &__logo {
+  &__logo {
+    width: $logo-width;
+    height: $logo-height;
+
+    @media (min-width: 375px) {
       width: $logo-width * 1.25;
       height: $logo-height * 1.25;
     }
-  }
 
-  @media (min-width: $breakpoint-sm) {
-    &__logo {
+    @media (min-width: $breakpoint-sm) {
       width: $logo-width * 1.5;
       height: $logo-height * 1.5;
     }

@@ -14,7 +14,7 @@ const services = [
   },
   {
     title: 'Barbe longue',
-    price: 8
+    price: 7
   },
   {
     title: 'Coupe + Barbe',

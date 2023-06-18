@@ -66,6 +66,11 @@
   }
 
   .offcanvas-header {
+    &__logo {
+			width: $logo-width;
+			height: $logo-height;
+    }
+
     .offcanvas-title {
       z-index: 10;
     }

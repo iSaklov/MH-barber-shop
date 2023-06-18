@@ -42,7 +42,7 @@ const Footer = () => {
                       className="icon"
                       aria-label="Adresse de notre barber shop"
                     />
-                    <h6 className="heading-6">3 rue du grand pont</h6>
+                    <span className="heading-6">3 rue du grand pont</span>
                   </a>
                 </li>
                 <li className="my-3">
@@ -57,7 +57,7 @@ const Footer = () => {
                       className="icon"
                       aria-label="Numéro de téléphone du barber shop"
                     />
-                    <h6 className="heading-6">06.24.01.56.91</h6>
+                    <span className="heading-6">06.24.01.56.91</span>
                   </a>
                 </li>
                 <li className="my-3">
@@ -68,14 +68,16 @@ const Footer = () => {
                       className="icon"
                       aria-label="Heures d'ouverture du barber shop"
                     />
-                    <h6 className="heading-6">Mar-dim : 9h-19h</h6>
+                    <span className="heading-6">Mar-dim : 9h-19h</span>
                   </div>
                 </li>
               </ul>
             </Col>
             <Col className="my-3">
               <div className="footer__services-list-wrapper">
-                <h6 className="heading-6 mb-3 text-center">Services</h6>
+                <span className="heading-6 mb-3 text-center d-block">
+                  Services
+                </span>
                 <ul className="footer__services-list">
                   <li className="my-1">Coupe de cheveux homme</li>
                   <li className="my-1">Barbe et rasage</li>
@@ -92,7 +94,7 @@ const Footer = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1319.0334107676479!2d1.6777256494564767!3d48.608564189201324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e41921ad4d5887%3A0x97dd029c36690686!2sM.H.%20-%20barber%20shop!5e0!3m2!1sfr!2sfr!4v1684333039052!5m2!1sfr!2sfr"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title='Adresse du salon de coiffure "M.H. - barber shop'
+                title='Adresse du salon de coiffure "M.H. - barber shop"'
                 className="footer__map"
               ></iframe>
               <div className="footer__map-overlay"></div>
@@ -101,10 +103,10 @@ const Footer = () => {
         </Row>
         <Row>
           <Col xs={{ span: 10, offset: 1 }} className="my-3 text-center">
-            <h6 className="heading-6">
+            <span className="heading-6 d-block">
               Notre barber shop n'exige <strong>aucun rendez-vous</strong>{' '}
               préalable !
-            </h6>
+            </span>
           </Col>
         </Row>
         <Row className="text-center my-5">
