@@ -1,14 +1,15 @@
 import { useEffect, useState, useCallback } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-import galleryImages from '../data/gallery-image'
+import getGalleryImgs from '../data/gallery-image'
 import getBgImgArr from '../data/gallery-background-images'
 
 const GallerySection = () => {
   const [index, setIndex] = useState(0)
   const [indexBackground, setIndexBackground] = useState(0)
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+  const [galleryImages, setGalleryImages] = useState(getGalleryImgs())
   const [bgImgArray, setBgImgArray] = useState(getBgImgArr())
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
   const [isAnimating, setIsAnimating] = useState(false)
   const [groupSize, setGroupSize] = useState(1)
   const [groupedImages, setGroupedImages] = useState([])
@@ -69,6 +70,7 @@ const GallerySection = () => {
     function handleResize() {
       setGroupSize(getGroupSize())
       setBgImgArray(getBgImgArr())
+      setGalleryImages(getGalleryImgs())
     }
 
     window.addEventListener('resize', handleResize)
@@ -90,7 +92,7 @@ const GallerySection = () => {
     }, [])
 
     setGroupedImages(updatedGroupedImages)
-  }, [groupSize])
+  }, [galleryImages, groupSize])
 
   return (
     <section
@@ -114,12 +116,12 @@ const GallerySection = () => {
             {groupedImages.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map(({ id, src, name }) => (
+                  {group.map(({ id, src, alt }) => (
                     <img
                       key={id}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
                       src={src}
-                      alt={name}
+                      alt={alt}
                     />
                   ))}
                 </div>

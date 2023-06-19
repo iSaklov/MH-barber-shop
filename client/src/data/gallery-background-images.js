@@ -1,5 +1,5 @@
-import { Cloudinary } from '@cloudinary/url-gen'
 import { scale } from '@cloudinary/url-gen/actions/resize'
+import cld from '../utils/cloudinary'
 import getMatchMedia from '../utils/getMatchMedia'
 // import src01 from '../assets/images/gallery-background/bg-01.webp'
 // import src02 from '../assets/images/gallery-background/bg-02.webp'
@@ -20,12 +20,6 @@ const publicIDs = [
 ]
 
 const getBgImgArr = () => {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'dmodiqndy'
-    }
-  })
-
   const backgroundImages = []
 
   function generateBgImgArr(width) {
