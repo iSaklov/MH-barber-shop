@@ -2,12 +2,13 @@ import { useEffect, useState, useCallback } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import galleryImages from '../data/gallery-image'
-import backgroundImages from '../data/gallery-background-images'
+import getBgImgArr from '../data/gallery-background-images'
 
 const GallerySection = () => {
   const [index, setIndex] = useState(0)
   const [indexBackground, setIndexBackground] = useState(0)
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
+  const [bgImgArray, setBgImgArray] = useState(getBgImgArr())
   const [isAnimating, setIsAnimating] = useState(false)
   const [groupSize, setGroupSize] = useState(1)
   const [groupedImages, setGroupedImages] = useState([])
@@ -23,7 +24,7 @@ const GallerySection = () => {
   }
 
   const handleNextBackground = () => {
-    if (indexBackground < backgroundImages.length - 1 && !isAnimating) {
+    if (indexBackground < bgImgArray.length - 1 && !isAnimating) {
       setIndexBackground(indexBackground + 1)
     }
   }
@@ -43,12 +44,12 @@ const GallerySection = () => {
   }, [])
 
   useEffect(() => {
-    setIndexBackground(Math.ceil((backgroundImages.length - 1) / 2))
-  }, [])
+    setIndexBackground(Math.ceil((bgImgArray.length - 1) / 2))
+  }, [bgImgArray])
 
   useEffect(() => {
     const image = new Image()
-    image.src = backgroundImages[indexBackground].src
+    image.src = bgImgArray[indexBackground].src
 
     image.onload = () => {
       setBackgroundImageUrl(image.src)
@@ -58,7 +59,7 @@ const GallerySection = () => {
     return () => {
       image.onload = null
     }
-  }, [indexBackground])
+  }, [bgImgArray, indexBackground])
 
   useEffect(() => {
     setGroupSize(getGroupSize())
@@ -67,6 +68,7 @@ const GallerySection = () => {
   useEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
+      setBgImgArray(getBgImgArr())
     }
 
     window.addEventListener('resize', handleResize)
@@ -134,7 +136,7 @@ const GallerySection = () => {
             aria-label="Fond précédent"
           ></button>
           <div className="gallery-section__carousel-background-indicators">
-            {backgroundImages.map(({ id, src }, bgIndex) => (
+            {bgImgArray.map(({ id, src }, bgIndex) => (
               <button
                 key={id}
                 aria-label={src}
@@ -148,7 +150,7 @@ const GallerySection = () => {
           </div>
           <button
             className={`gallery-section__background-next-button ${
-              indexBackground !== backgroundImages.length - 1 ? '' : 'disabled'
+              indexBackground !== bgImgArray.length - 1 ? '' : 'disabled'
             }`}
             onClick={handleNextBackground}
             aria-label="Fond suivant"

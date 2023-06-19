@@ -1,5 +1,24 @@
 .about-us-section {
-  @include bg-section('../../assets/images/about-us.webp');
+  // @include bg-section('../../assets/images/about-us.webp');
+  @include bg-section(
+    'https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_576/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le'
+  );
+
+  @media (min-width: $breakpoint-sm) {
+    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_768/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
+  }
+
+  @media (min-width: $breakpoint-md) {
+    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_992/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_1200/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_1400/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
+  }
 
   .row {
     z-index: 5;
@@ -23,10 +42,27 @@
       width: 100%;
       height: 25%;
       bottom: -25%;
-      background-image: url('../../assets/images/master.webp');
+      // background-image: url('../../assets/images/master.webp');
+      background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_576/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
       background-size: cover;
       background-position: center;
       @extend %box-shadow;
+
+      @media (min-width: $breakpoint-sm) {
+        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_768/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
+      }
+
+      @media (min-width: $breakpoint-md) {
+        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_992/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_1200/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
+      }
+
+      @media (min-width: $breakpoint-xl) {
+        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_1400/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
+      }
     }
   }
 
