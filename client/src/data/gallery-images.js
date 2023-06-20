@@ -26,10 +26,14 @@ const getGalleryImgs = () => {
   function generateGalleryImgArr(width, height) {
     publicIDs.forEach((id) => {
       const img = cld.image(`mh-barbershop/gallery/${id}`)
-
-      img.resize(
-        fill().width(width).height(height).gravity(focusOn(FocusOn.faces()))
-      )
+      if (id === 'v15s8xrlztptcmcgllqp' || id === 'qd278hqud5s9xhl49mhv') {
+        // in the case when auto focusing on a face does not give the expected result, you can always use standard cropping for selected images
+        img.resize(fill().width(width).height(height))
+      } else {
+        img.resize(
+          fill().width(width).height(height).gravity(focusOn(FocusOn.faces()))
+        )
+      }
 
       galleryImages.push({
         id: id,
@@ -41,13 +45,13 @@ const getGalleryImgs = () => {
 
   switch (getMatchMedia()) {
     case 'sm':
-      generateGalleryImgArr(220, 300)
+      generateGalleryImgArr(225, 300)
       break
     case 'md':
-      generateGalleryImgArr(250, 330)
+      generateGalleryImgArr(356, 475)
       break
     default:
-      generateGalleryImgArr(270, 350)
+      generateGalleryImgArr(488, 650)
       break
   }
 

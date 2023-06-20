@@ -1,4 +1,5 @@
-import { scale } from '@cloudinary/url-gen/actions/resize'
+import { fill } from '@cloudinary/url-gen/actions/resize'
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity'
 import cld from '../utils/cloudinary'
 import getMatchMedia from '../utils/getMatchMedia'
 
@@ -18,10 +19,10 @@ const getBgImgArr = () => {
   function generateBgImgArr(width) {
     publicIDs.forEach((id) => {
       const img = cld.image(`mh-barbershop/gallery-background/${id}`)
-      img.resize(scale().width(width)).quality('auto')
+      img.resize(fill().width(width).gravity(autoGravity()))
       backgroundImages.push({ id: id, src: img.toURL() })
     })
-  }
+	}
 
   switch (getMatchMedia()) {
     case 'sm':
