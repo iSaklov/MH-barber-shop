@@ -2,7 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 const AboutUsSection = () => {
   return (
-    <section id="about-us-section" className="about-us-section">
+    <section id="about-us-section" className="about-us-section py-5">
       <Container className="d-flex my-auto justify-content-center my-5">
         <Row className="py-5">
           <Col

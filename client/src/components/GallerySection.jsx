@@ -1,32 +1,53 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-import getGalleryImgs from '../data/gallery-image'
-import getBgImgArr from '../data/gallery-background-images'
+import getGalleryImages from '../data/gallery-images'
+import getBackgroundImages from '../data/gallery-backgrounds'
 
 const GallerySection = () => {
+  const [galleryImages, setGalleryImages] = useState(getGalleryImages())
   const [index, setIndex] = useState(0)
-  const [indexBackground, setIndexBackground] = useState(0)
-  const [galleryImages, setGalleryImages] = useState(getGalleryImgs())
-  const [bgImgArray, setBgImgArray] = useState(getBgImgArr())
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState('')
-  const [isAnimating, setIsAnimating] = useState(false)
   const [groupSize, setGroupSize] = useState(1)
   const [groupedImages, setGroupedImages] = useState([])
+  const [backgroundImages, setBackgroundImages] = useState(
+    getBackgroundImages()
+  )
+  const [selectedBackground, setSelectedBackground] = useState(0)
+  const [selectedBackgroundUrl, setSelectedBackgroundUrl] = useState('')
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [carouselOverlay, setCarouselOverlay] = useState(false)
+  const delayTimerRef = useRef(null)
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
   }
 
+  const hideCarousel = () => {
+    setCarouselOverlay(true)
+    clearTimeout(delayTimerRef.current)
+    delayTimerRef.current = setTimeout(() => {
+      setCarouselOverlay(false)
+    }, 3000)
+  }
+
   const handlePrevBackground = () => {
-    if (indexBackground > 0 && !isAnimating) {
-      setIndexBackground(indexBackground - 1)
+    if (selectedBackground > 0 && !isAnimating) {
+      setSelectedBackground(selectedBackground - 1)
+      hideCarousel()
     }
   }
 
   const handleNextBackground = () => {
-    if (indexBackground < bgImgArray.length - 1 && !isAnimating) {
-      setIndexBackground(indexBackground + 1)
+    if (selectedBackground < backgroundImages.length - 1 && !isAnimating) {
+      setSelectedBackground(selectedBackground + 1)
+      hideCarousel()
+    }
+  }
+
+  const handleChangeBackground = (selectedIndex) => {
+    if (!isAnimating) {
+      setSelectedBackground(selectedIndex)
+      hideCarousel()
     }
   }
 
@@ -45,41 +66,39 @@ const GallerySection = () => {
   }, [])
 
   useEffect(() => {
-    setIndexBackground(Math.ceil((bgImgArray.length - 1) / 2))
-  }, [bgImgArray])
+    setSelectedBackground(Math.ceil((backgroundImages.length - 1) / 2))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const image = new Image()
-    image.src = bgImgArray[indexBackground].src
+    image.src = backgroundImages[selectedBackground].src
 
     image.onload = () => {
-      setBackgroundImageUrl(image.src)
+      setSelectedBackgroundUrl(image.src)
       setIsAnimating(true)
     }
 
     return () => {
       image.onload = null
     }
-  }, [bgImgArray, indexBackground])
-
-  useEffect(() => {
-    setGroupSize(getGroupSize())
-  }, [getGroupSize])
+  }, [backgroundImages, selectedBackground])
 
   useEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
-      setBgImgArray(getBgImgArr())
-      setGalleryImages(getGalleryImgs())
+      setGalleryImages(getGalleryImages())
+      setBackgroundImages(getBackgroundImages())
     }
+
+    setGroupSize(getGroupSize())
 
     window.addEventListener('resize', handleResize)
 
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [getGroupSize])
 
   useEffect(() => {
     const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
@@ -97,10 +116,12 @@ const GallerySection = () => {
   return (
     <section
       id="gallery-section"
-      className={`gallery-section ${isAnimating ? 'animating' : ''}`}
+      className={`gallery-section py-5 ${isAnimating ? 'animating' : ''} ${
+        carouselOverlay ? 'overlay' : ''
+      }`}
       onTransitionEnd={handleTransitionEnd}
       style={{
-        backgroundImage: `url(${backgroundImageUrl})`
+        backgroundImage: `url(${selectedBackgroundUrl})`
       }}
     >
       <Container className="my-5">
@@ -111,7 +132,11 @@ const GallerySection = () => {
             onSelect={handleSelect}
             defaultActiveIndex={0}
             interval={null}
-            className="gallery-section__carousel"
+            className={`gallery-section__carousel ${
+              carouselOverlay ? 'overlay' : ''
+            }`}
+            onMouseEnter={() => setCarouselOverlay(false)}
+            onTouchStart={() => setCarouselOverlay(false)}
           >
             {groupedImages.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
@@ -132,27 +157,29 @@ const GallerySection = () => {
         <div className="gallery-section__background-navigation">
           <button
             className={`gallery-section__background-prev-button ${
-              indexBackground !== 0 ? '' : 'disabled'
+              selectedBackground !== 0 ? '' : 'disabled'
             }`}
             onClick={handlePrevBackground}
             aria-label="Fond précédent"
           ></button>
           <div className="gallery-section__carousel-background-indicators">
-            {bgImgArray.map(({ id, src }, bgIndex) => (
+            {backgroundImages.map(({ id, src }, bgIndex) => (
               <button
                 key={id}
                 aria-label={src}
-                aria-current={indexBackground !== bgIndex ? 'false' : 'true'}
+                aria-current={selectedBackground !== bgIndex ? 'false' : 'true'}
                 className={`button mx-2 ${
-                  indexBackground !== bgIndex ? '' : 'active'
+                  selectedBackground !== bgIndex ? '' : 'active'
                 }`}
-                onClick={() => setIndexBackground(bgIndex)}
+                onClick={handleChangeBackground.bind(null, bgIndex)}
               ></button>
             ))}
           </div>
           <button
             className={`gallery-section__background-next-button ${
-              indexBackground !== bgImgArray.length - 1 ? '' : 'disabled'
+              selectedBackground !== backgroundImages.length - 1
+                ? ''
+                : 'disabled'
             }`}
             onClick={handleNextBackground}
             aria-label="Fond suivant"

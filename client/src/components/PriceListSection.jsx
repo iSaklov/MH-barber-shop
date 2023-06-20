@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
-import services from '../data/services'
+import PriceList from '../data/price-list'
 
 const PriceListSection = () => {
   return (
-    <section id="price-list-section" className="price-list-section">
+    <section id="price-list-section" className="price-list-section py-5">
       <Container className="d-flex my-auto justify-content-center py-5">
         <div className="price-list-section__list-wrapper">
           <div className="price-list-section__list-inner">
@@ -23,7 +23,7 @@ const PriceListSection = () => {
                 <h2 className="heading-2 text-center">Nos tarifs</h2>
               </Col>
             </Row>
-            {services.map((item, index) => (
+            {PriceList.map((item, index) => (
               <React.Fragment key={index}>
                 <Row className="align-items-end my-4 price-list-section__service-item-wrapper">
                   <Col className="price-list-section__item-title col-auto">

@@ -1,5 +1,4 @@
 .gallery-section {
-  // @include bg-section('../../assets/images/placeholder.webp');
   @include bg-section(
     'https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_576/q_auto/v1/mh-barbershop/qid1cfbck4lmbiacpufg'
   );
@@ -20,6 +19,13 @@
     background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_scale,w_1400/q_auto/v1/mh-barbershop/qid1cfbck4lmbiacpufg');
   }
 
+  &.overlay {
+    // Lightening the background on click to change the background image
+    &::before {
+      background-color: rgba($color-dark, 0.25);
+    }
+  }
+
   .container {
     z-index: 5;
   }
@@ -34,6 +40,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &.overlay {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
   }
 
   @media (min-width: $breakpoint-md) {
@@ -223,7 +236,6 @@
 
       &.active {
         background-image: url('../../assets/icons/ellipse-active.svg');
-        // filter: invert(63%) sepia(42%) saturate(496%) hue-rotate(358deg) brightness(106%) contrast(86%);
         transform: scale(1.2);
         cursor: default;
       }
