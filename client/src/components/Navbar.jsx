@@ -97,12 +97,18 @@ const NavBar = () => {
       className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
     >
       <Container>
-        <Navbar.Brand href="#hero-section" aria-label="Accueil">
-          <img
-            src={Logo}
-            alt="H.M. - barber shop logo"
-            className="d-none d-md-inline-block navbar-brand__logo"
-          />
+        <Navbar.Brand>
+          <Nav.Link
+            href="#hero-section"
+            onClick={handleLinkClick}
+            aria-label="Accueil"
+          >
+            <img
+              src={Logo}
+              alt="H.M. - barber shop logo"
+              className="d-none d-md-inline-block navbar-brand__logo"
+            />
+          </Nav.Link>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="offcanvasNavbar-expand"
