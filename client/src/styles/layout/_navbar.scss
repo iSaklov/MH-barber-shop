@@ -1,0 +1,120 @@
+@media (min-width: $breakpoint-md) {
+  .navbar {
+    background-color: rgba($color-dark, 0.85);
+    &:after {
+      // vertical line
+      content: '';
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $color-primary;
+    }
+  }
+
+  .navbar-nav {
+    column-gap: 4rem;
+  }
+
+  .navbar-brand {
+    &__logo {
+      width: $logo-width;
+      height: $logo-height;
+    }
+  }
+
+  .scrolled-down {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+  }
+  .scrolled-up {
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.nav-link {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.2rem;
+  font-variant: small-caps;
+  line-height: 3.5rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+
+  &.active {
+    border-bottom: 0.1rem solid $color-primary;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    line-height: 2.7rem;
+    transition: all 0.3s ease;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .offcanvas-md {
+    width: 100%;
+    align-items: center;
+    background-color: $color-dark;
+
+    @media (min-width: 375px) {
+      max-width: 32rem;
+    }
+  }
+
+  .offcanvas-header {
+    &__logo {
+			width: $logo-width;
+			height: $logo-height;
+    }
+
+    .offcanvas-title {
+      z-index: 10;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+    }
+  }
+
+  .offcanvas-body {
+    display: flex;
+    justify-content: center;
+    margin-top: -$logo-height;
+  }
+
+  .navbar-nav {
+    row-gap: 2rem;
+    justify-content: center;
+    &::before,
+    &::after {
+      content: '';
+      align-self: center;
+      width: 2rem;
+      height: 2rem;
+      background-image: url('../../assets/ellipse.svg');
+    }
+
+    @media (min-width: 320px) {
+      row-gap: 2.5rem;
+    }
+
+    @media (min-width: 375px) {
+      row-gap: 3rem;
+    }
+  }
+
+  .nav-link {
+    font-size: 2.5rem;
+
+    @media (min-width: 375px) {
+      font-size: 3rem;
+    }
+  }
+}

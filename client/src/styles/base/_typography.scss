@@ -1,0 +1,42 @@
+.heading-1 {
+  @include heading;
+  font-size: 1.9rem;
+  line-height: 2.7rem;
+}
+
+.heading-2 {
+  @include heading;
+  font-weight: 400;
+  color: $color-primary;
+}
+
+.heading-4 {
+  @include heading;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 2.3rem;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+}
+
+.heading-5 {
+  @include heading;
+  font-weight: 400;
+  font-size: 2.2rem;
+  text-transform: none;
+  color: $color-primary;
+}
+
+.heading-6 {
+  @include heading;
+  font-weight: 700;
+  font-size: 1.9rem;
+  text-transform: lowercase;
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 2rem;
+  }
+}
