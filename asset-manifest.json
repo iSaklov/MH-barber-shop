@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/MH-barber-shop/static/css/main.7e26e3ef.css",
+    "main.js": "/MH-barber-shop/static/js/main.4ea69163.js",
+    "static/media/PlayfairDisplaySC-BoldItalic.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-BoldItalic.3e8c805c55a985ccbdf6.ttf",
+    "static/media/PlayfairDisplaySC-Italic.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-Italic.87ef2f51973f3f46d082.ttf",
+    "static/media/PlayfairDisplaySC-Regular.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-Regular.602fc2b2e1d120a2735d.ttf",
+    "static/media/PlayfairDisplaySC-Bold.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-Bold.0768715913e34560b009.ttf",
+    "static/media/Italiana-Regular.ttf": "/MH-barber-shop/static/media/Italiana-Regular.b7ea246b78a1e1dff2ea.ttf",
+    "static/media/logo.svg": "/MH-barber-shop/static/media/logo.d60ef5c565eb9e732dd747bcac538c6e.svg",
+    "index.html": "/MH-barber-shop/index.html",
+    "static/media/prev.svg": "/MH-barber-shop/static/media/prev.73d8d224886ccab26133.svg",
+    "static/media/next.svg": "/MH-barber-shop/static/media/next.fe3181cf0ab794e67a73.svg",
+    "static/media/material-symbols_mail-rounded.svg": "/MH-barber-shop/static/media/material-symbols_mail-rounded.4dc9b7e07fb4d3b505347211c19e98d1.svg",
+    "static/media/mdi_linkedin.svg": "/MH-barber-shop/static/media/mdi_linkedin.acaf86a5a13d667acb665040307006bc.svg",
+    "static/media/fa6-brands_telegram.svg": "/MH-barber-shop/static/media/fa6-brands_telegram.38e87b989b196c19050bdeb936c1956b.svg",
+    "static/media/mingcute_time-fill.svg": "/MH-barber-shop/static/media/mingcute_time-fill.ce30d37af080f1724cfbfd48c23543fe.svg",
+    "static/media/ph_map-pin-fill.svg": "/MH-barber-shop/static/media/ph_map-pin-fill.49f1ba4d1176f7f0a6cfc8945435544b.svg",
+    "static/media/ph_phone-fill.svg": "/MH-barber-shop/static/media/ph_phone-fill.7d9d9050d4c7d9f68a3c073b02cf08f3.svg",
+    "static/media/ellipse.svg": "/MH-barber-shop/static/media/ellipse.b677fd4966f3516f6cff.svg",
+    "static/media/ellipse-white.svg": "/MH-barber-shop/static/media/ellipse-white.a26806f0d648da4bdd98.svg",
+    "static/media/ellipse-active.svg": "/MH-barber-shop/static/media/ellipse-active.1ef1853548b7dad599e2.svg",
+    "main.7e26e3ef.css.map": "/MH-barber-shop/static/css/main.7e26e3ef.css.map",
+    "main.4ea69163.js.map": "/MH-barber-shop/static/js/main.4ea69163.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e26e3ef.css",
+    "static/js/main.4ea69163.js"
+  ]
+}

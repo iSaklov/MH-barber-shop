@@ -1,28 +1,21 @@
-# M.H. - barber shop
+# Your Favicon Package
 
-## FIGMA
+This package was generated with [RealFaviconGenerator](https://realfavicongenerator.net/) [v0.16](https://realfavicongenerator.net/change_log#v0.16)
 
-https://www.figma.com/file/yRJoTSEa0VuuzWDvNBhtG9/M.H.---barber-shop?node-id=1-3&t=cc1bhfwI9zmGvJhP-0
+## Install instructions
 
-## Technologies
+To install this package:
 
-* ![React](https://img.shields.io/badge/React-v18.2.0-20232A?style=for-the-badge&logo=react&logoColor=61DAFB&labelColor=20232A&color=gray)
-* ![node-sass](https://img.shields.io/badge/nodeSASS-v2.34-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white&labelColor=hotpink&color=gray)
-* ![Bootstrap](https://img.shields.io/badge/bootstrap-v5.2.3-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white&labelColor=20232A&color=gray)
+Extract this package in the root of your web site. If your site is <code>http://www.example.com</code>, you should be able to access a file named <code>http://www.example.com/favicon.ico</code>.
 
-## Installation
+Insert the following code in the `head` section of your pages:
 
-```
-$ git clone https://github.com/iSaklov/MH-barber-shop.git
-$ cd ./client
-$ yarn install
-$ yarn start
-```
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#dfae5f">
+    <meta name="msapplication-TileColor" content="#121212">
+    <meta name="theme-color" content="#121212">
 
-## Collaboration
-
-we develop all new features on a NEW branch, created from origin DEV branch
-
-` git checkout -b 'feat: ${description}' `
-
-after doing git push, we make a pull request to the DEV branch explaining the changes
+_Optional_ - Check your favicon with the [favicon checker](https://realfavicongenerator.net/favicon_checker)
