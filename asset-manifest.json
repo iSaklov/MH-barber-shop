@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MH-barber-shop/static/css/main.7e26e3ef.css",
-    "main.js": "/MH-barber-shop/static/js/main.720b80af.js",
+    "main.js": "/MH-barber-shop/static/js/main.ffa619f5.js",
     "static/media/PlayfairDisplaySC-BoldItalic.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-BoldItalic.3e8c805c55a985ccbdf6.ttf",
     "static/media/PlayfairDisplaySC-Italic.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-Italic.87ef2f51973f3f46d082.ttf",
     "static/media/PlayfairDisplaySC-Regular.ttf": "/MH-barber-shop/static/media/PlayfairDisplaySC-Regular.602fc2b2e1d120a2735d.ttf",
@@ -21,10 +21,10 @@
     "static/media/ellipse-white.svg": "/MH-barber-shop/static/media/ellipse-white.a26806f0d648da4bdd98.svg",
     "static/media/ellipse-active.svg": "/MH-barber-shop/static/media/ellipse-active.1ef1853548b7dad599e2.svg",
     "main.7e26e3ef.css.map": "/MH-barber-shop/static/css/main.7e26e3ef.css.map",
-    "main.720b80af.js.map": "/MH-barber-shop/static/js/main.720b80af.js.map"
+    "main.ffa619f5.js.map": "/MH-barber-shop/static/js/main.ffa619f5.js.map"
   },
   "entrypoints": [
     "static/css/main.7e26e3ef.css",
-    "static/js/main.720b80af.js"
+    "static/js/main.ffa619f5.js"
   ]
 }
