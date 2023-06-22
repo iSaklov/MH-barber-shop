@@ -1,4 +1,5 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Nav } from 'react-bootstrap'
+import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
 import Map from '../assets/icons/ph_map-pin-fill.svg'
 import Phone from '../assets/icons/ph_phone-fill.svg'
@@ -8,18 +9,24 @@ import Linkedin from '../assets/icons/mdi_linkedin.svg'
 import Mail from '../assets/icons/material-symbols_mail-rounded.svg'
 
 const Footer = () => {
+  const handleLinkClick = useScrollToLink()
+
   return (
     <footer id="footer" className="footer">
       <Container className="py-5">
         <Row className="text-center my-5">
           <Col>
-            <a href="#hero-section">
+            <Nav.Link
+              href="#hero-section"
+              onClick={handleLinkClick}
+              aria-label="Accueil"
+            >
               <img
                 src={Logo}
-                className="footer__logo"
                 alt="H.M. - barber shop logo"
+                className="footer__logo"
               />
-            </a>
+            </Nav.Link>
           </Col>
         </Row>
         <Row className="text-xs-center text-md-left my-5 flex-md-row">

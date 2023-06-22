@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap'
+import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
 
 const NavBar = () => {
@@ -9,7 +9,7 @@ const NavBar = () => {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [activeLink, setActiveLink] = useState(null)
   const sectionsRef = useRef([])
-  const navigate = useNavigate()
+  const handleLinkClick = useScrollToLink(setShowOffcanvas)
 
   const controlNavbar = useCallback(() => {
     if (window.scrollY > lastScrollY) {
@@ -41,38 +41,12 @@ const NavBar = () => {
     navHighlighter()
   }, [controlNavbar, navHighlighter])
 
-  const handleLinkClick = (event) => {
-    function scrollToTop(sectionId) {
-      const section = document.getElementById(sectionId)
+  const showMenu = () => {
+    setShowOffcanvas(true)
+  }
 
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: 'smooth'
-      })
-      navigate(`#${sectionId}`)
-      // window.location.hash = sectionId
-    }
-
-    if (event) {
-      event.preventDefault()
-
-      const currentElement = event.target
-      const parentElement = currentElement.parentElement
-
-      if (currentElement.hasAttribute('href')) {
-        const sectionId = currentElement.hash.substring(1)
-        scrollToTop(sectionId)
-      } else if (parentElement && parentElement.hasAttribute('href')) {
-        // referring to the parent element allows navigation when clicking on the logo in the mobile menu
-        const sectionId = parentElement.hash.substring(1)
-        scrollToTop(sectionId)
-      }
-    }
-
-    if (window.matchMedia('(max-width: 767.98px)').matches) {
-      // avoids showOffcanvas state change on non-mobile devices
-      setShowOffcanvas(!showOffcanvas)
-    }
+  const hideMenu = () => {
+    setShowOffcanvas(false)
   }
 
   useEffect(() => {
@@ -97,29 +71,23 @@ const NavBar = () => {
       className={`${navbarHidden ? 'scrolled-down' : 'scrolled-up'}`}
     >
       <Container>
-        <Navbar.Brand>
-          <Nav.Link
-            href="#hero-section"
-            onClick={handleLinkClick}
-            aria-label="Accueil"
-          >
-            <img
-              src={Logo}
-              alt="H.M. - barber shop logo"
-              className="d-none d-md-inline-block navbar-brand__logo"
-            />
-          </Nav.Link>
+        <Navbar.Brand href="#hero-section" aria-label="Accueil">
+          <img
+            src={Logo}
+            alt="H.M. - barber shop logo"
+            className="d-none d-md-inline-block navbar-brand__logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="offcanvasNavbar-expand"
-          onClick={handleLinkClick}
+          onClick={showMenu}
         />
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand"
           aria-labelledby="offcanvasNavbarLabel-expand"
           placement="end" // rigth
           show={showOffcanvas}
-          onHide={handleLinkClick.bind(null)}
+          onHide={hideMenu}
           scroll={false}
           backdrop={true}
           responsive="md"
