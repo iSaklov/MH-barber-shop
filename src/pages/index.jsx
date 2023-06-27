@@ -1,8 +1,9 @@
 // import { BrowserRouter } from 'react-router-dom'
 import { HashRouter } from 'react-router-dom'
-import useRoutes from './routes'
+import useRoutes from '../routes'
+import '../styles/index.scss'
 
-function App() {
+const IndexPage = () => {
   const isAdmin = false
   const routes = useRoutes(isAdmin)
 
@@ -10,4 +11,6 @@ function App() {
   return <HashRouter>{routes}</HashRouter>
 }
 
-export default App
+export default IndexPage
+
+export const Head = () => <title>M.H. - barber shop</title>

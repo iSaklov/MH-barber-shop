@@ -1,8 +1,27 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import getGalleryImages from '../data/gallery-images'
 import getBackgroundImages from '../data/gallery-backgrounds'
+
+const data = useStaticQuery(graphql`
+  query {
+    allFile(filter: { relativePath: { regex: "/assets/gallery/" } }) {
+      edges {
+        node {
+          relativePath
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          }
+        }
+      }
+    }
+  }
+`)
+
+console.log('data =>', data)
 
 const GallerySection = () => {
   const [galleryImages, setGalleryImages] = useState(getGalleryImages())
@@ -17,6 +36,9 @@ const GallerySection = () => {
   const [isAnimating, setIsAnimating] = useState(false)
   const [carouselOverlay, setCarouselOverlay] = useState(false)
   const delayTimerRef = useRef(null)
+  // const image = getImage(galleryImages[1]['img'])
+  const image = galleryImages[1]['img']
+  console.log('image', image)
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
@@ -141,11 +163,12 @@ const GallerySection = () => {
             {groupedImages.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map(({ id, src, alt }) => (
+                  {group.map(({ id, src, alt, img }) => (
                     <img
                       key={id}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
                       src={src}
+                      // image={img}
                       alt={alt}
                     />
                   ))}

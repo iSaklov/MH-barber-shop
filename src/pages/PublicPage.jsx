@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Main from '../components/Main'
 import Footer from '../components/Footer'
 
-const HomePage = () => {
+const PublicPage = () => {
   return (
     <>
       <Header />
@@ -12,4 +12,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default PublicPage

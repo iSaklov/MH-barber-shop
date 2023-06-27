@@ -38,7 +38,8 @@ const getGalleryImgs = () => {
       galleryImages.push({
         id: id,
         src: img.toURL(),
-        alt: generateRandomAltText()
+				alt: generateRandomAltText(),
+				img: img
       })
     })
   }

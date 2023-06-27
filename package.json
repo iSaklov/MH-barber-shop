@@ -1,8 +1,62 @@
 {
+  "homepage": "https://isaklov.github.io/MH-barber-shop",
+  "name": "m.h.-barber-shop",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "description": "m.h.-barber-shop",
+  "author": "iSaklov <ivansaklov@gmail.com>",
+  "keywords": [
+    "gatsby"
+  ],
+  "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.10.1",
+    "@mdx-js/react": "^2.3.0",
+    "bootstrap": "^5.2.3",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier-react": "^0.0.24",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-manifest": "^5.11.0",
+    "gatsby-plugin-mdx": "^5.11.0",
+    "gatsby-plugin-provide-react": "^1.0.2",
+    "gatsby-plugin-sass": "^6.11.0",
+    "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-sharp": "^5.11.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.63.6"
+  },
+  "scripts": {
+    "dev": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.6"
+    "gh-pages": "^5.0.0"
   }
 }
