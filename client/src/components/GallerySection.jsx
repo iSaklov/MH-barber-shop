@@ -1,13 +1,11 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-// import getGalleryImages from '../data/gallery-images'
+import getGalleryImages from '../data/gallery-images'
 import getBackgroundImages from '../data/gallery-backgrounds'
 
 const GallerySection = () => {
-  // const [galleryImages, setGalleryImages] = useState(getGalleryImages())
+  const [galleryImages, setGalleryImages] = useState(getGalleryImages())
   const [index, setIndex] = useState(0)
   const [groupSize, setGroupSize] = useState(1)
   const [groupedImages, setGroupedImages] = useState([])
@@ -19,33 +17,6 @@ const GallerySection = () => {
   const [isAnimating, setIsAnimating] = useState(false)
   const [carouselOverlay, setCarouselOverlay] = useState(false)
   const delayTimerRef = useRef(null)
-
-  const data = useStaticQuery(graphql`
-    query CloudinaryImage {
-      allCloudinaryMedia(
-        filter: { folder: { eq: "mh-barbershop/gallery" } }
-        sort: { created_at: ASC }
-      ) {
-        edges {
-          node {
-            id
-            tags
-            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          }
-        }
-      }
-    }
-  `)
-
-  const images = data.allCloudinaryMedia.edges.map(({ node }) => {
-    console.log('node', node)
-    const image = getImage(node)
-    return {
-      id: node.id,
-      alt: node.tags.join(' '),
-      image
-    }
-  })
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
@@ -116,7 +87,7 @@ const GallerySection = () => {
   useEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
-      // setGalleryImages(getGalleryImages())
+      setGalleryImages(getGalleryImages())
       setBackgroundImages(getBackgroundImages())
     }
 
@@ -129,21 +100,8 @@ const GallerySection = () => {
     }
   }, [getGroupSize])
 
-  // useEffect(() => {
-  //   const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
-  //     const groupIndex = Math.floor(index / groupSize)
-  //     if (!acc[groupIndex]) {
-  //       acc[groupIndex] = []
-  //     }
-  //     acc[groupIndex].push(curr)
-  //     return acc
-  //   }, [])
-
-  //   setGroupedImages(updatedGroupedImages)
-  // }, [galleryImages, groupSize])
-
   useEffect(() => {
-    const updatedGroupedImages = images.reduce((acc, curr, index) => {
+    const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
       const groupIndex = Math.floor(index / groupSize)
       if (!acc[groupIndex]) {
         acc[groupIndex] = []
@@ -153,7 +111,7 @@ const GallerySection = () => {
     }, [])
 
     setGroupedImages(updatedGroupedImages)
-  }, [groupSize])
+  }, [galleryImages, groupSize])
 
   return (
     <section
@@ -183,11 +141,11 @@ const GallerySection = () => {
             {groupedImages.map((group, groupIndex) => (
               <Carousel.Item key={groupIndex}>
                 <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map(({ id, image, alt }) => (
-                    <GatsbyImage
+                  {group.map(({ id, src, alt }) => (
+                    <img
                       key={id}
                       className="d-block mx-sm-auto mx-md-0 gallery-section__img"
-                      image={image}
+                      src={src}
                       alt={alt}
                     />
                   ))}

@@ -1,0 +1,17 @@
+// scss-docs-start font-variables
+$body-bg: $color-dark;
+$body-color: $color-white;
+$font-family-base: $font-playfair;
+$font-size-base: 1.6rem;
+
+// links
+$link-color: $color-light;
+$link-decoration: none;
+$link-hover-color: $color-white;
+
+// scss-docs-start navbar-dark-variables
+$navbar-dark-color: rgba($color-white, 0.75) !default;
+$navbar-dark-hover-color: $color-white !default;
+$navbar-dark-active-color: $color-light !default;
+$navbar-dark-disabled-color: rgba($color-white, 0.25) !default;
+$navbar-dark-toggler-border-color: rgba($color-white, 0.1) !default;

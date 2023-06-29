@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -11,6 +14,29 @@ module.exports = {
       resolve: 'gatsby-plugin-sass',
       options: {
         useResolveUrlLoader: true
+      }
+    },
+    {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        // resourceType: `image`,
+        // type: `twitter`,
+        maxResults: 24,
+        prefix: `mh-barbershop/`,
+        context: true,
+        tags: true,
+      }
+    },
+    {
+      resolve: `gatsby-transformer-cloudinary`,
+      options: {
+        // Add the `gatsbyImageData` resolver to `CloudinaryMedia`
+        transformTypes: [`CloudinaryMedia`],
+        // Optional transformation option
+        defaultTransformations: ['c_fill', 'g_auto', 'q_auto']
       }
     },
     'gatsby-plugin-image',

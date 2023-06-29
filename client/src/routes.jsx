@@ -1,6 +1,7 @@
+import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
-import PublicPage from './pages/PublicPage'
+import HomePage from './pages/HomePage'
 
 const useRoutes = (isAdmin) => {
   if (isAdmin) {
@@ -14,7 +15,7 @@ const useRoutes = (isAdmin) => {
 
   return (
     <Routes>
-      <Route path="/" element={<PublicPage />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
