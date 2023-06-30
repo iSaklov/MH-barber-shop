@@ -1,3 +1,4 @@
+import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col, Nav } from 'react-bootstrap'
 import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
@@ -13,6 +14,12 @@ const Footer = () => {
 
   return (
     <footer id="footer" className="footer">
+      <StaticImage
+        className="footer__background"
+        src="../assets/images/footer.webp"
+        alt=""
+        formats={['auto', 'webp', 'avif']}
+      />
       <Container className="py-5">
         <Row className="text-center my-5">
           <Col>

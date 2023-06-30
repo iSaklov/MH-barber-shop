@@ -38,7 +38,6 @@ const GallerySection = () => {
   `)
 
   const images = data.allCloudinaryMedia.edges.map(({ node }) => {
-    console.log('node', node)
     const image = getImage(node)
     return {
       id: node.id,

@@ -27,7 +27,7 @@ module.exports = {
         maxResults: 24,
         prefix: `mh-barbershop/`,
         context: true,
-        tags: true,
+        tags: true
       }
     },
     {
@@ -48,7 +48,23 @@ module.exports = {
       }
     },
     'gatsby-plugin-mdx',
-    'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`
+          // quality: 50,
+          // breakpoints: [750, 1080, 1366, 1920],
+          // backgroundColor: `transparent`,
+          // blurredOptions: {},
+          // jpgOptions: {},
+          // pngOptions: {},
+          // webpOptions: {},
+          // avifOptions: {}
+        }
+      }
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',

@@ -1,9 +1,16 @@
+import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 
 const AboutUsSection = () => {
   return (
     <section id="about-us-section" className="about-us-section py-5">
-      <Container className="d-flex my-auto justify-content-center my-5">
+      <StaticImage
+        className="about-us-section__background"
+        src="../assets/images/about-us.webp"
+        alt=""
+        formats={['auto', 'webp', 'avif']}
+      />
+      <Container className="d-flex my-auto justify-content-center my-5"> 
         <Row className="py-5">
           <Col
             xs={{ span: 10, offset: 1 }}

@@ -1,23 +1,5 @@
 .about-us-section {
-  @include bg-section(
-    'https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_576/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le'
-  );
-
-  @media (min-width: $breakpoint-sm) {
-    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_768/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
-  }
-
-  @media (min-width: $breakpoint-md) {
-    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_992/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
-  }
-
-  @media (min-width: $breakpoint-lg) {
-    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_1200/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
-  }
-
-  @media (min-width: $breakpoint-xl) {
-    background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_1400/q_auto/v1/mh-barbershop/s4wcpefmfjlqyd9lx7le');
-  }
+  @include bg-section1;
 
   .row {
     z-index: 5;

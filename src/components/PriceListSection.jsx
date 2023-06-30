@@ -1,4 +1,4 @@
-import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
 import PriceList from '../data/price-list'
@@ -6,6 +6,12 @@ import PriceList from '../data/price-list'
 const PriceListSection = () => {
   return (
     <section id="price-list-section" className="price-list-section py-5">
+      <StaticImage
+        className="price-list-section__background"
+        src="../assets/images/price-list.webp"
+        alt=""
+        formats={['auto', 'webp', 'avif']}
+      />
       <Container className="d-flex my-auto justify-content-center py-5">
         <div className="price-list-section__list-wrapper">
           <div className="price-list-section__list-inner">
