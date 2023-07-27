@@ -3,28 +3,20 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-// import getGalleryImages from '../data/gallery-images'
-import getBackgroundImages from '../data/gallery-backgrounds'
 
 const GallerySection = () => {
-  // const [galleryImages, setGalleryImages] = useState(getGalleryImages())
   const [index, setIndex] = useState(0)
+  const [bgIndex, setBgIndex] = useState(0)
   const [groupSize, setGroupSize] = useState(1)
   const [groupedImages, setGroupedImages] = useState([])
-  const [backgroundImages, setBackgroundImages] = useState(
-    getBackgroundImages()
-  )
-  const [selectedBackground, setSelectedBackground] = useState(0)
-  const [selectedBackgroundUrl, setSelectedBackgroundUrl] = useState('')
-  const [isAnimating, setIsAnimating] = useState(false)
   const [carouselOverlay, setCarouselOverlay] = useState(false)
   const delayTimerRef = useRef(null)
 
   const data = useStaticQuery(graphql`
-    query CloudinaryImage {
-      allCloudinaryMedia(
+    query CloudinaryImages {
+      galleryImages: allCloudinaryMedia(
         filter: { folder: { eq: "mh-barbershop/gallery" } }
-        sort: { created_at: ASC }
+        sort: { fields: [created_at], order: ASC }
       ) {
         edges {
           node {
@@ -34,11 +26,24 @@ const GallerySection = () => {
           }
         }
       }
+
+      galleryBackground: allCloudinaryMedia(
+        filter: { folder: { eq: "mh-barbershop/gallery-background" } }
+        sort: { fields: [created_at], order: ASC }
+      ) {
+        edges {
+          node {
+            id
+            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          }
+        }
+      }
     }
   `)
 
-  const images = data.allCloudinaryMedia.edges.map(({ node }) => {
+  const galleryImages = data.galleryImages.edges.map(({ node }) => {
     const image = getImage(node)
+    // console.log('image', image)
     return {
       id: node.id,
       alt: node.tags.join(' '),
@@ -46,8 +51,21 @@ const GallerySection = () => {
     }
   })
 
+  const galleryBackground = data.galleryBackground.edges.map(({ node }) => {
+    const image = getImage(node)
+    return {
+      id: node.id,
+      alt: '',
+      image
+    }
+  })
+
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex)
+  }
+
+  const handleBgSelect = (selectedIndex) => {
+    setBgIndex(selectedIndex)
   }
 
   const hideCarousel = () => {
@@ -59,28 +77,22 @@ const GallerySection = () => {
   }
 
   const handlePrevBackground = () => {
-    if (selectedBackground > 0 && !isAnimating) {
+    if (selectedBackground > 0) {
       setSelectedBackground(selectedBackground - 1)
       hideCarousel()
     }
   }
 
   const handleNextBackground = () => {
-    if (selectedBackground < backgroundImages.length - 1 && !isAnimating) {
+    if (selectedBackground < backgroundImages.length - 1) {
       setSelectedBackground(selectedBackground + 1)
       hideCarousel()
     }
   }
 
   const handleChangeBackground = (selectedIndex) => {
-    if (!isAnimating) {
-      setSelectedBackground(selectedIndex)
-      hideCarousel()
-    }
-  }
-
-  const handleTransitionEnd = () => {
-    setIsAnimating(false)
+    setSelectedBackground(selectedIndex)
+    hideCarousel()
   }
 
   const getGroupSize = useCallback(() => {
@@ -94,29 +106,16 @@ const GallerySection = () => {
   }, [])
 
   useEffect(() => {
-    setSelectedBackground(Math.ceil((backgroundImages.length - 1) / 2))
+    // setSelectedBackground(Math.ceil((backgroundImages.length - 1) / 2))
+    setBgIndex(Math.ceil((galleryBackground.length - 1) / 2))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    const image = new Image()
-    image.src = backgroundImages[selectedBackground].src
-
-    image.onload = () => {
-      setSelectedBackgroundUrl(image.src)
-      setIsAnimating(true)
-    }
-
-    return () => {
-      image.onload = null
-    }
-  }, [backgroundImages, selectedBackground])
 
   useEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
       // setGalleryImages(getGalleryImages())
-      setBackgroundImages(getBackgroundImages())
+      // setBackgroundImages(getBackgroundImages())
     }
 
     setGroupSize(getGroupSize())
@@ -128,21 +127,8 @@ const GallerySection = () => {
     }
   }, [getGroupSize])
 
-  // useEffect(() => {
-  //   const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
-  //     const groupIndex = Math.floor(index / groupSize)
-  //     if (!acc[groupIndex]) {
-  //       acc[groupIndex] = []
-  //     }
-  //     acc[groupIndex].push(curr)
-  //     return acc
-  //   }, [])
-
-  //   setGroupedImages(updatedGroupedImages)
-  // }, [galleryImages, groupSize])
-
   useEffect(() => {
-    const updatedGroupedImages = images.reduce((acc, curr, index) => {
+    const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
       const groupIndex = Math.floor(index / groupSize)
       if (!acc[groupIndex]) {
         acc[groupIndex] = []
@@ -157,75 +143,54 @@ const GallerySection = () => {
   return (
     <section
       id="gallery-section"
-      className={`gallery-section py-5 ${isAnimating ? 'animating' : ''} ${
-        carouselOverlay ? 'overlay' : ''
-      }`}
-      onTransitionEnd={handleTransitionEnd}
-      style={{
-        backgroundImage: `url(${selectedBackgroundUrl})`
-      }}
+      className={`gallery-section ${carouselOverlay ? 'overlay' : ''}`}
     >
-      <Container className="my-5">
+      <Carousel
+        activeIndex={bgIndex}
+        onSelect={handleBgSelect}
+        defaultActiveIndex={bgIndex}
+        interval={null}
+        fade
+        className="gallery-section__carousel-background"
+      >
+        {galleryBackground.map(({ id, image, alt }) => (
+          <Carousel.Item key={id}>
+            <GatsbyImage
+              className="gallery-section__carousel-background__img"
+              image={image}
+              alt={alt}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+      <Container className="py-5">
         <h2 className="heading-2 text-center">Gallérie</h2>
-        <div className="gallery-section__carousel-wrapper">
-          <Carousel
-            activeIndex={index}
-            onSelect={handleSelect}
-            defaultActiveIndex={0}
-            interval={null}
-            className={`gallery-section__carousel ${
-              carouselOverlay ? 'overlay' : ''
-            }`}
-            onMouseEnter={() => setCarouselOverlay(false)}
-            onTouchStart={() => setCarouselOverlay(false)}
-          >
-            {groupedImages.map((group, groupIndex) => (
-              <Carousel.Item key={groupIndex}>
-                <div className="d-flex justify-content-between gallery-section__slide-wrapper">
-                  {group.map(({ id, image, alt }) => (
-                    <GatsbyImage
-                      key={id}
-                      className="d-block mx-sm-auto mx-md-0 gallery-section__img"
-                      image={image}
-                      alt={alt}
-                    />
-                  ))}
-                </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </div>
-        <div className="gallery-section__background-navigation">
-          <button
-            className={`gallery-section__background-prev-button ${
-              selectedBackground !== 0 ? '' : 'disabled'
-            }`}
-            onClick={handlePrevBackground}
-            aria-label="Fond précédent"
-          ></button>
-          <div className="gallery-section__carousel-background-indicators">
-            {backgroundImages.map(({ id, src }, bgIndex) => (
-              <button
-                key={id}
-                aria-label={src}
-                aria-current={selectedBackground !== bgIndex ? 'false' : 'true'}
-                className={`button mx-2 ${
-                  selectedBackground !== bgIndex ? '' : 'active'
-                }`}
-                onClick={handleChangeBackground.bind(null, bgIndex)}
-              ></button>
-            ))}
-          </div>
-          <button
-            className={`gallery-section__background-next-button ${
-              selectedBackground !== backgroundImages.length - 1
-                ? ''
-                : 'disabled'
-            }`}
-            onClick={handleNextBackground}
-            aria-label="Fond suivant"
-          ></button>
-        </div>
+        <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
+          defaultActiveIndex={0}
+          interval={null}
+          className={`gallery-section__carousel ${
+            carouselOverlay ? 'overlay' : ''
+          }`}
+          onMouseEnter={() => setCarouselOverlay(false)}
+          onTouchStart={() => setCarouselOverlay(false)}
+        >
+          {groupedImages.map((group, groupIndex) => (
+            <Carousel.Item key={groupIndex}>
+              <div className="d-flex justify-content-center gallery-section__carousel__slide-wrapper">
+                {group.map(({ id, image, alt }) => (
+                  <GatsbyImage
+                    key={id}
+                    className="d-block mx-sm-auto mx-md-0 gallery-section__carousel__img"
+                    image={image}
+                    alt={alt}
+                  />
+                ))}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </Container>
     </section>
   )
