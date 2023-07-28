@@ -43,7 +43,7 @@ const GallerySection = () => {
 
   const galleryImages = data.galleryImages.edges.map(({ node }) => {
     const image = getImage(node)
-    // console.log('image', image)
+
     return {
       id: node.id,
       alt: node.tags.join(' '),
@@ -53,6 +53,7 @@ const GallerySection = () => {
 
   const galleryBackground = data.galleryBackground.edges.map(({ node }) => {
     const image = getImage(node)
+
     return {
       id: node.id,
       alt: '',
@@ -76,25 +77,6 @@ const GallerySection = () => {
     }, 3000)
   }
 
-  const handlePrevBackground = () => {
-    if (selectedBackground > 0) {
-      setSelectedBackground(selectedBackground - 1)
-      hideCarousel()
-    }
-  }
-
-  const handleNextBackground = () => {
-    if (selectedBackground < backgroundImages.length - 1) {
-      setSelectedBackground(selectedBackground + 1)
-      hideCarousel()
-    }
-  }
-
-  const handleChangeBackground = (selectedIndex) => {
-    setSelectedBackground(selectedIndex)
-    hideCarousel()
-  }
-
   const getGroupSize = useCallback(() => {
     if (window.matchMedia('(max-width: 767.98px)').matches) {
       return 1
@@ -106,16 +88,12 @@ const GallerySection = () => {
   }, [])
 
   useEffect(() => {
-    // setSelectedBackground(Math.ceil((backgroundImages.length - 1) / 2))
     setBgIndex(Math.ceil((galleryBackground.length - 1) / 2))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
-      // setGalleryImages(getGalleryImages())
-      // setBackgroundImages(getBackgroundImages())
     }
 
     setGroupSize(getGroupSize())
@@ -128,7 +106,7 @@ const GallerySection = () => {
   }, [getGroupSize])
 
   useEffect(() => {
-    const updatedGroupedImages = galleryImages.reduce((acc, curr, index) => {
+    const imagesSet = galleryImages.reduce((acc, curr, index) => {
       const groupIndex = Math.floor(index / groupSize)
       if (!acc[groupIndex]) {
         acc[groupIndex] = []
@@ -137,7 +115,7 @@ const GallerySection = () => {
       return acc
     }, [])
 
-    setGroupedImages(updatedGroupedImages)
+    setGroupedImages(imagesSet)
   }, [groupSize])
 
   return (
@@ -151,6 +129,7 @@ const GallerySection = () => {
         defaultActiveIndex={bgIndex}
         interval={null}
         fade
+        onSlide={hideCarousel}
         className="gallery-section__carousel-background"
       >
         {galleryBackground.map(({ id, image, alt }) => (
@@ -170,9 +149,7 @@ const GallerySection = () => {
           onSelect={handleSelect}
           defaultActiveIndex={0}
           interval={null}
-          className={`gallery-section__carousel ${
-            carouselOverlay ? 'overlay' : ''
-          }`}
+          className="gallery-section__carousel"
           onMouseEnter={() => setCarouselOverlay(false)}
           onTouchStart={() => setCarouselOverlay(false)}
         >

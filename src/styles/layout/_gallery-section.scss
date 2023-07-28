@@ -12,12 +12,18 @@
     width: 100%;
     height: 100%;
     background-color: rgba($color-dark, 0.8);
+    transition: background-color 0.3s ease;
   }
 
   &.overlay {
     // Lightening the background on click to change the background image
     &::before {
       background-color: rgba($color-dark, 0.25);
+    }
+    // hides the general carousel when swiping background images
+    .gallery-section__carousel {
+      opacity: 0;
+      transform: translateY(-50%) scale(0.9);
     }
   }
 
@@ -89,10 +95,7 @@
     z-index: 2;
   }
 
-  // CAROUSEL GENERAL
-  &__carousel-wrapper {
-  }
-
+  // CAROUSEL GENERAL START
   &__carousel {
     position: absolute;
     top: 50%;
@@ -102,11 +105,6 @@
     z-index: 2;
     opacity: 1;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-
-    // &.overlay {
-    //   opacity: 0;
-    //   transform: translate(-50%, -50%) scale(0.9);
-    // }
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
@@ -176,3 +174,4 @@
     }
   }
 }
+// CAROUSEL GENERAL END
