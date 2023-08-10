@@ -1,3 +1,4 @@
+import * as React from "react"
 import { StaticImage } from 'gatsby-plugin-image'
 import { default as Navbar } from './Navbar'
 import HeroSection from './HeroSection'

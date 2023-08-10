@@ -1,4 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import * as React from 'react'
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect
+} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap'
 import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
@@ -9,9 +17,15 @@ const NavBar = () => {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [activeLink, setActiveLink] = useState(null)
   const sectionsRef = useRef([])
+  const navigate = useNavigate()
+  // const handleLinkClick = useScrollToLink(setShowOffcanvas, navigate)
   const handleLinkClick = useScrollToLink(setShowOffcanvas)
 
   const controlNavbar = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     if (window.scrollY > lastScrollY) {
       setNavbarHidden(true)
     } else {
@@ -21,6 +35,10 @@ const NavBar = () => {
   }, [lastScrollY])
 
   const navHighlighter = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     const scrollY = window.pageYOffset
     // It returns the first section that satisfies the condition using the find() method in combination with reverse() to start the search from the end of the list of sections. This ensures that the topmost (closest to the top of the page) section that is visible on the screen will be found
     const activeSection = [...sectionsRef.current].reverse().find((section) => {
@@ -49,14 +67,17 @@ const NavBar = () => {
     setShowOffcanvas(false)
   }
 
-  useEffect(() => {
-    sectionsRef.current = document.querySelectorAll('section[id], footer[id]')
+  useLayoutEffect(() => {
+    if (typeof document !== 'undefined') {
+      sectionsRef.current = document.querySelectorAll('section[id], footer[id]')
+    }
   }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
       return
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)

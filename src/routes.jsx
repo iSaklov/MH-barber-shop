@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import PublicPage from './pages/PublicPage'

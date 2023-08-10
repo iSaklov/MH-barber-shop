@@ -1,3 +1,4 @@
+import * as React from "react"
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'

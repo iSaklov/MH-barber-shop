@@ -1,3 +1,4 @@
+import * as React from "react"
 import PriceListSection from '../components/PriceListSection'
 import GallerySection from './GallerySection'
 import AboutUsSection from './AboutUsSection'

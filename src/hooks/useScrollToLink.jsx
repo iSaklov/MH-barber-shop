@@ -1,19 +1,25 @@
+import * as React from 'react'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+// const useScrollToLink = (setShowOffcanvas = null, navigate) => {
 const useScrollToLink = (setShowOffcanvas = null) => {
   const navigate = useNavigate()
 
   const scrollToTop = useCallback(
     (sectionId) => {
-      const section = document.getElementById(sectionId)
+      if (typeof document !== 'undefined') {
+        const section = document.getElementById(sectionId)
 
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: 'smooth'
-      })
+        if (section) {
+          window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth'
+          })
 
-      navigate(`#${sectionId}`)
+          navigate(`#${sectionId}`)
+        }
+      }
     },
     [navigate]
   )
@@ -35,12 +41,16 @@ const useScrollToLink = (setShowOffcanvas = null) => {
       }
 
       // hide the mobile menu after clicking on a link
+      if (typeof window === 'undefined') {
+        return
+      }
+
       if (
         setShowOffcanvas &&
         window.matchMedia('(max-width: 767.98px)').matches
       ) {
         setShowOffcanvas(false)
-        console.log('setShowOffcanvas')
+        // console.log('setShowOffcanvas')
       }
     },
     [scrollToTop, setShowOffcanvas]

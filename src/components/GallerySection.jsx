@@ -1,5 +1,12 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
+import {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  useLayoutEffect
+} from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import * as React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
@@ -16,7 +23,7 @@ const GallerySection = () => {
     query CloudinaryImages {
       galleryImages: allCloudinaryMedia(
         filter: { folder: { eq: "mh-barbershop/gallery" } }
-        sort: { fields: [created_at], order: ASC }
+        sort: { created_at: ASC }
       ) {
         edges {
           node {
@@ -29,7 +36,7 @@ const GallerySection = () => {
 
       galleryBackground: allCloudinaryMedia(
         filter: { folder: { eq: "mh-barbershop/gallery-background" } }
-        sort: { fields: [created_at], order: ASC }
+        sort: { created_at: ASC }
       ) {
         edges {
           node {
@@ -78,20 +85,23 @@ const GallerySection = () => {
   }
 
   const getGroupSize = useCallback(() => {
-    if (window.matchMedia('(max-width: 767.98px)').matches) {
-      return 1
-    } else if (window.matchMedia('(max-width: 991.98px)').matches) {
-      return 2
-    } else {
-      return 3
+    if (typeof window !== 'undefined') {
+      if (window.matchMedia('(max-width: 767.98px)').matches) {
+        return 1
+      } else if (window.matchMedia('(max-width: 991.98px)').matches) {
+        return 2
+      } else {
+        return 3
+      }
     }
+    return 1 // Default value in case window is not available (for SSR)
   }, [])
 
   useEffect(() => {
     setBgIndex(Math.ceil((galleryBackground.length - 1) / 2))
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleResize() {
       setGroupSize(getGroupSize())
     }
@@ -123,7 +133,7 @@ const GallerySection = () => {
       id="gallery-section"
       className={`gallery-section ${carouselOverlay ? 'overlay' : ''}`}
     >
-      <Carousel
+      {/* <Carousel
         activeIndex={bgIndex}
         onSelect={handleBgSelect}
         defaultActiveIndex={bgIndex}
@@ -141,10 +151,10 @@ const GallerySection = () => {
             />
           </Carousel.Item>
         ))}
-      </Carousel>
+      </Carousel> */}
       <Container className="py-5">
         <h2 className="heading-2 text-center">Gallérie</h2>
-        <Carousel
+        {/* <Carousel
           activeIndex={index}
           onSelect={handleSelect}
           defaultActiveIndex={0}
@@ -167,7 +177,7 @@ const GallerySection = () => {
               </div>
             </Carousel.Item>
           ))}
-        </Carousel>
+        </Carousel> */}
       </Container>
     </section>
   )

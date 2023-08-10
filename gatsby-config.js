@@ -9,6 +9,9 @@ module.exports = {
     title: `M.H. - barber shop`,
     siteUrl: `https://isaklov.github.io/MH-barber-shop`
   },
+  // flags: {
+  //   DEV_SSR: true
+  // },
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
