@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {
   useState,
   useEffect,
@@ -6,7 +5,8 @@ import {
   useRef,
   useLayoutEffect
 } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { navigate } from 'gatsby'
+import { Link } from 'gatsby'
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap'
 import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
@@ -17,8 +17,6 @@ const NavBar = () => {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [activeLink, setActiveLink] = useState(null)
   const sectionsRef = useRef([])
-  const navigate = useNavigate()
-  // const handleLinkClick = useScrollToLink(setShowOffcanvas, navigate)
   const handleLinkClick = useScrollToLink(setShowOffcanvas)
 
   const controlNavbar = useCallback(() => {

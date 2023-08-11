@@ -6,7 +6,7 @@ import {
   useLayoutEffect
 } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import * as React from 'react'
+
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
