@@ -20,6 +20,8 @@ const Footer = () => {
         src="../assets/images/footer.webp"
         alt=""
         formats={['auto', 'webp', 'avif']}
+        layout="fullWidth"
+        placeholder="dominantColor"
       />
       <Container className="py-5">
         <Row className="text-center my-5">

@@ -13,6 +13,13 @@ module.exports = {
   //   DEV_SSR: true
   // },
   plugins: [
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: `${__dirname}/src/assets/logo.svg`
+      }
+    },
     {
       resolve: 'gatsby-plugin-sass',
       options: {
@@ -25,12 +32,12 @@ module.exports = {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        // resourceType: `image`,
-        // type: `twitter`,
+        resourceType: `image`,
+        type: `upload`,
         maxResults: 24,
-        prefix: `mh-barbershop/`,
+        tags: true,
         context: true,
-        tags: true
+        prefix: `mh-barbershop`
       }
     },
     {
@@ -43,14 +50,6 @@ module.exports = {
       }
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: `${__dirname}/src/assets/logo.svg`
-      }
-    },
-    'gatsby-plugin-mdx',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {

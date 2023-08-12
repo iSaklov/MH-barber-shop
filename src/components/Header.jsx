@@ -11,6 +11,8 @@ const Header = () => {
         src="../assets/images/header.webp"
         alt=""
         formats={['auto', 'webp', 'avif']}
+        layout="fullWidth"
+        placeholder="dominantColor"
       />
       <Navbar />
       <HeroSection />

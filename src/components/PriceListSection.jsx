@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
@@ -12,6 +12,8 @@ const PriceListSection = () => {
         src="../assets/images/price-list.webp"
         alt=""
         formats={['auto', 'webp', 'avif']}
+        layout="fullWidth"
+        placeholder="dominantColor"
       />
       <Container className="d-flex my-auto justify-content-center py-5">
         <div className="price-list-section__list-wrapper">

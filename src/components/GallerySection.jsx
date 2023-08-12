@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
+import { useRef, useEffect, useState, useCallback, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
@@ -18,12 +18,10 @@ const GallerySection = () => {
         filter: { folder: { eq: "mh-barbershop/gallery" } }
         sort: { created_at: ASC }
       ) {
-        edges {
-          node {
-            id
-            tags
-            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          }
+        nodes {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          id
+          tags
         }
       }
 
@@ -31,35 +29,37 @@ const GallerySection = () => {
         filter: { folder: { eq: "mh-barbershop/gallery-background" } }
         sort: { created_at: ASC }
       ) {
-        edges {
-          node {
-            id
-            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          }
+        nodes {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          id
         }
       }
     }
   `)
 
-  const galleryImages = data.galleryImages.edges.map(({ node }) => {
-    const image = getImage(node)
+  const galleryImages = useMemo(() => {
+    return data.galleryImages.nodes.map((node) => {
+      const image = getImage(node)
 
-    return {
-      id: node.id,
-      alt: node.tags.join(' '),
-      image
-    }
-  })
+      return {
+        id: node.id,
+        alt: node.tags.join(' '),
+        image
+      }
+    })
+  }, [data.galleryImages.nodes])
 
-  const galleryBackground = data.galleryBackground.edges.map(({ node }) => {
-    const image = getImage(node)
+  const galleryBackground = useMemo(() => {
+    return data.galleryBackground.nodes.map((node) => {
+      const image = getImage(node)
 
-    return {
-      id: node.id,
-      alt: '',
-      image
-    }
-  })
+      return {
+        id: node.id,
+        alt: '',
+        image
+      }
+    })
+  }, [data.galleryBackground.nodes])
 
   const hideCarousel = () => {
     setCarouselOverlay(true)
