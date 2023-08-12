@@ -4,7 +4,7 @@ import { navigate } from 'gatsby'
 // import { useNavigate } from 'react-router-dom'
 // React app version
 
-const useScrollToLink = (setShowOffcanvas = null) => {
+const useScrollToLink = (setShowOffcanvas) => {
   // const navigate = useNavigate()
   // React app version
 
@@ -49,12 +49,9 @@ const useScrollToLink = (setShowOffcanvas = null) => {
         return
       }
 
-      if (
-        setShowOffcanvas &&
-        window.matchMedia('(max-width: 767.98px)').matches
-      ) {
+      if (window.matchMedia('(max-width: 767.98px)').matches) {
         setShowOffcanvas(false)
-        console.log('setShowOffcanvas')
+        // console.log('setShowOffcanvas')
       }
     },
     [scrollToTop, setShowOffcanvas]

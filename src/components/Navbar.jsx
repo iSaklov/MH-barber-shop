@@ -1,12 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useLayoutEffect
-} from 'react'
-import { navigate } from 'gatsby'
-import { Link } from 'gatsby'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap'
 import useScrollToLink from '../hooks/useScrollToLink'
 import Logo from '../assets/logo.svg'
@@ -65,7 +57,7 @@ const NavBar = () => {
     setShowOffcanvas(false)
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (typeof document !== 'undefined') {
       sectionsRef.current = document.querySelectorAll('section[id], footer[id]')
     }
