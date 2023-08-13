@@ -1,14 +1,18 @@
-import Header from './Header'
+import Layout from './Layout'
 import Main from './Main'
-import Footer from './Footer'
+import PriceListSection from '../components/PriceListSection'
+import GallerySection from './GallerySection'
+import AboutUsSection from './AboutUsSection'
 
 const PublicPage = () => {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <Layout>
+      <Main>
+        <PriceListSection />
+        <GallerySection />
+        <AboutUsSection />
+      </Main>
+    </Layout>
   )
 }
 

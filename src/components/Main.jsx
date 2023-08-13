@@ -1,14 +1,7 @@
-import * as React from "react"
-import PriceListSection from '../components/PriceListSection'
-import GallerySection from './GallerySection'
-import AboutUsSection from './AboutUsSection'
-
-const Main = () => {
+const Main = ({ children }) => {
   return (
     <main className="main">
-      <PriceListSection />
-      <GallerySection />
-      <AboutUsSection />
+      {children}
     </main>
   )
 }

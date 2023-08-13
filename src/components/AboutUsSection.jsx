@@ -1,4 +1,3 @@
-import * as React from "react"
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 
@@ -9,9 +8,9 @@ const AboutUsSection = () => {
         className="about-us-section__background"
         src="../assets/images/about-us.webp"
         alt=""
-				formats={['auto', 'webp', 'avif']}
-				layout="fullWidth"
-				placeholder="dominantColor"
+        formats={['auto', 'webp']}
+        layout="fullWidth"
+        placeholder="dominantColor"
       />
       <Container className="d-flex my-auto justify-content-center my-5">
         <Row className="py-5">

@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
@@ -11,7 +10,7 @@ const PriceListSection = () => {
         className="price-list-section__background"
         src="../assets/images/price-list.webp"
         alt=""
-        formats={['auto', 'webp', 'avif']}
+        formats={['auto', 'webp']}
         layout="fullWidth"
         placeholder="dominantColor"
       />

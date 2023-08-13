@@ -1,4 +1,3 @@
-import * as React from "react"
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col, Nav } from 'react-bootstrap'
 import useScrollToLink from '../hooks/useScrollToLink'
@@ -19,7 +18,7 @@ const Footer = () => {
         className="footer__background"
         src="../assets/images/footer.webp"
         alt=""
-        formats={['auto', 'webp', 'avif']}
+        formats={['auto', 'webp']}
         layout="fullWidth"
         placeholder="dominantColor"
       />

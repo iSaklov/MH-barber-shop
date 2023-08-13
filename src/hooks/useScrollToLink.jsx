@@ -1,32 +1,18 @@
-//TODO click navigation not working correctly after migrating to gatsby
 import { useCallback } from 'react'
-import { navigate } from 'gatsby'
-// import { useNavigate } from 'react-router-dom'
-// React app version
 
 const useScrollToLink = (setShowOffcanvas) => {
-  // const navigate = useNavigate()
-  // React app version
+  const scrollToTop = useCallback((sectionId) => {
+    if (typeof document !== 'undefined') {
+      const section = document.getElementById(sectionId)
 
-  const scrollToTop = useCallback(
-    (sectionId) => {
-      if (typeof document !== 'undefined') {
-        const section = document.getElementById(sectionId)
-
-        if (section) {
-          window.scrollTo({
-            top: section.offsetTop,
-            behavior: 'smooth'
-          })
-
-          navigate(`#${sectionId}`)
-        }
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop,
+          behavior: 'smooth'
+        })
       }
-    },
-    // [navigate]
-    // React app version
-    []
-  )
+    }
+  }, [])
 
   const handleLinkClick = useCallback(
     (event) => {
@@ -51,7 +37,6 @@ const useScrollToLink = (setShowOffcanvas) => {
 
       if (window.matchMedia('(max-width: 767.98px)').matches) {
         setShowOffcanvas(false)
-        // console.log('setShowOffcanvas')
       }
     },
     [scrollToTop, setShowOffcanvas]
