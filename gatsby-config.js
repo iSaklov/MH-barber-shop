@@ -19,7 +19,24 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: `${__dirname}/src/assets/logo.svg`
+        name: `M.H. - barber shop Épernon`,
+        short_name: `M.H. - barber`,
+        lang: `fr`,
+        start_url: `/`,
+        background_color: `#121212`,
+        theme_color: `#f1f1f1`,
+        display: `standalone`,
+        icon: `${__dirname}/src/assets/icon.svg`,
+        cache_busting_mode: 'none',
+        crossOrigin: `use-credentials`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/icon-path*']
+        }
       }
     },
     {
