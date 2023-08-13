@@ -7,7 +7,9 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `M.H. - barber shop`,
-    siteUrl: `https://isaklov.github.io/MH-barber-shop`
+    description: `M.H. - salon de coiffure pour hommes à Épernon. Spécialistes des coupes de cheveux et de la barbe. Service sans rendez-vous. Nos coiffeurs experts vous offrent des prestations de qualité, en créant des coiffures tendance qui reflètent votre personnalité. Rendez-nous visite pour obtenir le look parfait !`,
+    keywords: `barbershop Épernon, coupe homme, rasage, entretien de la barbe, sans rendez-vous, coiffures élégantes, coupes tendance, coupe enfant`,
+    siteUrl: `https://mhbarbershop.gatsbyjs.io`
   },
   // flags: {
   //   DEV_SSR: true

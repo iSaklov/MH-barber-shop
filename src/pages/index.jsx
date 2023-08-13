@@ -1,4 +1,5 @@
 import PublicPage from '../components/PublicPage'
+import { SEO } from '../components/SEO'
 import '../styles/index.scss'
 
 const IndexPage = () => {
@@ -7,4 +8,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>M.H. - barber shop</title>
+export const Head = () => <SEO />
