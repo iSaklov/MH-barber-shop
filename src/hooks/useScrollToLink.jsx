@@ -30,11 +30,10 @@ const useScrollToLink = (setShowOffcanvas) => {
         scrollToTop(sectionId)
       }
 
-      // hide the mobile menu after clicking on a link
       if (typeof window === 'undefined') {
-        return
+				return
       }
-
+			// hide the mobile menu after clicking on a link
       if (window.matchMedia('(max-width: 767.98px)').matches) {
         setShowOffcanvas(false)
       }

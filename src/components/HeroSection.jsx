@@ -1,11 +1,10 @@
-import * as React from "react"
 import { Container, Row, Col } from 'react-bootstrap'
 import Logo from '../assets/logo.svg'
 
 const HeroSection = () => {
   return (
     <section id="hero-section" className="hero-section text-center">
-      <Container className='my-5'>
+      <Container className="my-5">
         <Row className="mt-5 mt-md-auto">
           <Col>
             <img
