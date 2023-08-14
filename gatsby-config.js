@@ -12,7 +12,7 @@ module.exports = {
     siteUrl: `https://mhbarbershop.gatsbyjs.io`
   },
   // flags: {
-  //   DEV_SSR: true
+  //   DEV_SSR: true 	// https://www.gatsbyjs.com/docs/debugging-html-builds/#ssr-during-gatsby-develop
   // },
   plugins: [
     'gatsby-plugin-sitemap',
@@ -74,16 +74,13 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `dominantColor`
-          // quality: 50,
-          // breakpoints: [750, 1080, 1366, 1920],
-          // backgroundColor: `transparent`,
-          // blurredOptions: {},
-          // jpgOptions: {},
-          // pngOptions: {},
-          // webpOptions: {},
-          // avifOptions: {}
-        }
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [576, 768, 1080, 1400, 1920],
+          backgroundColor: `transparent`
+        },
+        // Relates to "options.failOn" in https://sharp.pixelplumbing.com/api-constructor#parameters
+        failOn: `warning`
       }
     },
     'gatsby-transformer-sharp',

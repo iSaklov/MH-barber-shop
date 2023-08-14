@@ -1,4 +1,7 @@
 User-agent: *
 Disallow: /admin
 
+User-agent: *
+Allow: /
+
 Sitemap: https://mhbarbershop.gatsbyjs.io/sitemap-index.xml

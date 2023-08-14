@@ -7,16 +7,12 @@
   "description": "m.h.-barber-shop",
   "author": "iSaklov <ivansaklov@gmail.com>",
   "keywords": [
-    "gatsby"
+    "Barber shop Gatsby site by open to work iSaklov <ivansaklov@gmail.com>"
   ],
   "dependencies": {
-    "@cloudinary/react": "^1.11.2",
-    "@cloudinary/url-gen": "^1.10.1",
     "@mdx-js/react": "^2.3.0",
     "bootstrap": "5.3.1",
     "dotenv": "^16.3.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier-react": "^0.0.24",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
