@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 /**
- * @type {import('gatsby').GatsbyConfig}
+ * @type {import(`gatsby`).GatsbyConfig}
  */
 module.exports = {
   siteMetadata: {
@@ -12,12 +13,13 @@ module.exports = {
     siteUrl: `https://mhbarbershop.gatsbyjs.io`
   },
   // flags: {
-  //   DEV_SSR: true 	// https://www.gatsbyjs.com/docs/debugging-html-builds/#ssr-during-gatsby-develop
+  // https://www.gatsbyjs.com/docs/debugging-html-builds/#ssr-during-gatsby-develop
+  //   DEV_SSR: true
   // },
   plugins: [
-    'gatsby-plugin-sitemap',
+    `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
         name: `M.H. - barber shop Épernon`,
         short_name: `M.H. - barber`,
@@ -27,20 +29,20 @@ module.exports = {
         theme_color: `#f1f1f1`,
         display: `standalone`,
         icon: `${__dirname}/src/assets/icon.svg`,
-        cache_busting_mode: 'none',
+        cache_busting_mode: `none`,
         crossOrigin: `use-credentials`
       }
     },
     {
-      resolve: 'gatsby-plugin-offline',
+      resolve: `gatsby-plugin-offline`,
       options: {
         workboxConfig: {
-          globPatterns: ['**/icon-path*']
+          globPatterns: [`**/icon-path*`]
         }
       }
     },
     {
-      resolve: 'gatsby-plugin-sass',
+      resolve: `gatsby-plugin-sass`,
       options: {
         useResolveUrlLoader: true
       }
@@ -64,11 +66,10 @@ module.exports = {
       options: {
         // Add the `gatsbyImageData` resolver to `CloudinaryMedia`
         transformTypes: [`CloudinaryMedia`],
-        // Optional transformation option
-        defaultTransformations: ['c_fill', 'g_auto', 'q_auto']
+        defaultTransformations: [`c_fill`, `g_auto`, `q_auto`]
       }
     },
-    'gatsby-plugin-image',
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -83,22 +84,22 @@ module.exports = {
         failOn: `warning`
       }
     },
-    'gatsby-transformer-sharp',
+    `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'assets',
+        name: `assets`,
         path: `${__dirname}/src/assets/`
       },
-      __key: 'assets'
+      __key: `assets`
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'pages',
+        name: `pages`,
         path: `${__dirname}/src/pages/`
       },
-      __key: 'pages'
+      __key: `pages`
     },
     `gatsby-plugin-provide-react`
   ]

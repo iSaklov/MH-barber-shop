@@ -15,8 +15,7 @@
   }
 
   &__background {
-    // position: absolute !important; // overwrites "gatsby-image-wrapper" {position: relative} by default
-		position: absolute;
+    position: absolute !important; // overwrites "gatsby-image-wrapper" {position: relative} by default for background images
     top: 0;
     left: 0;
     width: 100%;

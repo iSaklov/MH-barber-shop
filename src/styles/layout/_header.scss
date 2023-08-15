@@ -1,8 +1,3 @@
 .header {
   @include bg-section;
-
-  .gatsby-image-wrapper:first-of-type {
-    // applied to background image <StaticImage> overwriting {position: relative} by default
-    position: absolute;
-  }
 }

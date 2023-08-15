@@ -1,11 +1,6 @@
 .price-list-section {
   @include bg-section;
 
-  .gatsby-image-wrapper:first-of-type {
-    // applied to background image <StaticImage> overwriting {position: relative} by default
-    position: absolute;
-  }
-
   &__list-wrapper {
     z-index: 5;
     background: repeating-linear-gradient(
