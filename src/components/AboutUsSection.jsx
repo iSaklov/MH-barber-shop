@@ -11,6 +11,7 @@ const AboutUsSection = () => {
         formats={['auto', 'webp']}
         layout="fullWidth"
         placeholder="dominantColor"
+        loading="eager"
       />
       <Container className="d-flex my-auto justify-content-center my-5">
         <Row className="py-5">

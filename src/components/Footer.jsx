@@ -21,6 +21,7 @@ const Footer = () => {
         formats={['auto', 'webp']}
         layout="fullWidth"
         placeholder="dominantColor"
+        loading="eager"
       />
       <Container className="py-5">
         <Row className="text-center my-5">

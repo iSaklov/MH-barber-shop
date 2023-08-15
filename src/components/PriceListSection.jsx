@@ -12,7 +12,8 @@ const PriceListSection = () => {
         alt=""
         formats={['auto', 'webp']}
         layout="fullWidth"
-				placeholder="dominantColor"
+        placeholder="dominantColor"
+        loading="eager"
       />
       <Container className="d-flex my-auto justify-content-center py-5">
         <div className="price-list-section__list-wrapper">

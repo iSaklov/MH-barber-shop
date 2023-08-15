@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
@@ -37,7 +36,8 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         workboxConfig: {
-          globPatterns: [`**/icon-path*`]
+          globPatterns: [`**/icon-path*`],
+          importWorkboxFrom: `cdn`
         }
       }
     },
