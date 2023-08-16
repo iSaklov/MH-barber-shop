@@ -32,15 +32,16 @@ module.exports = {
         crossOrigin: `use-credentials`
       }
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        workboxConfig: {
-          globPatterns: [`**/icon-path*`],
-          importWorkboxFrom: `cdn`
-        }
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     workboxConfig: {
+    //       globPatterns: [`**/icon-path*`],
+    //       importWorkboxFrom: `cdn`
+    //     }
+    //   }
+    // },
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {
