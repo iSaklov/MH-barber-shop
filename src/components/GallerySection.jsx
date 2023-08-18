@@ -37,29 +37,33 @@ const GallerySection = () => {
     }
   `)
 
-  const galleryImages = useMemo(() => {
-    return data.galleryImages.nodes.map((node) => {
-      const image = getImage(node)
+  const galleryImages = useMemo(
+    () =>
+      data.galleryImages.nodes.map((node) => {
+        const image = getImage(node)
 
-      return {
-        id: node.id,
-        alt: node.tags.join(' '),
-        image
-      }
-    })
-  }, [data.galleryImages.nodes])
+        return {
+          id: node.id,
+          alt: node.tags.join(' '),
+          image
+        }
+      }),
+    [data.galleryImages.nodes]
+  )
 
-  const galleryBackground = useMemo(() => {
-    return data.galleryBackground.nodes.map((node) => {
-      const image = getImage(node)
+  const galleryBackground = useMemo(
+    () =>
+      data.galleryBackground.nodes.map((node) => {
+        const image = getImage(node)
 
-      return {
-        id: node.id,
-        alt: '',
-        image
-      }
-    })
-  }, [data.galleryBackground.nodes])
+        return {
+          id: node.id,
+          alt: '',
+          image
+        }
+      }),
+    [data.galleryBackground.nodes]
+  )
 
   const hideCarousel = () => {
     setCarouselOverlay(true)
@@ -81,11 +85,11 @@ const GallerySection = () => {
   const getGroupSize = useCallback(() => {
     if (window.matchMedia('(max-width: 767.98px)').matches) {
       return 1
-    } else if (window.matchMedia('(max-width: 991.98px)').matches) {
-      return 2
-    } else {
-      return 3
     }
+    if (window.matchMedia('(max-width: 991.98px)').matches) {
+      return 2
+    }
+    return 3
   }, [])
 
   useEffect(() => {
@@ -107,8 +111,8 @@ const GallerySection = () => {
   }, [getGroupSize])
 
   useEffect(() => {
-    const imagesSet = galleryImages.reduce((acc, curr, index) => {
-      const groupIndex = Math.floor(index / groupSize)
+    const imagesSet = galleryImages.reduce((acc, curr, currentIndex) => {
+      const groupIndex = Math.floor(currentIndex / groupSize)
       if (!acc[groupIndex]) {
         acc[groupIndex] = []
       }
@@ -153,8 +157,8 @@ const GallerySection = () => {
           onMouseEnter={() => setCarouselOverlay(false)}
           onTouchStart={() => setCarouselOverlay(false)}
         >
-          {groupedImages.map((group, groupIndex) => (
-            <Carousel.Item key={groupIndex}>
+          {groupedImages.map((group) => (
+            <Carousel.Item key={group[0].id}>
               <div className="d-flex justify-content-center gallery-section__carousel__slide-wrapper">
                 {group.map(({ id, image, alt }) => (
                   <GatsbyImage

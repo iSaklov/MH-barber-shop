@@ -1,6 +1,6 @@
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-export const SEO = ({ title, description, keywords, pathname, children }) => {
+const SEO = ({ title, description, keywords, pathname, children }) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
@@ -25,3 +25,5 @@ export const SEO = ({ title, description, keywords, pathname, children }) => {
     </>
   )
 }
+
+export default SEO

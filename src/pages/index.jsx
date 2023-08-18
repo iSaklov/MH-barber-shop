@@ -1,10 +1,8 @@
 import PublicPage from '../components/PublicPage'
-import { SEO } from '../components/SEO'
+import SEO from '../components/SEO'
 import '../styles/index.scss'
 
-const IndexPage = () => {
-  return <PublicPage />
-}
+const IndexPage = () => <PublicPage />
 
 export default IndexPage
 

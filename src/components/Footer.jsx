@@ -113,15 +113,15 @@ const Footer = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title='Adresse du salon de coiffure "M.H. - barber shop"'
                 className="footer__map"
-              ></iframe>
-              <div className="footer__map-overlay"></div>
+              />
+              <div className="footer__map-overlay" />
             </div>
           </Col>
         </Row>
         <Row>
           <Col xs={{ span: 10, offset: 1 }} className="my-3 text-center">
             <span className="heading-6 d-block">
-              Notre barber shop n'exige <strong>aucun rendez-vous</strong>{' '}
+              Notre barber shop n&apos;exige <strong>aucun rendez-vous</strong>{' '}
               préalable !
             </span>
           </Col>
