@@ -1,7 +1,5 @@
 import Dashboard from '../../components/admin/Dashboard'
 
-const AdminPage = () => {
-  return <Dashboard />
-}
+const AdminPage = () => <Dashboard />
 
 export default AdminPage
