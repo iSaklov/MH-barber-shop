@@ -65,10 +65,11 @@ const NavBar = () => {
 
   useEffect(() => {
     if (typeof window === 'undefined') {
-      return
+      return undefined
     }
 
     window.addEventListener('scroll', handleScroll)
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -83,7 +84,11 @@ const NavBar = () => {
     >
       <Container>
         <Navbar.Brand>
-          <Nav.Link href="#hero-section" onClick={handleLinkClick} aria-label="Accueil">
+          <Nav.Link
+            href="#hero-section"
+            onClick={handleLinkClick}
+            aria-label="Accueil"
+          >
             <img
               src={Logo}
               alt="H.M. - barber shop logo"
@@ -91,7 +96,10 @@ const NavBar = () => {
             />
           </Nav.Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="offcanvasNavbar-expand" onClick={showMenu} />
+        <Navbar.Toggle
+          aria-controls="offcanvasNavbar-expand"
+          onClick={showMenu}
+        />
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand"
           aria-labelledby="offcanvasNavbarLabel-expand"
@@ -99,13 +107,21 @@ const NavBar = () => {
           show={showOffcanvas}
           onHide={hideMenu}
           scroll={false}
-          backdrop={true}
+          backdrop
           responsive="md"
         >
           <Offcanvas.Header closeButton closeVariant="white">
             <Offcanvas.Title id="offcanvasNavbarLabel-expand">
-              <Nav.Link href="#hero-section" onClick={handleLinkClick} aria-label="Accueil">
-                <img src={Logo} alt="H.M. - barber shop logo" className="offcanvas-header__logo" />
+              <Nav.Link
+                href="#hero-section"
+                onClick={handleLinkClick}
+                aria-label="Accueil"
+              >
+                <img
+                  src={Logo}
+                  alt="H.M. - barber shop logo"
+                  className="offcanvas-header__logo"
+                />
               </Nav.Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
