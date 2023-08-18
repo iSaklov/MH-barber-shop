@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-const useScrollToLink = (setShowOffcanvas) => {
+const useScrollToLink = (setShowOffcanvas = undefined) => {
   const scrollToTop = useCallback((sectionId) => {
     if (typeof document !== 'undefined') {
       const section = document.getElementById(sectionId)
@@ -18,23 +18,30 @@ const useScrollToLink = (setShowOffcanvas) => {
     (event) => {
       event.preventDefault()
 
-      const currentElement = event.target
-      const parentElement = currentElement.parentElement
+      const { target, currentTarget } = event
+      // referring to the currentTarget element allows navigation when clicking on the logo in the mobile menu for example
+      let elementWithHref = null
 
-      if (currentElement.hasAttribute('href')) {
-        const sectionId = currentElement.hash.substring(1)
-        scrollToTop(sectionId)
-      } else if (parentElement && parentElement.hasAttribute('href')) {
-        // referring to the parent element allows navigation when clicking on the logo in the mobile menu for example
-        const sectionId = parentElement.hash.substring(1)
+      if (target.hasAttribute('href')) {
+        elementWithHref = target
+      } else if (currentTarget.hasAttribute('href')) {
+        elementWithHref = currentTarget
+      }
+
+      if (elementWithHref) {
+        const sectionId = elementWithHref.hash.substring(1)
         scrollToTop(sectionId)
       }
 
       if (typeof window === 'undefined') {
-				return
+        return
       }
-			// hide the mobile menu after clicking on a link
-      if (window.matchMedia('(max-width: 767.98px)').matches) {
+
+      // hide the mobile menu after clicking on a link
+      if (
+        setShowOffcanvas &&
+        window.matchMedia('(max-width: 767.98px)').matches
+      ) {
         setShowOffcanvas(false)
       }
     },

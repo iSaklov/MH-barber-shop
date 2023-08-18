@@ -1,4 +1,4 @@
-//TODO this routing was planned to be used in a react application
+// TODO this routing was planned to be used in a react application
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Dashboard from './components/admin/Dashboard'
 import PublicPage from './components/PublicPage'
