@@ -39,7 +39,7 @@
     "clean": "gatsby clean",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint .",
+    "lint": "yarn eslint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json"
   },
@@ -58,14 +58,16 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.22.10",
     "babel-preset-gatsby": "^3.11.0",
-    "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "gatsby-plugin-eslint": "^4.0.4",
     "gh-pages": "^5.0.0",
     "prettier": "^3.0.1",
     "resolve-url-loader": "^5.0.0"

@@ -4,6 +4,9 @@
     "es2021": true,
     "node": true
   },
+  "globals": {
+    "__PATH_PREFIX__": true
+  },
   "extends": ["airbnb", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",

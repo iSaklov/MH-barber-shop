@@ -1,9 +1,22 @@
-require('dotenv').config({
+const path = require('path')
+const dotenv = require('dotenv')
+
+dotenv.config({
   path: `.env.${process.env.NODE_ENV}`
 })
 /**
  * @type {import(`gatsby`).GatsbyConfig}
  */
+
+const gatsbyRequiredRules = path.join(
+  process.cwd(),
+  'node_modules',
+  'gatsby',
+  'dist',
+  'utils',
+  'eslint-rules'
+)
+
 module.exports = {
   siteMetadata: {
     title: `M.H. - barber shop`,
@@ -105,6 +118,17 @@ module.exports = {
       },
       __key: `pages`
     },
-    `gatsby-plugin-provide-react`
+    `gatsby-plugin-provide-react`,
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        // Gatsby required rules directory
+        rulePaths: [gatsbyRequiredRules],
+        // Default settings that may be omitted or customized
+        stages: ['develop'],
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        exclude: ['node_modules', 'bower_components', '.cache', 'public']
+      }
+    }
   ]
 }
