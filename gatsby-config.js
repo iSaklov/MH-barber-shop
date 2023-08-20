@@ -28,6 +28,9 @@ module.exports = {
         theme_color: `#f1f1f1`,
         display: `standalone`,
         icon: `${__dirname}/src/assets/icon.svg`,
+        icon_options: {
+          purpose: `any maskable`
+        },
         cache_busting_mode: `none`,
         crossOrigin: `use-credentials`
       }
