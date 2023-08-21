@@ -4,9 +4,6 @@ const dotenv = require('dotenv')
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`
 })
-/**
- * @type {import(`gatsby`).GatsbyConfig}
- */
 
 const gatsbyRequiredRules = path.join(
   process.cwd(),
@@ -16,6 +13,10 @@ const gatsbyRequiredRules = path.join(
   'utils',
   'eslint-rules'
 )
+
+/**
+ * @type {import(`gatsby`).GatsbyConfig}
+ */
 
 module.exports = {
   siteMetadata: {
@@ -84,6 +85,15 @@ module.exports = {
         // Add the `gatsbyImageData` resolver to `CloudinaryMedia`
         transformTypes: [`CloudinaryMedia`],
         defaultTransformations: [`c_fill`, `g_auto`, `q_auto`]
+      }
+    },
+    {
+      resolve: `gatsby-source-mongodb`,
+      options: {
+        connectionString: `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster-mh.qwe0ogq.mongodb.net/`,
+        dbName: `MH-barbershop`,
+        collection: `price-list`,
+        preserveObjectIds: true
       }
     },
     `gatsby-plugin-image`,

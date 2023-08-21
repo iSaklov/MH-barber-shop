@@ -141,7 +141,7 @@ const NavBar = () => {
                 className={activeLink === 'gallery-section' ? 'active' : ''}
                 aria-label="Galerie"
               >
-                Gallérie
+                Galerie
               </Nav.Link>
               <Nav.Link
                 href="#about-us-section"

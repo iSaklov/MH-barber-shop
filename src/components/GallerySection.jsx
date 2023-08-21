@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback, useMemo } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Container } from 'react-bootstrap'
@@ -37,33 +37,25 @@ const GallerySection = () => {
     }
   `)
 
-  const galleryImages = useMemo(
-    () =>
-      data.galleryImages.nodes.map((node) => {
-        const image = getImage(node)
+  const galleryImages = data.galleryImages.nodes.map((node) => {
+    const image = getImage(node)
 
-        return {
-          id: node.id,
-          alt: node.tags.join(' '),
-          image
-        }
-      }),
-    [data.galleryImages.nodes]
-  )
+    return {
+      id: node.id,
+      alt: node.tags.join(' '),
+      image
+    }
+  })
 
-  const galleryBackground = useMemo(
-    () =>
-      data.galleryBackground.nodes.map((node) => {
-        const image = getImage(node)
+  const galleryBackground = data.galleryBackground.nodes.map((node) => {
+    const image = getImage(node)
 
-        return {
-          id: node.id,
-          alt: '',
-          image
-        }
-      }),
-    [data.galleryBackground.nodes]
-  )
+    return {
+      id: node.id,
+      alt: '',
+      image
+    }
+  })
 
   const hideCarousel = () => {
     setCarouselOverlay(true)
@@ -147,7 +139,7 @@ const GallerySection = () => {
         ))}
       </Carousel>
       <Container className="py-5">
-        <h2 className="heading-2 text-center">Gallérie</h2>
+        <h2 className="heading-2 text-center">Galerie</h2>
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}
