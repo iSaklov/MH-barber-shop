@@ -18,6 +18,8 @@ const PriceListSection = () => {
     }
   `)
 
+  const services = data.allMongodbMHbarbershopPricelist.nodes
+
   return (
     <section id="price-list-section" className="price-list-section py-5">
       <StaticImage
@@ -46,33 +48,31 @@ const PriceListSection = () => {
                 <h2 className="heading-2 text-center">Nos tarifs</h2>
               </Col>
             </Row>
-            {data.allMongodbMHbarbershopPricelist.nodes.map(
-              ({ title, subtitle, price, mongodb_id: id }) => (
-                <React.Fragment key={id}>
-                  <Row className="align-items-end my-4 price-list-section__service-item-wrapper">
-                    <Col className="price-list-section__item-title col-auto">
-                      <h3 className="heading-4 mb-0">{title}</h3>
+            {services.map(({ title, subtitle, price, mongodb_id: id }) => (
+              <React.Fragment key={id}>
+                <Row className="align-items-end my-4 price-list-section__service-item-wrapper">
+                  <Col className="price-list-section__item-title col-auto">
+                    <h3 className="heading-4 mb-0">{title}</h3>
+                  </Col>
+                  <Col className="px-0">
+                    <div className="price-list-section__separator" />
+                  </Col>
+                  <Col className="price-list-section__item-price col-auto">
+                    <h3 className="heading-4 mb-0">{price}€</h3>
+                  </Col>
+                  {subtitle && (
+                    <Col
+                      xs={12}
+                      className="price-list-section__item-price-subtitle-wrapper"
+                    >
+                      <span className="price-list-section__item-price-subtitle">
+                        {subtitle}
+                      </span>
                     </Col>
-                    <Col className="px-0">
-                      <div className="price-list-section__separator" />
-                    </Col>
-                    <Col className="price-list-section__item-price col-auto">
-                      <h3 className="heading-4 mb-0">{price}€</h3>
-                    </Col>
-                    {subtitle && (
-                      <Col
-                        xs={12}
-                        className="price-list-section__item-price-subtitle-wrapper"
-                      >
-                        <span className="price-list-section__item-price-subtitle">
-                          {subtitle}
-                        </span>
-                      </Col>
-                    )}
-                  </Row>
-                </React.Fragment>
-              )
-            )}
+                  )}
+                </Row>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </Container>
