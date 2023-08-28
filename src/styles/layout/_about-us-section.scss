@@ -19,7 +19,7 @@
     @extend %box-shadow;
     &__hero {
       content: '';
-      position: absolute;
+      position: absolute !important; // overwrites "gatsby-image-wrapper" {position: relative} by default
       width: 100%;
       height: 25%;
       bottom: -25%;
