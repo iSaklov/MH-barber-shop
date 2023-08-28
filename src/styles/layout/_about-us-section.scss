@@ -17,38 +17,19 @@
   &__article {
     background-color: rgba($color-dark, 0.5);
     @extend %box-shadow;
-    &::before {
+    &__hero {
       content: '';
       position: absolute;
       width: 100%;
       height: 25%;
       bottom: -25%;
-      background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_576/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
-      background-size: cover;
-      background-position: center;
       @extend %box-shadow;
-
-      @media (min-width: $breakpoint-sm) {
-        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_768/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
-      }
-
-      @media (min-width: $breakpoint-md) {
-        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_992/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
-      }
-
-      @media (min-width: $breakpoint-lg) {
-        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_1200/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
-      }
-
-      @media (min-width: $breakpoint-xl) {
-        background-image: url('https://res.cloudinary.com/dmodiqndy/image/upload/c_fill,w_1400/q_auto/v1/mh-barbershop/onp0vk8jv8mygvcjrovu');
-      }
     }
   }
 
   @media (min-width: 414px) {
     &__article {
-      &::before {
+      &__hero {
         height: 33%;
         bottom: -33%;
       }
@@ -61,7 +42,7 @@
     }
 
     &__article {
-      &::before {
+      &__hero {
         height: 66%;
         bottom: -66%;
       }
@@ -74,7 +55,7 @@
     }
 
     &__article {
-      &::before {
+      &__hero {
         height: 75%;
         bottom: -75%;
       }
@@ -87,7 +68,7 @@
     }
 
     &__article {
-      &::before {
+      &__hero {
         height: 100%;
         top: 0;
         left: -100%;

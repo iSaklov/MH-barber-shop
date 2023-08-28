@@ -21,6 +21,14 @@ const AboutUsSection = () => (
           className="about-us-section__article-wrapper"
         >
           <article className="about-us-section__article">
+            <StaticImage
+              className="about-us-section__article__hero"
+              src="../assets/images/xqde1darhwhws7nhmoet.webp"
+              alt=""
+              formats={['auto', 'webp']}
+              layout="constrained"
+              placeholder="dominantColor"
+            />
             <h2 className="heading-2 py-5 text-center">À propos</h2>
             <div className="px-5 pb-5">
               <p className="my-3">
