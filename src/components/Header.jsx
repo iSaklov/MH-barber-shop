@@ -7,7 +7,7 @@ const Header = ({ children }) => (
   <header className="header">
     <StaticImage
       className="header__background"
-      src="../assets/images/header.webp"
+      src="../assets/images/nlk1ibifek1iqhrrqytb.webp"
       alt=""
       formats={['auto', 'webp']}
       layout="fullWidth"

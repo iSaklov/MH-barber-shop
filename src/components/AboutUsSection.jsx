@@ -5,7 +5,7 @@ const AboutUsSection = () => (
   <section id="about-us-section" className="about-us-section py-5">
     <StaticImage
       className="about-us-section__background"
-      src="../assets/images/about-us.webp"
+      src="../assets/images/andrea-donato-V3NNg858vkA-unsplash.jpg"
       alt=""
       formats={['auto', 'webp']}
       layout="fullWidth"

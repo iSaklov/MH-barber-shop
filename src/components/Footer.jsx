@@ -16,7 +16,7 @@ const Footer = () => {
     <footer id="footer" className="footer">
       <StaticImage
         className="footer__background"
-        src="../assets/images/footer.webp"
+        src="../assets/images/apothecary-87-Wg3J83R1YSQ-unsplash.jpg"
         alt=""
         formats={['auto', 'webp']}
         layout="fullWidth"

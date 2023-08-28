@@ -73,7 +73,7 @@ module.exports = {
         apiSecret: process.env.CLOUDINARY_API_SECRET,
         resourceType: `image`,
         type: `upload`,
-        maxResults: 24,
+        maxResults: 30,
         tags: true,
         context: true,
         prefix: `mh-barbershop`
@@ -90,7 +90,7 @@ module.exports = {
     {
       resolve: `gatsby-source-mongodb`,
       options: {
-        connectionString: `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster-mh.qwe0ogq.mongodb.net/`,
+        connectionString: `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}.mongodb.net/`,
         dbName: `MH-barbershop`,
         collection: `price-list`,
         preserveObjectIds: true

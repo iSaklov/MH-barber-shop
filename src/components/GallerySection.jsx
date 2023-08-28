@@ -42,7 +42,7 @@ const GallerySection = () => {
 
     return {
       id: node.id,
-      alt: node.tags.join(' '),
+      alt: node.tags ? node.tags.join(' ') : '',
       image
     }
   })
