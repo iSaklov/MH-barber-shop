@@ -24,7 +24,7 @@ const PriceListSection = () => {
     <section id="price-list-section" className="price-list-section py-5">
       <StaticImage
         className="price-list-section__background"
-        src="../assets/images/agustin-fernandez-Znyjl9pbaUs-unsplash.jpg"
+        src="../assets/images/agustin-fernandez-Znyjl9pbaUs-unsplash.webp"
         alt=""
         formats={['auto', 'webp']}
         layout="fullWidth"
