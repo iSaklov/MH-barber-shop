@@ -1,3 +1,30 @@
 .header {
   @include bg-section;
+  align-items: center;
+
+  .alert-fixed {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @extend %box-shadow;
+
+    @media (min-width: $breakpoint-lg) {
+      padding-left: 4.8rem;
+    }
+
+    .info-icon {
+      width: 3.2rem;
+      height: 3.2rem;
+      position: absolute;
+      top: calc(50% - 1.6rem);
+      left: 1rem;
+      opacity: 0.8;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
 }
