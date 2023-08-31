@@ -15,3 +15,7 @@ $navbar-dark-hover-color: $color-white !default;
 $navbar-dark-active-color: $color-light !default;
 $navbar-dark-disabled-color: rgba($color-white, 0.25) !default;
 $navbar-dark-toggler-border-color: rgba($color-white, 0.1) !default;
+
+// scss-docs-start focus-ring-variables
+$focus-ring-opacity: 0.25 !default;
+$focus-ring-color: rgba($color-primary, $focus-ring-opacity) !default;
