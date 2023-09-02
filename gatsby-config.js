@@ -52,19 +52,19 @@ module.exports = {
         icon_options: {
           purpose: `any maskable`
         },
-        cache_busting_mode: `none`,
         crossOrigin: `use-credentials`
       }
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        workboxConfig: {
-          globPatterns: [`**/icon-path*`]
-        }
-      }
-    },
-    // `gatsby-plugin-remove-serviceworker`,
+    // {
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     workboxConfig: {
+    //       globPatterns: [`**/icon-path*`]
+    //     }
+    //   }
+    // },
+    //! reliably removes gatsby-plugin-offline, since the latter could not demonstrate stable operation
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {

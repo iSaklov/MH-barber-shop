@@ -1,5 +1,5 @@
 {
-  "homepage": "https://isaklov.github.io/MH-barber-shop",
+  "homepage": "https://mh-barbershop.fr",
   "name": "m.h.-barber-shop",
   "version": "1.0.0",
   "license": "0BSD",
@@ -16,8 +16,8 @@
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
-    "gatsby-plugin-offline": "^6.12.0",
     "gatsby-plugin-provide-react": "^1.0.2",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
@@ -39,8 +39,6 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
     "lint": "yarn eslint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json"
@@ -70,7 +68,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-webpack-plugin": "^4.0.1",
     "gatsby-plugin-eslint": "^4.0.4",
-    "gh-pages": "^5.0.0",
     "prettier": "^3.0.1",
     "resolve-url-loader": "^5.0.0"
   }
