@@ -41,7 +41,8 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `M.H. - barber shop Épernon`,
-        short_name: `M.H. - barber`,
+        short_name: `M.H. - barbier`,
+        description: `M.H. - salon de coiffure pour hommes à Épernon sans rendez-vous`,
         lang: `fr`,
         start_url: `/`,
         background_color: `#121212`,
@@ -55,16 +56,15 @@ module.exports = {
         crossOrigin: `use-credentials`
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-offline`,
-    //   options: {
-    //     workboxConfig: {
-    //       globPatterns: [`**/icon-path*`],
-    //       importWorkboxFrom: `cdn`
-    //     }
-    //   }
-    // },
-    `gatsby-plugin-remove-serviceworker`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        workboxConfig: {
+          globPatterns: [`**/icon-path*`]
+        }
+      }
+    },
+    // `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {
