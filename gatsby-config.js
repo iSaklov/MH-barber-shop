@@ -23,13 +23,19 @@ module.exports = {
     title: `M.H. - barber shop`,
     description: `M.H. - salon de coiffure pour hommes à Épernon. Spécialistes des coupes de cheveux et de la barbe. Service sans rendez-vous. Nos coiffeurs experts vous offrent des prestations de qualité, en créant des coiffures tendance qui reflètent votre personnalité. Rendez-nous visite pour obtenir le look parfait !`,
     keywords: `barbershop Épernon, coupe homme, rasage, entretien de la barbe, sans rendez-vous, coiffures élégantes, coupes tendance, coupe enfant`,
-    siteUrl: `https://mhbarbershop.gatsbyjs.io`
+    siteUrl: `https://mh-barbershop.fr`
   },
   // flags: {
   // https://www.gatsbyjs.com/docs/debugging-html-builds/#ssr-during-gatsby-develop
   //   DEV_SSR: true
   // },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        configFile: 'robots-txt.config.js'
+      }
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
