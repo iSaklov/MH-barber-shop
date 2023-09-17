@@ -1,0 +1,52 @@
+@mixin bg-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color-dark, 0.8);
+  }
+
+  &__background {
+    position: absolute !important; // overwrites "gatsby-image-wrapper" {position: relative} by default for background images
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+@mixin icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  opacity: 0.75;
+  transition: all 0.2s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+}
+
+@mixin heading {
+  font-family: $font-playfair;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+%box-shadow {
+  box-shadow: rgba($color-dark, 0.75) 0 0.5rem 1.5rem 0;
+}

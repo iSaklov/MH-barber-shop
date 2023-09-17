@@ -1,8 +1,74 @@
 {
+  "homepage": "https://mh-barbershop.fr",
+  "name": "m.h.-barber-shop",
+  "version": "1.0.1",
+  "license": "0BSD",
+  "private": true,
+  "description": "m.h.-barber-shop",
+  "author": "iSaklov <ivansaklov@gmail.com>",
+  "keywords": [
+    "Barber shop Gatsby site by open to work iSaklov <ivansaklov@gmail.com>"
+  ],
+  "dependencies": {
+    "@mdx-js/react": "^2.3.0",
+    "bootstrap": "5.3.1",
+    "dotenv": "^16.3.1",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-manifest": "^5.11.0",
+    "gatsby-plugin-provide-react": "^1.0.2",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
+    "gatsby-plugin-robots-txt": "^1.8.0",
+    "gatsby-plugin-sass": "^6.11.0",
+    "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-source-cloudinary": "^0.5.1",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-source-mongodb": "^5.11.0",
+    "gatsby-transformer-cloudinary": "^4.4.0",
+    "gatsby-transformer-sharp": "^5.11.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "sass": "^1.65.1"
+  },
+  "scripts": {
+    "dev": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "yarn eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.6"
+    "@babel/plugin-proposal-decorators": "^7.22.10",
+    "babel-preset-gatsby": "^3.11.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "gatsby-plugin-eslint": "^4.0.4",
+    "prettier": "^3.0.1",
+    "resolve-url-loader": "^5.0.0"
   }
 }
