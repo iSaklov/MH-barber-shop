@@ -8,7 +8,7 @@ I'm grateful in advance to anyone willing to contribute to this project, whether
 
 Explore the project on Figma: [M.H. - Barber Shop on Figma](https://www.figma.com/file/yRJoTSEa0VuuzWDvNBhtG9/M.H.---barber-shop?type=design&node-id=1%3A3&mode=design&t=WzP8Um8rMSgZe9Yi-1)
 
-**Deployment:** [Visit M.H. - Barber Shop](https://m.h.-barber-shop)
+**Deployment:** [Visit M.H. - Barber Shop](https://mh-barbershop.fr)
 
 ## Technologies
 
@@ -88,7 +88,7 @@ Not being a professional photographer, I had to tinker a lot when taking picture
 
 M.H. - Barber Shop is a testament to my dedication to continuous learning and improvement. It's a showcase of my evolving skills and my passion for creating stylish online experiences in the world of web development. I'm grateful for the opportunity to work on this project and for the lessons it has taught me along the way.
 
-Thank you for visiting [M.H. - Barber Shop](https://m.h.-barber-shop), and I hope you enjoy exploring it as much as I enjoyed creating it!
+Thank you for visiting [M.H. - Barber Shop](https://mh-barbershop.fr), and I hope you enjoy exploring it as much as I enjoyed creating it!
 
 For inquiries and suggestions, feel free to contact me:
 
