@@ -126,6 +126,48 @@ const Footer = () => {
             </span>
           </Col>
         </Row>
+        <Row className="my-5">
+          <Col xs={12} md={6}>
+            <span className="heading-6 d-block text-center mb-3">
+              Identification de l&apos;entreprise
+            </span>
+            <p>Dénomination sociale : BARBA&apos;S VIP</p>
+            <p>
+              Forme juridique : SASU (Société par actions simplifiée à associé
+              unique)
+            </p>
+            <p>Montant du capital social : 250,00€</p>
+            <p>Numéro RCS : Chartres B 919 040 832</p>
+            <p>Numéro TVA intracommunautaire : FR37919040832</p>
+          </Col>
+          <Col xs={12} md={6}>
+            <span className="heading-6 d-block text-center mb-3">
+              Identité de l&apos;hébergeur
+            </span>
+            <p>Dénomination sociale : Gatsby, Inc.</p>
+            <p>
+              548 Market Street, Bureau 36791, San Francisco, 94104 Californie
+            </p>
+            <p>
+              <a
+                href="https://www.gatsbyjs.com/privacy-policy/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                Politique de confidentialité de Gatsby (en anglais)
+              </a>
+            </p>
+            <p>
+              <a
+                href="mailto:privacy@gatsbyjs.com"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                Contacter l&apos;hébergeur par email
+              </a>
+            </p>
+          </Col>
+        </Row>
         <Row className="text-center my-5">
           <Col xs={12}>
             <span>Design & développement : iSaklov</span>
