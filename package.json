@@ -1,13 +1,13 @@
 {
   "homepage": "https://mh-barbershop.fr",
-  "name": "m.h.-barber-shop",
+  "name": "mh-barbershop",
   "version": "1.0.1",
   "license": "0BSD",
   "private": true,
-  "description": "m.h.-barber-shop",
+  "description": "M.H. - salon de coiffure pour hommes à Épernon. Spécialistes des coupes de cheveux et de la barbe. Service sans rendez-vous. Nos coiffeurs experts vous offrent des prestations de qualité, en créant des coiffures tendance qui reflètent votre personnalité. Rendez-nous visite pour obtenir le look parfait !",
   "author": "iSaklov <ivansaklov@gmail.com>",
   "keywords": [
-    "Barber shop Gatsby site by open to work iSaklov <ivansaklov@gmail.com>"
+    "Barber shop Gatsby static site by open to work iSaklov <ivansaklov@gmail.com>"
   ],
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
