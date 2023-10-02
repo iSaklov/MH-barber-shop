@@ -145,6 +145,7 @@ module.exports = {
         extensions: ['js', 'jsx', 'ts', 'tsx'],
         exclude: ['node_modules', 'bower_components', '.cache', 'public']
       }
-    }
+    },
+    `gatsby-plugin-netlify`
   ]
 }
